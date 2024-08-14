@@ -57,5 +57,20 @@
       "address": "123, Main Street, Colombo 05",
       "job": "doctor"
     }
+  },
+  "al-subjects": {
+    "subject": "maths",
+    "1st_subject": {
+      "subject": "maths",
+      "grade": "A"
+    },
+    "2nd_subject": {
+      "subject": "science",
+      "grade": "A"
+    },
+    "3rd_subject": {
+      "subject": "english",
+      "grade": "B"
+    }
   }
 }
