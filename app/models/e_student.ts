@@ -1,64 +1,64 @@
 import mongoose, { Document, Schema } from "mongoose";
 
 export interface IEStudent extends Document {
-  indexno: string;
-  olClass: string;
-  olClassTeacher: string;
+  olindexno: Number;
   personalInfo: IPersonalInfo;
   olResults: IOLResults;
   parentInfo: IParent;
   alSubjects: IALSubject;
+  oldSchool: IOldSchool;
+  oldclass: IOldClass;
 }
 
 // Create Mongoose schema
 const BasketSchema = new Schema<IBasket>({
-  subject: { type: String, required: true },
-  grade: { type: String, required: true },
+  subject: { type: String, required: false },
+  grade: { type: String, required: false },
 });
 
 const ParentInfoSchema = new Schema<IParentInfo>({
-  name: { type: String, required: true },
-  nicNumber: { type: Number, required: true },
-  contactNumber: { type: Number, required: true },
-  address: { type: String, required: true },
-  job: { type: String, required: true },
+  name: { type: String, required: false },
+  nicNumber: { type: Number, required: false },
+  contactNumber: { type: Number, required: false },
+  address: { type: String, required: false },
+  job: { type: String, required: false },
 });
 
 const PersonalInfoSchema = new Schema<IPersonalInfo>({
-  fullname: { type: String, required: true },
-  nameWithInitials: { type: String, required: true },
-  birthday: { type: Date, required: true },
-  age: { type: Number, required: true },
-  sex: { type: String, required: true },
-  nicNumber: { type: Number, required: true },
-  address: { type: String, required: true },
-  email: { type: String, required: true },
-  contactNumber: { type: Number, required: true },
-  whatsappNumber: { type: Number, required: true },
-  distanceToSchool: { type: Number, required: true },
-  transportMethod: { type: String, required: true },
-  scholarship: { type: String, required: true },
+  fullname: { type: String, required: false },
+  nameWithInitials: { type: String, required: false },
+  birthday: { type: Date, required: false },
+  age: { type: Number, required: false },
+  sex: { type: String, required: false },
+  nicNumber: { type: Number, required: false },
+  address: { type: String, required: false },
+  email: { type: String, required: false },
+  contactNumber: { type: Number, required: false },
+  whatsappNumber: { type: Number, required: false },
+  distanceToSchool: { type: Number, required: false },
+  transportMethod: { type: String, required: false },
+  scholarship: { type: String, required: false },
 });
 
 const OLAttemptSchema = new Schema<IOLAttempt>({
-  index_no: { type: Number, required: true },
-  maths: { type: Number, required: true },
-  science: { type: Number, required: true },
-  english: { type: Number, required: true },
-  history: { type: Number, required: true },
-  religion: { type: Number, required: true },
-  sinhala: { type: Number, required: true },
-  baskets: { type: [BasketSchema], required: true },
+  index_no: { type: Number, required: false },
+  maths: { type: Number, required: false },
+  science: { type: Number, required: false },
+  english: { type: Number, required: false },
+  history: { type: Number, required: false },
+  religion: { type: Number, required: false },
+  sinhala: { type: Number, required: false },
+  baskets: { type: [BasketSchema], required: false },
 });
 
 const OLResultsSchema = new Schema<IOLResults>({
-  first_attempt: { type: OLAttemptSchema, required: true },
+  first_attempt: { type: OLAttemptSchema, required: false },
   second_attempt: { type: OLAttemptSchema, required: false },
 });
 
 const ALSubjectSchema = new Schema<IALSubject>({
-  subject: { type: String, required: true },
-  grades: { type: [BasketSchema], required: true },
+  subject: { type: String, required: false },
+  grades: { type: [BasketSchema], required: false },
 });
 
 const ParentSchema = new Schema<IParent>({
@@ -67,14 +67,28 @@ const ParentSchema = new Schema<IParent>({
   guardian: { type: ParentInfoSchema, required: false },
 });
 
+const OldSchoolSchema = new Schema<IOldSchool>({
+  name: { type: String, required: true },
+  address: { type: String, required: true },
+  zonal: { type: String, required: true },
+  divisional: { type: String, required: true },
+  district: { type: String, required: true },
+});
+
+const OldClassSchema = new Schema<IOldClass>({
+  indexno: { type: Number, default: 0 }, // Assuming 0 is an appropriate default value for a number
+  olClass: { type: String, default: "" }, // Default empty string
+  olClassTeacher: { type: String, default: "" }, // Default empty string
+});
+
 const ExistingStudentSchema = new Schema<IEStudent>({
-  indexno: { type: String, required: true },
-  olClass: { type: String, required: true },
-  olClassTeacher: { type: String, required: true },
-  personalInfo: { type: PersonalInfoSchema, required: true },
-  olResults: { type: OLResultsSchema, required: true },
-  parentInfo: { type: ParentSchema, required: true },
-  alSubjects: { type: ALSubjectSchema, required: true },
+  olindexno: { type: String, required: true },
+  personalInfo: { type: PersonalInfoSchema, default: {} },
+  olResults: { type: OLResultsSchema, default: {} },
+  parentInfo: { type: ParentSchema, default: {} },
+  alSubjects: { type: ALSubjectSchema, default: {} },
+  oldSchool: { type: OldSchoolSchema, default: {} },
+  oldclass: { type: OldClassSchema, default: {} },
 });
 
 const ExistingStudent =
