@@ -68,11 +68,11 @@ const ParentSchema = new Schema<IParent>({
 });
 
 const OldSchoolSchema = new Schema<IOldSchool>({
-  name: { type: String, required: true },
-  address: { type: String, required: true },
-  zonal: { type: String, required: true },
-  divisional: { type: String, required: true },
-  district: { type: String, required: true },
+  name: { type: String, required: false },
+  address: { type: String, required: false },
+  zonal: { type: String, required: false },
+  divisional: { type: String, required: false },
+  district: { type: String, required: false },
 });
 
 const OldClassSchema = new Schema<IOldClass>({
