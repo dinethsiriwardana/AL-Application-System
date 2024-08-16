@@ -7,7 +7,7 @@ export async function GET() {
     return NextResponse.json({
       "GET - /api": "Routes",
       "GET - /api/[index]": "Check the Student Type / Student Details",
-      "POST - /api/[index]": "Add Student's Personal Info",
+      "POST - /api/[index]/presonal-info": "Add Student's Personal Info",
       "POST - /api/[index]/ParentInfo": "Add Student's Parent Info",
       "POST - /api/[index]/OLResults": "Add Student's OL Results",
       "POST - /api/[index]/ALSubject": "Add Student's AL Subjects",
