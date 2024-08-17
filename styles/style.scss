@@ -1,5 +1,3 @@
-@import "global/variables";
-
-body {
-  background-color: var(--black);
-}
+@import "functions";
+@import "global";
+@import "layout";
