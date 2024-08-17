@@ -1,7 +1,7 @@
 @use "sass:math";
 // font-sixe: pixRem(30);
 // Throe an error if the parameter has a unit
-@function pixRem($pixel) {
+@function pixToRem($pixel) {
   // if $pixel has a unit, throw an error
   @if math.is-unitless($pixel) {
     @return math.div($pixel, 16) + rem;
