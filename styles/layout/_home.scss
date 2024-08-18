@@ -17,32 +17,75 @@
     flex-direction: column;
     text-align: center;
     color: white;
-    padding: 70px;
-
-    @media screen and (max-width: 600px) {
-      padding: 20px;
-    }
+    padding: 1.25rem;
+    padding: clamp(
+      1.25rem,
+      -0.17045454545454541rem + 3.787878787878788vw,
+      4.375rem
+    );
 
     .school-badge {
-      width: 100px;
-      margin-bottom: 25px;
+      width: 4.375rem;
+      width: clamp(
+        4.375rem,
+        3.5227272727272725rem + 2.272727272727273vw,
+        6.25rem
+      );
+      margin-bottom: 0.9375rem;
+      margin-bottom: clamp(
+        0.9375rem,
+        0.6534090909090908rem + 0.7575757575757576vw,
+        1.5625rem
+      );
       height: auto;
     }
 
     .sub-heading-top {
-      margin-bottom: 25px;
+      margin-bottom: 0.75rem;
+      margin-bottom: clamp(
+        0.75rem,
+        0.6647727272727273rem + 0.22727272727272727vw,
+        0.9375rem
+      );
       // text-transform: uppercase;
+      font-size: 1.125rem;
+      font-size: clamp(
+        1.125rem,
+        0.6420454545454546rem + 1.2878787878787878vw,
+        2.1875rem
+      );
+      font-weight: 600;
     }
 
     .main-heading {
       line-height: 1.25;
-      // font-size: 20px;
+      font-size: 1.25rem;
+      font-size: clamp(
+        1.25rem,
+        0.3977272727272727rem + 2.272727272727273vw,
+        3.125rem
+      );
+      font-weight: 700;
       // text-transform: uppercase;
     }
 
     .sub-heading-bottom {
-      margin-top: 25px;
-      font-weight: 400;
+      margin-top: 0.625rem;
+      margin-top: clamp(
+        0.625rem,
+        0.19886363636363635rem + 1.1363636363636365vw,
+        1.5625rem
+      );
+      font-size: 0.9375rem;
+      font-size: clamp(
+        0.9375rem,
+        0.5681818181818182rem + 0.9848484848484848vw,
+        1.75rem
+      );
+      font-weight: 500;
+    }
+
+    @media screen and (max-width: 600px) {
     }
 
     .form {
@@ -50,17 +93,28 @@
       position: relative;
       height: 70px;
       overflow: hidden;
-      margin-top: 10px;
+      margin-top: 0.0625rem;
+      margin-top: clamp(
+        0.0625rem,
+        -0.19318181818181818rem + 0.6818181818181818vw,
+        0.625rem
+      );
     }
 
     .form input {
       width: 100%;
       height: 100%;
       color: #fff;
-      padding-top: 20px;
+      padding-top: 0.625rem;
+      padding-top: clamp(
+        0.625rem,
+        0.3409090909090909rem + 0.7575757575757576vw,
+        1.25rem
+      );
       border: none;
       background-color: #18191a;
       font-size: pixToRem(18);
+      font-size: pixToRem(14);
     }
     .form label {
       position: absolute;
@@ -70,6 +124,12 @@
       height: 100%;
       pointer-events: none;
       border-bottom: 1px solid white;
+      font-size: 0.75rem;
+      font-size: clamp(
+        0.75rem,
+        0.6647727272727273rem + 0.22727272727272727vw,
+        0.9375rem
+      );
     }
     .form label::after {
       content: "";
@@ -96,7 +156,12 @@
     .form input:focus + .label-name .content-name,
     .form input:valid + .label-name .content-name {
       transform: translateY(-150%);
-      font-size: 14px;
+      font-size: 0.625rem;
+      font-size: clamp(
+        0.625rem,
+        0.5113636363636364rem + 0.30303030303030304vw,
+        0.875rem
+      );
       left: 0px;
       color: #3888ff;
       border-radius: 5px;
@@ -112,9 +177,24 @@
       border: none;
       color: #ffffff;
       text-align: center;
-      font-size: pixToRem(15);
-      padding: 10px;
-      width: 300px;
+      font-size: 0.75rem;
+      font-size: clamp(
+        0.75rem,
+        0.6647727272727273rem + 0.22727272727272727vw,
+        0.9375rem
+      );
+      padding: 0.4375rem;
+      padding: clamp(
+        0.4375rem,
+        0.3522727272727273rem + 0.22727272727272727vw,
+        0.625rem
+      );
+      width: 16.25rem;
+      width: clamp(
+        16.25rem,
+        15.113636363636363rem + 3.0303030303030303vw,
+        18.75rem
+      );
       transition: all 0.5s;
       cursor: pointer;
       margin: 5px;
@@ -148,7 +228,12 @@
 
     .already-applied {
       color: #808080;
-      font-size: 14px;
+      font-size: 0.75rem;
+      font-size: clamp(
+        0.75rem,
+        0.6931818181818182rem + 0.15151515151515152vw,
+        0.875rem
+      );
       margin-top: 20px;
       margin-bottom: 100px;
 
@@ -167,7 +252,7 @@
     display: flex;
     justify-content: center;
     .bg-image {
-      height: 100%;
+      height: 100vh;
       opacity: 0.7;
       -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
       filter: grayscale(100%);
@@ -189,15 +274,17 @@
   }
 }
 
-// @media screen and (max-width: 668px) {
-//   .main {
-//     flex-direction: column;
-//     &__left-and-write {
-//       width: 100vw;
-//       height: 100vh;
-//     }
-//     &__left-and-write:nth-child(2) {
-//       display: none;
-//     }
-//   }
-// }
+@media screen and (max-width: 668px) {
+  .main {
+    flex-direction: column;
+    &__left-and-write {
+      width: 100vw;
+      height: 100vh;
+    }
+    &__left-and-write:nth-child(1) {
+    }
+    &__left-and-write:nth-child(2) {
+      display: none;
+    }
+  }
+}
