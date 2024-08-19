@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "lottie-react-native": "^6.7.2",
+    "lottie-web": "^5.12.2",
     "mongoose": "^8.5.3",
     "next": "14.2.5",
     "react": "^18",
