@@ -13,11 +13,22 @@
   flex-direction: column;
 
   .lotteFile {
-    max-width: 200px;
+    max-width: 9.375rem;
+    max-width: clamp(
+      9.375rem,
+      8.710106382978724rem + 3.546099290780142vw,
+      12.5rem
+    );
   }
 
   .title {
-    font-size: 30px;
+    font-size: 1.25rem;
+    font-size: clamp(
+      1.25rem,
+      1.1170212765957446rem + 0.7092198581560284vw,
+      1.875rem
+    );
+    text-align: center;
     color: white;
     margin-top: 20px;
     font-weight: 500;
