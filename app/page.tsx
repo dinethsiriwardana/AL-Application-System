@@ -10,6 +10,7 @@ import IndexNoForm from "./components/IndexNoForm";
 import { useState } from "react";
 import { LottieFile } from "./interfaces/lotteInterface";
 import useStudentType from "./global/StudentType";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -34,6 +35,18 @@ export default function Home() {
       {loading && animation && (
         <DBLoading title={loadingText} lotteFile={animation} />
       )}
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <main className="main">
         <aside className="main__left-and-write">
           <Image

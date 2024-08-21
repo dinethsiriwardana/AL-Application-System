@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import setExistingStudentData from "../global/ExistingStudentData";
+import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import setExistingStudentData from "../global/ExistingStudentData";
 import useStudentType from "../global/StudentType";
 
 interface Props {
@@ -24,8 +25,36 @@ const IndexNoForm = ({ callBack }: Props) => {
     try {
       const studentData = await axios.get(`/api/${newIndexNo}`);
       setStudentType(studentData.data.studentType);
-      callBack();
-    } catch (error) {}
+      console.log(studentData.data.studentType);
+      if (
+        studentData.data.studentType === "Existing Student" ||
+        studentData.data.studentType === "New Student"
+      ) {
+        callBack();
+      } else {
+        toast.error("Invalid Index No.!", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      }
+    } catch (error) {
+      toast.error("Something went wrong!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
   };
   return (
     <>
