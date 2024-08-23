@@ -7,7 +7,7 @@ import setExistingStudentData from "../global/ExistingStudentData";
 import useStudentType from "../global/StudentType";
 
 interface Props {
-  callBack: () => void;
+  callBack: (type: string) => void;
 }
 
 const IndexNoForm = ({ callBack }: Props) => {
@@ -25,12 +25,11 @@ const IndexNoForm = ({ callBack }: Props) => {
     try {
       const studentData = await axios.get(`/api/${newIndexNo}`);
       setStudentType(studentData.data.studentType);
-      console.log(studentData.data.studentType);
       if (
         studentData.data.studentType === "Existing Student" ||
         studentData.data.studentType === "New Student"
       ) {
-        callBack();
+        callBack(studentData.data.studentType);
       } else {
         toast.error("Invalid Index No.!", {
           position: "bottom-right",

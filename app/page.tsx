@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import bgImg from "@images/home_bg.jpg";
 import schoolBadge from "@images/badge.png";
 import DBLoading from "./components/DBLoading";
@@ -17,17 +18,19 @@ export default function Home() {
   const [animation, setAnimation] = useState<LottieFile>();
   const [loadingText, setLoadingText] = useState("");
   const { studentType } = useStudentType();
-  const goToNextPage = () => {
+  const router = useRouter();
+  const goToNextPage = (type: string) => {
     // router.push("/personal-info");
     setAnimation(DBAnimateJson);
     setLoadingText("Searching in the Database");
     setLoading(true);
     setTimeout(() => {
       setAnimation(DBSearchDoneJson);
-      setLoadingText(`Identified the as a ${studentType}`);
+      setLoadingText(`Identified the as a ${type}`);
     }, 3000);
     setTimeout(() => {
       setLoading(false);
+      router.push("/existing-student-form/personal-info");
     }, 6000);
   };
   return (

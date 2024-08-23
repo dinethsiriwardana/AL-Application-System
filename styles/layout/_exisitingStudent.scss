@@ -1,10 +1,12 @@
 .wrapper {
-  background: url("https://wallpapercave.com/wp/wp8092702.jpg") no-repeat center
-    center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  //   background: url("/images/home_bg-old.jpg") no-repeat center center fixed;
+  //   -webkit-background-size: cover;
+  //   -moz-background-size: cover;
+  //   -o-background-size: cover;
+  //   background-size: cover;
+  //   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  //   filter: grayscale(100%) blur(2px);
+  background-color: rgb(17, 17, 17);
 }
 
 .exisitingStudents {
@@ -86,5 +88,29 @@
       border: none;
       outline: none;
     }
+
+    .navigateBtns {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: var(--light-blue);
+        color: white;
+        width: 45%;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: var(--blue);
+        }
+      }
+    }
+  }
+  .footerGap {
+    height: 50px;
   }
 }
