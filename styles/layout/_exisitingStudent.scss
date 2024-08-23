@@ -18,24 +18,33 @@
   background-color: rgb(17, 17, 17);
 
   padding-top: 50px;
+  padding-top: 20px; //Here
 
   padding-left: 150px;
+  padding-left: 10px; //Here
+
   padding-right: 150px;
+  padding-right: 10px; //Here
 
   .mainTitle {
     text-align: center;
     font-size: 40px;
+    font-size: 20px; //Here
     margin-bottom: 40px;
+    margin-bottom: 20px; //Here
   }
 
   .fieldSet {
     border: 1px solid var(--gray);
     border-radius: 10px;
     margin: 10px;
+    margin: 10px 0px 0px 0px; //Here
     padding: 30px;
+    padding: 10px; //Here
 
     legend {
       font-size: 20px;
+      font-size: 12px; //Here
       font-weight: 500;
       //   color: var(--light-blue);
     }
@@ -43,18 +52,24 @@
     label {
       margin-right: 10px;
       font-weight: 400;
+      font-size: 10px; //Here
     }
     input,
     select {
       margin-bottom: 10px;
       padding: 15px;
+      padding: 9px; //Here
       border-radius: 5px;
       border: 0px solid var(--gray);
       width: 100%;
       margin-top: 10px;
+      margin-top: 5px; //Here
       margin-bottom: 20px;
+      margin-bottom: 10px; //Here
       background-color: rgb(34, 34, 34);
       color: white;
+
+      font-size: 10px; //Here
     }
 
     input:focus {
@@ -93,14 +108,17 @@
       display: flex;
       justify-content: space-between;
       margin-top: 20px;
+      margin-top: 10px; //Here
       button {
         padding: 10px 20px;
+        padding: 5px 10px; //Here
         border-radius: 5px;
         border: none;
         background-color: var(--light-blue);
         color: white;
         width: 45%;
         font-size: 16px;
+        font-size: 10px; //Here
         cursor: pointer;
         transition: 0.3s;
 
