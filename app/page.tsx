@@ -12,6 +12,7 @@ import { useState } from "react";
 import { LottieFile } from "./interfaces/lotteInterface";
 import useStudentType from "./global/StudentType";
 import { ToastContainer, toast } from "react-toastify";
+import Model from "./components/Model";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -38,6 +39,7 @@ export default function Home() {
       {loading && animation && (
         <DBLoading title={loadingText} lotteFile={animation} />
       )}
+      <Model />
       <ToastContainer
         position="bottom-right"
         autoClose={5000}
