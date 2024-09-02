@@ -40,7 +40,7 @@ const Model = () => {
                 color: "white",
                 fontSize: "15px",
                 fontWeight: "900",
-                marginBlock: "20px",
+                marginBottom: "15px",
               }}
             />
             <button className="submit">Submit your OTP</button>

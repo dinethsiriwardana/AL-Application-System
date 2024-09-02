@@ -8,8 +8,12 @@
   left: 0;
 
   .model {
-    width: 500px;
-    width: 350px;
+    width: 21.875rem;
+    width: clamp(
+      21.875rem,
+      18.001033057851238rem + 12.396694214876034vw,
+      31.25rem
+    );
     background-color: var(--background);
     margin: auto;
     margin-top: 50px;
@@ -18,13 +22,25 @@
     padding: 20px;
 
     .title {
-      font-size: 20px;
+      font-size: 0.9375rem;
+      font-size: clamp(
+        0.9375rem,
+        0.8083677685950413rem + 0.4132231404958678vw,
+        1.25rem
+      );
       font-weight: 500;
     }
 
     .emailInput {
-      margin-bottom: 10px;
-      margin-top: 20px;
+      margin-top: 0.9375rem;
+      margin-top: clamp(
+        0.9375rem,
+        0.8083677685950413rem + 0.4132231404958678vw,
+        1.25rem
+      );
+
+      margin-bottom: 20px;
+
       padding: 0.5625rem;
       padding: clamp(
         0.5625rem,
@@ -87,7 +103,12 @@
 
     .submit {
       width: 100%;
-      height: 36px;
+      height: 1.75rem;
+      height: clamp(
+        1.75rem,
+        1.5433884297520661rem + 0.6611570247933884vw,
+        2.25rem
+      );
       border-radius: 5px;
       border: none;
       margin-bottom: 10px;
@@ -95,6 +116,24 @@
       cursor: pointer;
       transition-duration: 300ms;
       transition-timing-function: ease-in;
+
+      //   margin-top: 0.9375rem;
+      //   margin-top: clamp(
+      //     0.9375rem,
+      //     0.8083677685950413rem + 0.4132231404958678vw,
+      //     1.25rem
+      //   );
+
+      font-size: 0.75rem;
+      font-size: clamp(
+        0.75rem,
+        0.6725206611570248rem + 0.24793388429752064vw,
+        0.9375rem
+      );
+
+      &:focus {
+        outline: none;
+      }
 
       &:hover {
         background-color: rgb(255, 255, 255);
