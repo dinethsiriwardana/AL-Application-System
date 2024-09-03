@@ -19,6 +19,7 @@ export default function Home() {
   const [animation, setAnimation] = useState<LottieFile>();
   const [loadingText, setLoadingText] = useState("");
   const { studentType } = useStudentType();
+  const [modelVisible, setModelVisible] = useState(false);
   const router = useRouter();
   const goToNextPage = (type: string) => {
     // router.push("/personal-info");
@@ -39,7 +40,8 @@ export default function Home() {
       {loading && animation && (
         <DBLoading title={loadingText} lotteFile={animation} />
       )}
-      <Model />
+      {modelVisible && <Model setVisible={setModelVisible} />}
+
       <ToastContainer
         position="bottom-right"
         autoClose={5000}
@@ -67,8 +69,13 @@ export default function Home() {
           <IndexNoForm callBack={goToNextPage} />
           <div className="already-applied">
             Do you already appliy for this?{" "}
-            <span className="check-data-btn">CLICK HERE</span> to check your
-            submited details
+            <span
+              onClick={() => setModelVisible(true)}
+              className="check-data-btn"
+            >
+              CLICK HERE
+            </span>{" "}
+            to check your submited details
           </div>
         </aside>
         <aside className="main__left-and-write">
