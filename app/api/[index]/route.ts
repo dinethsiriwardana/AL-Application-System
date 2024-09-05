@@ -26,9 +26,8 @@ export async function GET(req: NextRequest, { params }: { params: Params }) {
     const studentList = cashe.getStudent();
     if (studentList.includes(parseInt(index))) {
       const studentdetails = await ExistingStudent.find({
-        indexno: parseInt(index),
+        olindexno: parseInt(index),
       });
-
       return NextResponse.json({
         studentType: "Existing Student",
         studentdetails: studentdetails[0],

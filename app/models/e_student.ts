@@ -18,37 +18,42 @@ const BasketSchema = new Schema<IBasket>({
 
 const ParentInfoSchema = new Schema<IParentInfo>({
   name: { type: String, required: false },
-  nicNumber: { type: Number, required: false },
-  contactNumber: { type: Number, required: false },
+  nic_number: { type: String, required: false },
+  contact_number: { type: Number, required: false },
   address: { type: String, required: false },
   job: { type: String, required: false },
 });
 
 const PersonalInfoSchema = new Schema<IPersonalInfo>({
   fullname: { type: String, required: false },
-  nameWithInitials: { type: String, required: false },
+  name_with_initials: { type: String, required: false },
   birthday: { type: Date, required: false },
   age: { type: Number, required: false },
   sex: { type: String, required: false },
-  nicNumber: { type: Number, required: false },
+  nic_number: { type: Number, required: false },
   address: { type: String, required: false },
   email: { type: String, required: false },
-  contactNumber: { type: Number, required: false },
-  whatsappNumber: { type: Number, required: false },
-  distanceToSchool: { type: Number, required: false },
-  transportMethod: { type: String, required: false },
+  contact_number: { type: Number, required: false },
+  whatsapp_number: { type: Number, required: false },
+  distance_to_school: { type: Number, required: false },
+  transport_method: { type: String, required: false },
   scholarship: { type: String, required: false },
 });
 
 const OLAttemptSchema = new Schema<IOLAttempt>({
   index_no: { type: Number, required: false },
-  maths: { type: Number, required: false },
-  science: { type: Number, required: false },
-  english: { type: Number, required: false },
-  history: { type: Number, required: false },
-  religion: { type: Number, required: false },
-  sinhala: { type: Number, required: false },
-  baskets: { type: [BasketSchema], required: false },
+  mathematics: { type: String, required: false },
+  science: { type: String, required: false },
+  english: { type: String, required: false },
+  history: { type: String, required: false },
+  religion: { type: String, required: false },
+  language: { type: String, required: false },
+  firstsubname: { type: String, required: false },
+  firstsubgrade: { type: String, required: false },
+  secondsubname: { type: String, required: false },
+  secondsubgrade: { type: String, required: false },
+  thirdsubname: { type: String, required: false },
+  thirdsubgrade: { type: String, required: false },
 });
 
 const OLResultsSchema = new Schema<IOLResults>({

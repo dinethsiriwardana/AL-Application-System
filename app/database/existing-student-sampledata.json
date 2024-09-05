@@ -27,11 +27,12 @@
       "history": 60,
       "religion": 80,
       "sinhala": 70,
-      "baskets": [
-        { "subject": "maths", "grade": "A" },
-        { "subject": "science", "grade": "A" },
-        { "subject": "english", "grade": "B" }
-      ]
+      "firstsubname": "maths",
+      "firstsubgrade": "A",
+      "secondsubname": "science",
+      "secondsubgrade": "A",
+      "thirdsubname": "english",
+      "thirdsubgrade": "B"
     },
     "second_attempt": {
       "index_no": "123456",
@@ -41,11 +42,12 @@
       "history": 60,
       "religion": 80,
       "sinhala": 70,
-      "baskets": [
-        { "subject": "maths", "grade": "A" },
-        { "subject": "science", "grade": "A" },
-        { "subject": "english", "grade": "B" }
-      ]
+      "firstsubname": "maths",
+      "firstsubgrade": "A",
+      "secondsubname": "science",
+      "secondsubgrade": "A",
+      "thirdsubname": "english",
+      "thirdsubgrade": "B"
     }
   },
   "parent_info": {
