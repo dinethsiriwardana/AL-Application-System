@@ -29,22 +29,56 @@ export async function GET(req: NextRequest, { params }: { params: Params }) {
 
 export async function POST(req: NextRequest, { params }: { params: Params }) {
   const { index } = params;
+
   try {
     await dbConnect();
-    const olresult = await req.json();
 
-    const studentData = new ExistingStudent();
-    if (!olresult) {
-      const result = await OLResultTemplete.find({ indexno: index });
-      // save data
-      studentData.olResults.first_attempt = result;
+    let olresult;
+    try {
+      olresult = await req.json(); // Parse the JSON input
+      const studentData = new ExistingStudent();
+      const result = await OLResultTemplete.find({
+        indexno: parseInt(index),
+      });
+
+      if (!result) {
+        return NextResponse.json({ error: "No data found" }, { status: 404 });
+      }
+      studentData.olResults.first_attempt = olresult;
+
       const out = await ExistingStudent.findOneAndUpdate(
         { olindexno: index },
-        { $set: { olResults: studentData.studentData.ol_result.first_attempt } }
+        { $set: { olResults: studentData.olResults } }
       );
-      return NextResponse.json({ message: "Data added successfully", out });
+      return NextResponse.json({
+        message: "Data added successfully",
+        out,
+      });
+    } catch (err) {
+      const studentData = new ExistingStudent();
+      const result = await OLResultTemplete.find({
+        indexno: parseInt(index),
+      });
+
+      if (!result) {
+        return NextResponse.json({ error: "No data found" }, { status: 404 });
+      }
+      studentData.olResults.first_attempt = result[0];
+
+      const out = await ExistingStudent.findOneAndUpdate(
+        { olindexno: index },
+        { $set: { olResults: studentData.olResults } }
+      );
+      return NextResponse.json({
+        message: "Data added successfully",
+        out,
+      });
+
+      // If olresult is not empty, proceed with further processing
+      // For example:
     }
+    return NextResponse.json({ error: "err.message" }, { status: 500 });
   } catch (err: any) {
-    return NextResponse.json({ error: err });
+    return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
