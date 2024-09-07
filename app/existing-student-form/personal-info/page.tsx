@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 const ExisitingStudent = () => {
   return (
@@ -81,8 +82,12 @@ const ExisitingStudent = () => {
           </select>
         </div>
         <div className="navigateBtns">
-          <button className="backBtn">Home</button>
-          <button className="nextBtn">Next</button>
+          <Link href="/" className="backBtn">
+            Home
+          </Link>
+          <Link href="/existing-student-form//ol-results" className="nextBtn">
+            Next
+          </Link>
         </div>
       </fieldset>
     </>

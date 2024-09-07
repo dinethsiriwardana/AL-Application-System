@@ -247,7 +247,8 @@
         0.4920212765957447rem + 0.7092198581560284vw,
         1.25rem
       );
-      button {
+      .backBtn,
+      .nextBtn {
         display: flex;
         align-items: center;
         justify-content: center;
