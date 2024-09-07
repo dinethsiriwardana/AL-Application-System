@@ -180,6 +180,64 @@
       outline: none;
     }
 
+    // .navigateBtns {
+    //   display: flex;
+    //   justify-content: space-between;
+    //   font-size: 0.625rem;
+    //   font-size: clamp(
+    //     0.625rem,
+    //     0.4920212765957447rem + 0.7092198581560284vw,
+    //     1.25rem
+    //   );
+    //   button {
+    //     padding-top: 0.3125rem;
+    //     padding-top: clamp(
+    //       0.3125rem,
+    //       0.24601063829787234rem + 0.3546099290780142vw,
+    //       0.625rem
+    //     );
+
+    //     padding-bottom: 0.3125rem;
+    //     padding-bottom: clamp(
+    //       0.3125rem,
+    //       0.24601063829787234rem + 0.3546099290780142vw,
+    //       0.625rem
+    //     );
+
+    //     padding-left: 0.625rem;
+    //     padding-left: clamp(
+    //       0.625rem,
+    //       0.4920212765957447rem + 0.7092198581560284vw,
+    //       1.25rem
+    //     );
+
+    //     padding-right: 0.625rem;
+    //     padding-right: clamp(
+    //       0.625rem,
+    //       0.4920212765957447rem + 0.7092198581560284vw,
+    //       1.25rem
+    //     );
+
+    //     border-radius: 5px;
+    //     border: none;
+    //     background-color: var(--blue);
+    //     color: white;
+    //     width: 45%;
+    //     font-size: 0.625rem;
+    //     font-size: clamp(
+    //       0.625rem,
+    //       0.5452127659574468rem + 0.425531914893617vw,
+    //       1rem
+    //     );
+    //     cursor: pointer;
+    //     transition: 0.3s;
+
+    //     &:hover {
+    //       transform: scale(1.01);
+    //     }
+    //   }
+    // }
+
     .navigateBtns {
       display: flex;
       justify-content: space-between;
@@ -190,6 +248,10 @@
         1.25rem
       );
       button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
         padding-top: 0.3125rem;
         padding-top: clamp(
           0.3125rem,
@@ -220,8 +282,8 @@
 
         border-radius: 5px;
         border: none;
-        background-color: var(--blue);
-        color: white;
+        background-color: rgb(127, 127, 127);
+        color: rgb(255, 255, 255);
         width: 45%;
         font-size: 0.625rem;
         font-size: clamp(
@@ -234,10 +296,12 @@
 
         &:hover {
           transform: scale(1.01);
+          background-color: rgb(107, 107, 107);
         }
       }
     }
   }
+
   .footerGap {
     height: 50px;
   }
