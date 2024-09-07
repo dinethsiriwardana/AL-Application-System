@@ -55,6 +55,28 @@
     );
   }
 
+  .ol-attempts-select {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    h3 {
+      font-weight: 500;
+      font-size: 20px;
+    }
+    select {
+      background-color: var(--background);
+      border: none;
+      color: var(--white);
+      font-size: 20px;
+      margin-inline: 10px;
+      padding: 10px;
+      border-radius: 10px;
+
+      appearance: none;
+      outline: none;
+    }
+  }
+
   .fieldSet {
     border: 1px solid var(--gray);
     border-radius: 10px;
