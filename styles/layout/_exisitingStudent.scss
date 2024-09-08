@@ -114,6 +114,14 @@
       1.875rem
     );
 
+    .twoCols {
+      display: flex;
+      justify-content: space-between;
+      & > div {
+        width: 48%;
+      }
+    }
+
     legend {
       font-size: 0.75rem;
       font-size: clamp(

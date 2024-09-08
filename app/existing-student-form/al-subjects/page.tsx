@@ -3,6 +3,7 @@
 import React from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import Link from "next/link";
+import Maths from "@/app/components/alStreamSubjects/Maths";
 
 const page = () => {
   return (
@@ -20,19 +21,7 @@ const page = () => {
           </select>
         </div>
       </fieldset>
-      <fieldset className="fieldSet">
-        <legend>A/L Subject selection</legend>
-        <div className="inputGroup">
-          <label>Select First Subject</label>
-          <select>
-            <option value="female">Maths Stream</option>
-            <option value="other">Science Stream</option>
-            <option value="male">Art Stream</option>
-            <option value="other">Commerce Stream</option>
-            <option value="other">Technology Stream</option>
-          </select>
-        </div>
-      </fieldset>
+      {/* <Maths /> */}
       <div className="navigateBtns">
         <Link href="/" className="backBtn">
           Back
