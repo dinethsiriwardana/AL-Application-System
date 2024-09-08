@@ -2,10 +2,12 @@
 
 import React from "react";
 import Link from "next/link";
+import Stepper from "@/app/components/Stepper";
 
 const ExisitingStudent = () => {
   return (
     <>
+      <Stepper />
       <fieldset className="fieldSet">
         <legend>OL Class Information</legend>
         <div className="inputGroup">
