@@ -37,7 +37,7 @@ const Page = () => {
       {subject == "tech" && <Technology />}
       {subject == "art" && <Arts />}
       <div className="navigateBtns">
-        <Link href="/" className="backBtn">
+        <Link href="/existing-student-form/ol-results" className="backBtn">
           Back
         </Link>
         <Link href="/existing-student-form/parent-info" className="nextBtn">
