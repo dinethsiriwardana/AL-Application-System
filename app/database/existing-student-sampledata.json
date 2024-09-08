@@ -74,8 +74,8 @@
     }
   },
   "al_subjects": {
-    "subject": "maths",
-    "grades": [
+    "stream": "maths",
+    "subject": [
       { "subject": "maths", "grade": "A" },
       { "subject": "science", "grade": "A" },
       { "subject": "english", "grade": "B" }

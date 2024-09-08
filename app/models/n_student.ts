@@ -7,7 +7,7 @@ export interface INewStudent extends Document {
   personalInfo: IPersonalInfo;
   olResults: IOLResults;
   parentInfo: IParent;
-  alSubjects: IALSubject;
+  alSubjects: IALStream;
   oldSchool: IOldSchool;
 }
 
@@ -64,7 +64,7 @@ const OLResultsSchema = new Schema<IOLResults>({
   second_attempt: { type: OLAttemptSchema, required: false },
 });
 
-const ALSubjectSchema = new Schema<IALSubject>({
+const ALSubjectSchema = new Schema<IALStream>({
   subject: { type: String, required: true },
   grades: { type: [BasketSchema], required: true },
 });

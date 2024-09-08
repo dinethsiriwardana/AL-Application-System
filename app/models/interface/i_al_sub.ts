@@ -1,5 +1,4 @@
-interface IALStream {
-  stream: string;
+interface IALSubjects {
   subject: [
     { subject1: string; medium: string },
     { subject2: string; medium: string },

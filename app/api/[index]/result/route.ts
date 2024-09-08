@@ -36,6 +36,7 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
     let olresult;
     try {
       olresult = await req.json(); // Parse the JSON input
+      console.log(olresult);
       const studentData = new ExistingStudent();
       const result = await OLResultTemplete.find({
         indexno: parseInt(index),
@@ -73,9 +74,6 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
         message: "Data added successfully",
         out,
       });
-
-      // If olresult is not empty, proceed with further processing
-      // For example:
     }
     return NextResponse.json({ error: "err.message" }, { status: 500 });
   } catch (err: any) {
