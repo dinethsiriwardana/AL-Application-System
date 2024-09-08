@@ -4,6 +4,7 @@ import React from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import Link from "next/link";
 import Maths from "@/app/components/alStreamSubjects/Maths";
+import Science from "@/app/components/alStreamSubjects/Science";
 
 const page = () => {
   return (
@@ -22,6 +23,7 @@ const page = () => {
         </div>
       </fieldset>
       {/* <Maths /> */}
+      <Science />
       <div className="navigateBtns">
         <Link href="/" className="backBtn">
           Back
