@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import Link from "next/link";
 import Maths from "@/app/components/alStreamSubjects/Maths";
@@ -9,27 +9,31 @@ import Commerce from "@/app/components/alStreamSubjects/Commerce";
 import Technology from "@/app/components/alStreamSubjects/Technology";
 import Arts from "@/app/components/alStreamSubjects/Arts";
 
-const page = () => {
+const Page = () => {
+  const [subject, setSubject] = useState("");
   return (
     <>
       <fieldset className="fieldSet">
         <legend>A/L Stream selection</legend>
         <div className="inputGroup">
           <label>Select Your Stream</label>
-          <select>
-            <option value="female">Maths Stream</option>
-            <option value="other">Science Stream</option>
-            <option value="male">Art Stream</option>
-            <option value="other">Commerce Stream</option>
-            <option value="other">Technology Stream</option>
+          <select
+            value={subject}
+            onChange={(event) => setSubject(event.target.value)}
+          >
+            <option value="maths">Maths Stream</option>
+            <option value="science">Science Stream</option>
+            <option value="art">Art Stream</option>
+            <option value="commerce">Commerce Stream</option>
+            <option value="tech">Technology Stream</option>
           </select>
         </div>
       </fieldset>
-      {/* <Maths /> */}
-      {/* <Science /> */}
-      {/* <Commerce /> */}
-      {/* <Technology /> */}
-      <Arts />
+      {subject == "maths" && <Maths />}
+      {subject == "science" && <Science />}
+      {subject == "commerce" && <Commerce />}
+      {subject == "tech" && <Technology />}
+      {subject == "art" && <Arts />}
       <div className="navigateBtns">
         <Link href="/" className="backBtn">
           Back
@@ -42,4 +46,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
