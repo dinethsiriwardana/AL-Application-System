@@ -5,6 +5,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import Link from "next/link";
 import Maths from "@/app/components/alStreamSubjects/Maths";
 import Science from "@/app/components/alStreamSubjects/Science";
+import Commerce from "@/app/components/alStreamSubjects/Commerce";
 
 const page = () => {
   return (
@@ -23,7 +24,8 @@ const page = () => {
         </div>
       </fieldset>
       {/* <Maths /> */}
-      <Science />
+      {/* <Science /> */}
+      {/* <Commerce /> */}
       <div className="navigateBtns">
         <Link href="/" className="backBtn">
           Back
