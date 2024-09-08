@@ -7,7 +7,7 @@ import Stepper from "@/app/components/Stepper";
 const ExisitingStudent = () => {
   return (
     <>
-      <Stepper />
+      <Stepper pageNo={1} />
       <fieldset className="fieldSet">
         <legend>OL Class Information</legend>
         <div className="inputGroup">

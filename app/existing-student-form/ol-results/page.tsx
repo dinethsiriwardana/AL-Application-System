@@ -1,9 +1,11 @@
 import React from "react";
 import Link from "next/link";
+import Stepper from "@/app/components/Stepper";
 
 const page = () => {
   return (
     <>
+      <Stepper pageNo={3} />
       <div className="ol-attempts-select">
         <h3>I am using my O/L</h3>
         <select name="">

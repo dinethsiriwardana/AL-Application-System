@@ -1,9 +1,11 @@
 import React from "react";
 import Link from "next/link";
+import Stepper from "@/app/components/Stepper";
 
 const page = () => {
   return (
     <>
+      <Stepper pageNo={2} />
       <fieldset className="fieldSet">
         <legend>Parents Infomation - (Father)</legend>
         <div className="inputGroup">

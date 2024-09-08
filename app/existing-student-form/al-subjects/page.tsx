@@ -8,11 +8,13 @@ import Science from "@/app/components/alStreamSubjects/Science";
 import Commerce from "@/app/components/alStreamSubjects/Commerce";
 import Technology from "@/app/components/alStreamSubjects/Technology";
 import Arts from "@/app/components/alStreamSubjects/Arts";
+import Stepper from "@/app/components/Stepper";
 
 const Page = () => {
   const [subject, setSubject] = useState("");
   return (
     <>
+      <Stepper pageNo={4} />
       <fieldset className="fieldSet">
         <legend>A/L Stream selection</legend>
         <div className="inputGroup">
