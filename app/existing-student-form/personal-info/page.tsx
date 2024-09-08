@@ -81,15 +81,15 @@ const ExisitingStudent = () => {
             <option value="not have">Not Have</option>
           </select>
         </div>
-        <div className="navigateBtns">
-          <Link href="/" className="backBtn">
-            Home
-          </Link>
-          <Link href="/existing-student-form//ol-results" className="nextBtn">
-            Next
-          </Link>
-        </div>
       </fieldset>
+      <div className="navigateBtns">
+        <Link href="/" className="backBtn">
+          Home
+        </Link>
+        <Link href="/existing-student-form/parent-info" className="nextBtn">
+          Next
+        </Link>
+      </div>
     </>
   );
 };

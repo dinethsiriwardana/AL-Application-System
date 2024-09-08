@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -69,6 +70,14 @@ const page = () => {
           <input type="text" placeholder="A.M.D.S. Bandara" />
         </div>
       </fieldset>
+      <div className="navigateBtns">
+        <Link href="/" className="backBtn">
+          Home
+        </Link>
+        <Link href="/existing-student-form/ol-results" className="nextBtn">
+          Next
+        </Link>
+      </div>
     </>
   );
 };
