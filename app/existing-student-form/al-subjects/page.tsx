@@ -7,6 +7,7 @@ import Maths from "@/app/components/alStreamSubjects/Maths";
 import Science from "@/app/components/alStreamSubjects/Science";
 import Commerce from "@/app/components/alStreamSubjects/Commerce";
 import Technology from "@/app/components/alStreamSubjects/Technology";
+import Arts from "@/app/components/alStreamSubjects/Arts";
 
 const page = () => {
   return (
@@ -28,6 +29,7 @@ const page = () => {
       {/* <Science /> */}
       {/* <Commerce /> */}
       {/* <Technology /> */}
+      <Arts />
       <div className="navigateBtns">
         <Link href="/" className="backBtn">
           Back
