@@ -46,6 +46,7 @@
       0.9840425531914894rem + 1.4184397163120568vw,
       2.5rem
     );
+    color: var(--white);
 
     margin-bottom: 1.25rem;
     margin-bottom: clamp(
@@ -155,6 +156,7 @@
 
     .bucket-title {
       margin-bottom: 15px;
+      color: var(--white);
     }
 
     .bucket-subject {
@@ -358,6 +360,43 @@
     &:hover {
       transform: scale(1.01);
       background-color: rgb(107, 107, 107);
+    }
+  }
+}
+
+.banner {
+  // display: flex;
+  // align-items: center;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+
+  .banner-image {
+    opacity: 0.5;
+  }
+
+  .textTitle {
+    // font-size: clamp(2rem, 1.7021276595744682rem + 2.1276595744680855vw, 3rem);
+    text-align: center;
+    top: 0;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // padding-top: 100px;
+    position: absolute;
+    color: #f8f8f8;
+    text-shadow: 5px 5px 0px #000000b9;
+    text-wrap: nowrap;
+
+    .heading {
+      font-size: 5rem;
+      margin-bottom: 20px;
+      // text-shadow: 1px 1px 0px #ff0000;
+    }
+    .subHeading {
+      font-size: 1.5rem;
+      font-weight: 500;
     }
   }
 }
