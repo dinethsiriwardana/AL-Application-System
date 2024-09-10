@@ -1,198 +1,266 @@
 import create from "zustand";
 
-// Define types for the data structure
-type Basket = {
-  subject: string;
-  grade: string;
-};
+// Define types for our data structure
+type StudentType = "Existing Student" | "New Student";
 
-type Attempt = {
-  indexNo: string;
-  maths: number;
-  science: number;
-  english: number;
-  history: number;
-  religion: number;
-  sinhala: number;
-  baskets: Basket[];
-};
-
-type PersonalInfo = {
-  fullname: string;
-  nameWithInitials: string;
-  birthday: string;
-  age: number;
-  sex: string;
-  nicNumber: number;
-  address: string;
-  email: string;
-  contactNumber: number;
-  whatsappNumber: number;
-  distanceToSchool: number;
-  transportMethod: string;
-  scholarship: string;
+type OLResult = {
+  mathematics: string;
+  science: string;
+  english: string;
+  history: string;
+  religion: string;
+  language: string;
+  firstsubname: string;
+  firstsubgrade: string;
+  secondsubname: string;
+  secondsubgrade: string;
+  thirdsubname: string;
+  thirdsubgrade: string;
 };
 
 type ParentInfo = {
   name: string;
-  nicNumber: number;
-  contactNumber: number;
+  nic_number: string;
+  contact_number: number;
   address: string;
   job: string;
 };
 
-type ParentData = {
-  father: ParentInfo;
-  mother: ParentInfo;
-  guardian: ParentInfo;
-};
-
-type ALSubjects = {
+type ALSubject = {
   subject: string;
-  grades: Basket[];
+  medium: string;
 };
 
-type State = {
-  indexno: string;
-  olClass: string;
-  olClassTeacher: string;
-  personalInfo: PersonalInfo;
-  olResults: {
-    firstAttempt: Attempt;
-    secondAttempt: Attempt;
+type StudentState = {
+  studentType: StudentType;
+  studentDetails: {
+    _id: string;
+    olResults: {
+      first_attempt: OLResult;
+    };
+    parentInfo: {
+      father: ParentInfo;
+      mother: ParentInfo;
+    };
+    alSubjects: {
+      stream: string;
+      subject: ALSubject[];
+    };
+    oldSchool: {
+      name: string;
+      address: string;
+      zonal: string;
+      divisional: string;
+      district: string;
+    };
+    oldclass: {
+      indexno: number;
+      olClass: string;
+      olClassTeacher: string;
+    };
+    olindexno: string;
+    personalInfo: {
+      fullname: string;
+      name_with_initials: string;
+      birthday: string;
+      age: number;
+      sex: string;
+      nic_number: number;
+      address: string;
+      email: string;
+      contact_number: number;
+      whatsapp_number: number;
+      distance_to_school: number;
+      transport_method: string;
+      scholarship: string;
+    };
+    email: string;
   };
-  parentInfo: ParentData;
-  alSubjects: ALSubjects;
+};
 
-  // Setters for updating each field
-  setIndexNo: (indexno: string) => void;
-  setOlClass: (olClass: string) => void;
-  setOlClassTeacher: (olClassTeacher: string) => void;
-  setPersonalInfo: (field: keyof PersonalInfo, value: string | number) => void;
-  setOlFirstAttempt: (
-    field: keyof Attempt,
-    value: string | number | Basket[]
-  ) => void;
-  setOlSecondAttempt: (
-    field: keyof Attempt,
-    value: string | number | Basket[]
+type StudentActions = {
+  setStudentType: (type: StudentType) => void;
+  setOLResult: (
+    attempt: "first_attempt",
+    subject: keyof OLResult,
+    grade: string
   ) => void;
   setParentInfo: (
-    parentType: keyof ParentData,
+    parent: "father" | "mother",
     field: keyof ParentInfo,
     value: string | number
   ) => void;
-  setAlSubjects: (field: keyof ALSubjects, value: string | Basket[]) => void;
+  setALSubjects: (stream: string, subjects: ALSubject[]) => void;
+  setPersonalInfo: (
+    field: keyof StudentState["studentDetails"]["personalInfo"],
+    value: string | number
+  ) => void;
+  setOldSchool: (
+    field: keyof StudentState["studentDetails"]["oldSchool"],
+    value: string
+  ) => void;
+  setOldClass: (
+    field: keyof StudentState["studentDetails"]["oldclass"],
+    value: string | number
+  ) => void;
+  setOLIndexNo: (indexNo: string) => void;
+  setEmail: (email: string) => void;
 };
 
-const setExistingStudentData = create<State>((set) => ({
-  // Initial state
-  indexno: "",
-  olClass: "",
-  olClassTeacher: "",
-  personalInfo: {
-    fullname: "",
-    nameWithInitials: "",
-    birthday: "",
-    age: 0,
-    sex: "",
-    nicNumber: 0,
-    address: "",
+// Create the store
+const useExStudentStore = create<StudentState & StudentActions>((set) => ({
+  studentType: "Existing Student",
+  studentDetails: {
+    _id: "",
+    olResults: {
+      first_attempt: {
+        mathematics: "",
+        science: "",
+        english: "",
+        history: "",
+        religion: "",
+        language: "",
+        firstsubname: "",
+        firstsubgrade: "",
+        secondsubname: "",
+        secondsubgrade: "",
+        thirdsubname: "",
+        thirdsubgrade: "",
+      },
+    },
+    parentInfo: {
+      father: {
+        name: "",
+        nic_number: "",
+        contact_number: 0,
+        address: "",
+        job: "",
+      },
+      mother: {
+        name: "",
+        nic_number: "",
+        contact_number: 0,
+        address: "",
+        job: "",
+      },
+    },
+    alSubjects: {
+      stream: "",
+      subject: [],
+    },
+    oldSchool: {
+      name: "",
+      address: "",
+      zonal: "",
+      divisional: "",
+      district: "",
+    },
+    oldclass: {
+      indexno: 0,
+      olClass: "",
+      olClassTeacher: "",
+    },
+    olindexno: "",
+    personalInfo: {
+      fullname: "",
+      name_with_initials: "",
+      birthday: "",
+      age: 0,
+      sex: "",
+      nic_number: 0,
+      address: "",
+      email: "",
+      contact_number: 0,
+      whatsapp_number: 0,
+      distance_to_school: 0,
+      transport_method: "",
+      scholarship: "",
+    },
     email: "",
-    contactNumber: 0,
-    whatsappNumber: 0,
-    distanceToSchool: 0,
-    transportMethod: "",
-    scholarship: "",
-  },
-  olResults: {
-    firstAttempt: {
-      indexNo: "",
-      maths: 0,
-      science: 0,
-      english: 0,
-      history: 0,
-      religion: 0,
-      sinhala: 0,
-      baskets: [],
-    },
-    secondAttempt: {
-      indexNo: "",
-      maths: 0,
-      science: 0,
-      english: 0,
-      history: 0,
-      religion: 0,
-      sinhala: 0,
-      baskets: [],
-    },
-  },
-  parentInfo: {
-    father: {
-      name: "",
-      nicNumber: 0,
-      contactNumber: 0,
-      address: "",
-      job: "",
-    },
-    mother: {
-      name: "",
-      nicNumber: 0,
-      contactNumber: 0,
-      address: "",
-      job: "",
-    },
-    guardian: {
-      name: "",
-      nicNumber: 0,
-      contactNumber: 0,
-      address: "",
-      job: "",
-    },
-  },
-  alSubjects: {
-    subject: "",
-    grades: [],
   },
 
-  // Setters for updating each field
-  setIndexNo: (indexno) => set({ indexno }),
-  setOlClass: (olClass) => set({ olClass }),
-  setOlClassTeacher: (olClassTeacher) => set({ olClassTeacher }),
-
+  // Actions
+  setStudentType: (type) => set({ studentType: type }),
+  setOLResult: (attempt, subject, grade) =>
+    set((state) => ({
+      studentDetails: {
+        ...state.studentDetails,
+        olResults: {
+          ...state.studentDetails.olResults,
+          [attempt]: {
+            ...state.studentDetails.olResults[attempt],
+            [subject]: grade,
+          },
+        },
+      },
+    })),
+  setParentInfo: (parent, field, value) =>
+    set((state) => ({
+      studentDetails: {
+        ...state.studentDetails,
+        parentInfo: {
+          ...state.studentDetails.parentInfo,
+          [parent]: {
+            ...state.studentDetails.parentInfo[parent],
+            [field]: value,
+          },
+        },
+      },
+    })),
+  setALSubjects: (stream, subjects) =>
+    set((state) => ({
+      studentDetails: {
+        ...state.studentDetails,
+        alSubjects: {
+          stream,
+          subject: subjects,
+        },
+      },
+    })),
   setPersonalInfo: (field, value) =>
     set((state) => ({
-      personalInfo: { ...state.personalInfo, [field]: value },
-    })),
-
-  setOlFirstAttempt: (field, value) =>
-    set((state) => ({
-      olResults: {
-        ...state.olResults,
-        firstAttempt: { ...state.olResults.firstAttempt, [field]: value },
+      studentDetails: {
+        ...state.studentDetails,
+        personalInfo: {
+          ...state.studentDetails.personalInfo,
+          [field]: value,
+        },
       },
     })),
-
-  setOlSecondAttempt: (field, value) =>
+  setOldSchool: (field, value) =>
     set((state) => ({
-      olResults: {
-        ...state.olResults,
-        secondAttempt: { ...state.olResults.secondAttempt, [field]: value },
+      studentDetails: {
+        ...state.studentDetails,
+        oldSchool: {
+          ...state.studentDetails.oldSchool,
+          [field]: value,
+        },
       },
     })),
-
-  setParentInfo: (parentType, field, value) =>
+  setOldClass: (field, value) =>
     set((state) => ({
-      parentInfo: {
-        ...state.parentInfo,
-        [parentType]: { ...state.parentInfo[parentType], [field]: value },
+      studentDetails: {
+        ...state.studentDetails,
+        oldclass: {
+          ...state.studentDetails.oldclass,
+          [field]: value,
+        },
       },
     })),
-
-  setAlSubjects: (field, value) =>
+  setOLIndexNo: (indexNo) =>
     set((state) => ({
-      alSubjects: { ...state.alSubjects, [field]: value },
+      studentDetails: {
+        ...state.studentDetails,
+        olindexno: indexNo,
+      },
+    })),
+  setEmail: (email) =>
+    set((state) => ({
+      studentDetails: {
+        ...state.studentDetails,
+        email,
+      },
     })),
 }));
 
-export default setExistingStudentData;
+export default useExStudentStore;
