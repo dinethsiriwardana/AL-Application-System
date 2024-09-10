@@ -1,84 +1,80 @@
 {
-  "indexno": "123456",
-  "ol-class": "B",
-  "ol-class-teacher": "Mr. John Doe",
-  "personal_info": {
-    "fullname": "John",
-    "name-with-initials": "John Doe",
-    "birthday": "1990-01-01",
-    "age": 20,
-    "sex": "male",
-    "nic-number": 123456789,
-    "address": "123, Main Street, Colombo 05",
-    "email": "example@email.com",
-    "contact-number": 1234567890,
-    "whatsapp-number": 1234567890,
-    "distance-to-school": 5,
-    "transport-method": "bus",
-    "scholarship": "none"
-  },
-
-  "ol_results": {
+  "olResults": {
     "first_attempt": {
-      "index_no": "123456",
-      "maths": 80,
-      "science": 90,
-      "english": 70,
-      "history": 60,
-      "religion": 80,
-      "sinhala": 70,
-      "firstsubname": "maths",
+      "mathematics": "A",
+      "science": "B",
+      "english": "C",
+      "history": "B",
+      "religion": "S",
+      "language": "A",
+      "firstsubname": "first",
       "firstsubgrade": "A",
-      "secondsubname": "science",
-      "secondsubgrade": "A",
-      "thirdsubname": "english",
-      "thirdsubgrade": "B"
-    },
-    "second_attempt": {
-      "index_no": "123456",
-      "maths": 80,
-      "science": 90,
-      "english": 70,
-      "history": 60,
-      "religion": 80,
-      "sinhala": 70,
-      "firstsubname": "maths",
-      "firstsubgrade": "A",
-      "secondsubname": "science",
-      "secondsubgrade": "A",
-      "thirdsubname": "english",
-      "thirdsubgrade": "B"
+      "secondsubname": "second",
+      "secondsubgrade": "B",
+      "thirdsubname": "third",
+      "thirdsubgrade": "F"
     }
   },
-  "parent_info": {
+  "parentInfo": {
     "father": {
       "name": "John Doe",
-      "nic-number": 123456789,
-      "contact-number": 1234567890,
-      "address": "123, Main Street, Colombo 05",
-      "job": "engineer"
+      "nic_number": "123456789V",
+      "contact_number": 712345678,
+      "address": "123, Main Street, Colombo",
+      "job": "Engineer"
     },
     "mother": {
       "name": "Jane Doe",
-      "nic-number": 123456789,
-      "contact-number": 1234567890,
-      "address": "123, Main Street, Colombo 05",
-      "job": "teacher"
-    },
-    "guardian": {
-      "name": "John Doe",
-      "nic-number": 123456789,
-      "contact-number": 1234567890,
-      "address": "123, Main Street, Colombo 05",
-      "job": "doctor"
+      "nic_number": "987654321V",
+      "contact_number": 776543210,
+      "address": "123, Main Street, Colombo",
+      "job": "Teacher"
     }
   },
-  "al_subjects": {
-    "stream": "maths",
+  "alSubjects": {
+    "stream": "technology",
     "subject": [
-      { "subject": "maths", "grade": "A" },
-      { "subject": "science", "grade": "A" },
-      { "subject": "english", "grade": "B" }
+      {
+        "subject1": "ET",
+        "medium": "Sinhala"
+      },
+      {
+        "subject2": "SFT",
+        "medium": "Sinhala"
+      },
+      {
+        "subject3": "IT",
+        "medium": "English"
+      }
     ]
-  }
+  },
+  "oldSchool": {
+    "name": "DCC",
+    "address": "Dambadeniya",
+    "zonal": "Giriulla",
+    "divisional": "",
+    "district": "Kurunegala"
+  },
+  "oldclass": {
+    "indexno": 0,
+    "olClass": "",
+    "olClassTeacher": ""
+  },
+  "olindexno": "22428186",
+  "personalInfo": {
+    "fullname": "John",
+    "name_with_initials": "John Doe",
+    "birthday": "2006-01-01T00:00:00.000Z",
+    "age": 19,
+    "sex": "male",
+    "nic_number": 123456789,
+    "address": "123, Main Street, Colombo 05",
+    "email": "example@email.com",
+    "contact_number": 1234567890,
+    "whatsapp_number": 1234567890,
+    "distance_to_school": 5,
+    "transport_method": "bus",
+    "scholarship": "none"
+  },
+  "email": "dinethsiriwardana28@gmail.com"
 }

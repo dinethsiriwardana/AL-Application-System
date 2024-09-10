@@ -53,15 +53,17 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
 
     const newStudent = new ExistingStudent();
     newStudent.olindexno = index;
-    if (await StudentType(index)) {
-      newStudent.oldclass = studentData;
-    } else {
-      newStudent.oldSchool = studentData;
-    }
+    newStudent.personalInfo = studentData.personalInfo;
+    newStudent.alSubjects = studentData.alSubjects;
+    newStudent.olResults = studentData.olResults;
+    newStudent.parentInfo = studentData.parentInfo;
+    newStudent.email = studentData.email;
+    newStudent.oldSchool = studentData.oldSchool;
+    newStudent.oldclass = studentData.oldclass;
 
     const result = await newStudent.save(); // This assumes you're using Mongoose
     return NextResponse.json({ message: "Data added successfully", result });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message });
+    return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }

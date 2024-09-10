@@ -2,6 +2,7 @@ import mongoose, { Document, Schema } from "mongoose";
 
 export interface IEStudent extends Document {
   olindexno: Number;
+  email: String;
   personalInfo: IPersonalInfo;
   olResults: IOLResults;
   parentInfo: IParent;
@@ -88,6 +89,7 @@ const OldClassSchema = new Schema<IOldClass>({
 
 const ExistingStudentSchema = new Schema<IEStudent>({
   olindexno: { type: String, required: true },
+  email: { type: String, required: true },
   personalInfo: { type: PersonalInfoSchema, default: {} },
   olResults: { type: OLResultsSchema, default: {} },
   parentInfo: { type: ParentSchema, default: {} },
