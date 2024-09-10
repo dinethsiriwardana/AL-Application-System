@@ -9,7 +9,13 @@ const Arts = () => {
 
       <div className="inputGroup">
         <label>Select Your Class</label>
-        <select onChange={(event) => setClassType(event.target.value)}>
+        <select
+          onChange={(event) => setClassType(event.target.value)}
+          defaultValue=""
+        >
+          <option value="" disabled>
+            Category
+          </option>
           <option value="one">Social Sciences Subjects</option>
           <option value="two">Languages ​​and Other Subjects</option>
           <option value="three">Aesthetics Subjects</option>

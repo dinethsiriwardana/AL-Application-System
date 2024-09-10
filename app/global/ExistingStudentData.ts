@@ -4,6 +4,23 @@ import create from "zustand";
 type StudentType = "Existing Student" | "New Student";
 
 type OLResult = {
+  indexNo: string;
+  mathematics: string;
+  science: string;
+  english: string;
+  history: string;
+  religion: string;
+  language: string;
+  firstsubname: string;
+  firstsubgrade: string;
+  secondsubname: string;
+  secondsubgrade: string;
+  thirdsubname: string;
+  thirdsubgrade: string;
+};
+type OLResultCorrection = {
+  indexNo: string;
+  attempt: string;
   mathematics: string;
   science: string;
   english: string;
@@ -21,7 +38,7 @@ type OLResult = {
 type ParentInfo = {
   name: string;
   nic_number: string;
-  contact_number: number;
+  contact_number: string;
   address: string;
   job: string;
 };
@@ -37,10 +54,13 @@ type StudentState = {
     _id: string;
     olResults: {
       first_attempt: OLResult;
+      second_attempt: OLResult;
+      correction: OLResultCorrection;
     };
     parentInfo: {
       father: ParentInfo;
       mother: ParentInfo;
+      guardian: ParentInfo;
     };
     alSubjects: {
       stream: string;
@@ -54,7 +74,7 @@ type StudentState = {
       district: string;
     };
     oldclass: {
-      indexno: number;
+      indexno: string;
       olClass: string;
       olClassTeacher: string;
     };
@@ -63,14 +83,14 @@ type StudentState = {
       fullname: string;
       name_with_initials: string;
       birthday: string;
-      age: number;
+      age: string;
       sex: string;
-      nic_number: number;
+      nic_number: string;
       address: string;
       email: string;
-      contact_number: number;
-      whatsapp_number: number;
-      distance_to_school: number;
+      contact_number: string;
+      whatsapp_number: string;
+      distance_to_school: string;
       transport_method: string;
       scholarship: string;
     };
@@ -81,12 +101,12 @@ type StudentState = {
 type StudentActions = {
   setStudentType: (type: StudentType) => void;
   setOLResult: (
-    attempt: "first_attempt",
-    subject: keyof OLResult,
+    attempt: "first_attempt" | "second_attempt" | "correction",
+    subject: keyof OLResult | keyof OLResultCorrection,
     grade: string
   ) => void;
   setParentInfo: (
-    parent: "father" | "mother",
+    parent: "father" | "mother" | "guardian",
     field: keyof ParentInfo,
     value: string | number
   ) => void;
@@ -114,6 +134,38 @@ const useExStudentStore = create<StudentState & StudentActions>((set) => ({
     _id: "",
     olResults: {
       first_attempt: {
+        indexNo: "",
+        mathematics: "",
+        science: "",
+        english: "",
+        history: "",
+        religion: "",
+        language: "",
+        firstsubname: "",
+        firstsubgrade: "",
+        secondsubname: "",
+        secondsubgrade: "",
+        thirdsubname: "",
+        thirdsubgrade: "",
+      },
+      second_attempt: {
+        indexNo: "",
+        mathematics: "",
+        science: "",
+        english: "",
+        history: "",
+        religion: "",
+        language: "",
+        firstsubname: "",
+        firstsubgrade: "",
+        secondsubname: "",
+        secondsubgrade: "",
+        thirdsubname: "",
+        thirdsubgrade: "",
+      },
+      correction: {
+        indexNo: "",
+        attempt: "", // This field should be added
         mathematics: "",
         science: "",
         english: "",
@@ -132,14 +184,21 @@ const useExStudentStore = create<StudentState & StudentActions>((set) => ({
       father: {
         name: "",
         nic_number: "",
-        contact_number: 0,
+        contact_number: "",
         address: "",
         job: "",
       },
       mother: {
         name: "",
         nic_number: "",
-        contact_number: 0,
+        contact_number: "",
+        address: "",
+        job: "",
+      },
+      guardian: {
+        name: "",
+        nic_number: "",
+        contact_number: "",
         address: "",
         job: "",
       },
@@ -156,7 +215,7 @@ const useExStudentStore = create<StudentState & StudentActions>((set) => ({
       district: "",
     },
     oldclass: {
-      indexno: 0,
+      indexno: "",
       olClass: "",
       olClassTeacher: "",
     },
@@ -165,14 +224,14 @@ const useExStudentStore = create<StudentState & StudentActions>((set) => ({
       fullname: "",
       name_with_initials: "",
       birthday: "",
-      age: 0,
+      age: "",
       sex: "",
-      nic_number: 0,
+      nic_number: "",
       address: "",
       email: "",
-      contact_number: 0,
-      whatsapp_number: 0,
-      distance_to_school: 0,
+      contact_number: "",
+      whatsapp_number: "",
+      distance_to_school: "",
       transport_method: "",
       scholarship: "",
     },
