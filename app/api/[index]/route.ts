@@ -24,16 +24,20 @@ export async function GET(req: NextRequest, { params }: { params: Params }) {
     }
 
     const studentList = cashe.getStudent();
-    // if (studentList.includes(parseInt(index))) {
     const studentdetails = await ExistingStudent.find({
       olindexno: parseInt(index),
     });
-    return NextResponse.json({
-      studentType: "Existing Student",
-      studentdetails: studentdetails[0],
-    });
-    // }
-    return NextResponse.json({ studentType: "New Student" });
+    if (studentList.includes(parseInt(index))) {
+      return NextResponse.json({
+        studentType: "ExistingStudent",
+        studentdetails: studentdetails[0],
+      });
+    } else {
+      return NextResponse.json({
+        studentType: "NewStudent",
+        studentdetails: studentdetails[0],
+      });
+    }
   } catch (err: any) {
     return NextResponse.json({ error: err.message });
   }
