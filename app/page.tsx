@@ -32,7 +32,7 @@ export default function Home() {
     }, 3000);
     setTimeout(() => {
       setLoading(false);
-      router.push("/existing-student-form/personal-info");
+      router.push("/guide");
     }, 6000);
   };
   return (

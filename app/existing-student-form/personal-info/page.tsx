@@ -93,8 +93,8 @@ const ExisitingStudent = () => {
         </div>
       </fieldset>
       <div className="navigateBtns">
-        <Link href="/" className="backBtn">
-          Home
+        <Link href="/guide" className="backBtn">
+          Back
         </Link>
         <Link href="/existing-student-form/parent-info" className="nextBtn">
           Next

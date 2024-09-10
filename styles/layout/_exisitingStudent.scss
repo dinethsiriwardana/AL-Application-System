@@ -40,12 +40,13 @@
 
   .mainTitle {
     text-align: center;
-    font-size: 1.25rem;
+    font-size: 0.9375rem;
     font-size: clamp(
-      1.25rem,
-      0.9840425531914894rem + 1.4184397163120568vw,
-      2.5rem
+      0.9375rem,
+      0.410814606741573rem + 2.247191011235955vw,
+      2.8125rem
     );
+
     color: var(--white);
 
     margin-bottom: 1.25rem;
@@ -345,8 +346,9 @@
 
     border-radius: 5px;
     border: none;
-    background-color: rgb(127, 127, 127);
-    color: rgb(255, 255, 255);
+    // background-color: rgb(127, 127, 127);
+    background-color: var(--blue);
+    color: var(--white);
     width: 45%;
     font-size: 0.625rem;
     font-size: clamp(
@@ -359,15 +361,14 @@
 
     &:hover {
       transform: scale(1.01);
-      background-color: rgb(107, 107, 107);
+      background-color: var(--light-blue);
     }
   }
 }
 
 .banner {
-  // display: flex;
-  // align-items: center;
-  height: 400px;
+  height: 6.25rem;
+  height: clamp(6.25rem, 0.9831460674157295rem + 22.471910112359552vw, 25rem);
   overflow: hidden;
   position: relative;
 
@@ -390,12 +391,28 @@
     text-wrap: nowrap;
 
     .heading {
-      font-size: 5rem;
-      margin-bottom: 20px;
+      font-size: 1.4rem;
+      font-size: clamp(
+        1.4rem,
+        0.3887640449438201rem + 4.3146067415730345vw,
+        5rem
+      );
+
+      margin-bottom: 0.625rem;
+      margin-bottom: clamp(
+        0.625rem,
+        0.449438202247191rem + 0.7490636704119851vw,
+        1.25rem
+      );
       // text-shadow: 1px 1px 0px #ff0000;
     }
     .subHeading {
-      font-size: 1.5rem;
+      font-size: 0.5rem;
+      font-size: clamp(
+        0.5rem,
+        0.2191011235955056rem + 1.198501872659176vw,
+        1.5rem
+      );
       font-weight: 500;
     }
   }
