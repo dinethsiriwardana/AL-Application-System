@@ -1,6 +1,7 @@
 import mongoose, { Document, Schema } from "mongoose";
 
 export interface IEStudent extends Document {
+  appid: String;
   olindexno: Number;
   email: String;
   personalInfo: IPersonalInfo;
@@ -9,6 +10,7 @@ export interface IEStudent extends Document {
   alSubjects: IALStream;
   oldSchool: IOldSchool;
   oldclass: IOldClass;
+  time: Date;
 }
 
 // Create Mongoose schema
@@ -88,6 +90,7 @@ const OldClassSchema = new Schema<IOldClass>({
 });
 
 const ExistingStudentSchema = new Schema<IEStudent>({
+  appid: { type: String, required: false },
   olindexno: { type: String, required: true },
   email: { type: String, required: true },
   personalInfo: { type: PersonalInfoSchema, default: {} },
@@ -96,6 +99,7 @@ const ExistingStudentSchema = new Schema<IEStudent>({
   alSubjects: { type: ALSubjectSchema, default: {} },
   oldSchool: { type: OldSchoolSchema, default: {} },
   oldclass: { type: OldClassSchema, default: {} },
+  time: { type: Date, default: Date.now },
 });
 
 const ExistingStudent =

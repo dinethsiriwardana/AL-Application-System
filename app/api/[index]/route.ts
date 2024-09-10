@@ -60,8 +60,11 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
     newStudent.email = studentData.email;
     newStudent.oldSchool = studentData.oldSchool;
     newStudent.oldclass = studentData.oldclass;
+    newStudent.appid =
+      studentData.oldclass.indexno == 0 ? `N${index}` : `E${index}`;
 
-    const result = await newStudent.save(); // This assumes you're using Mongoose
+    const result = await newStudent.save();
+
     return NextResponse.json({ message: "Data added successfully", result });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
