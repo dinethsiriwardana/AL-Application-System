@@ -33,11 +33,11 @@ const PersonalInfoSchema = new Schema<IPersonalInfo>({
   birthday: { type: Date, required: false },
   age: { type: String, required: false },
   sex: { type: String, required: false },
-  nic_String: { type: String, required: false },
+  nic_number: { type: String, required: false },
   address: { type: String, required: false },
   email: { type: String, required: false },
-  contact_String: { type: String, required: false },
-  whatsapp_String: { type: String, required: false },
+  contact_number: { type: String, required: false },
+  whatsapp_number: { type: String, required: false },
   distance_to_school: { type: String, required: false },
   transport_method: { type: String, required: false },
   scholarship: { type: String, required: false },
@@ -45,6 +45,7 @@ const PersonalInfoSchema = new Schema<IPersonalInfo>({
 
 const OLAttemptSchema = new Schema<IOLAttempt>({
   index_no: { type: String, required: false },
+  attempt: { type: String, required: false },
   mathematics: { type: String, required: false },
   science: { type: String, required: false },
   english: { type: String, required: false },
@@ -62,6 +63,7 @@ const OLAttemptSchema = new Schema<IOLAttempt>({
 const OLResultsSchema = new Schema<IOLResults>({
   first_attempt: { type: OLAttemptSchema, required: false },
   second_attempt: { type: OLAttemptSchema, required: false },
+  correction: { type: OLAttemptSchema, required: false },
 });
 
 const ALSubjectSchema = new Schema<IALStream>({

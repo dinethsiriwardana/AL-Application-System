@@ -1,5 +1,6 @@
 interface IOLAttempt {
   index_no: { type: String; required: false };
+  attempt: { type: String; required: false };
   mathematics: { type: String; required: false };
   science: { type: String; required: false };
   english: { type: String; required: false };
