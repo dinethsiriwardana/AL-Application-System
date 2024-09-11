@@ -48,13 +48,10 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
 
   try {
     await dbConnect();
-
     const studentData = await req.json();
-
     if (!studentData) {
       return NextResponse.json({ error: "No data found" });
     }
-
     const newStudent = new ExistingStudent();
     newStudent.olindexno = index;
     newStudent.personalInfo = studentData.personalInfo;
@@ -66,9 +63,7 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
     newStudent.oldclass = studentData.oldclass;
     newStudent.appid =
       studentData.oldclass.indexno == 0 ? `N${index}` : `E${index}`;
-
     const result = await newStudent.save();
-
     return NextResponse.json({ message: "Data added successfully", result });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
