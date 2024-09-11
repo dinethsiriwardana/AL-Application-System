@@ -17,7 +17,13 @@
     "transport-method": "bus",
     "scholarship": "none"
   },
-
+  "school": {
+    "name": "Royal College",
+    "address": "Colombo 07",
+    "zonal": 1234567890,
+    "division": "Mr. John Doe",
+    "district ": "Mr. Jane Doe"
+  },
   "ol_results": {
     "first_attempt": {
       "index_no": "123456",
