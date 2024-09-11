@@ -2,14 +2,14 @@ interface IPersonalInfo {
   fullname: string;
   name_with_initials: string;
   birthday: Date;
-  age: number;
+  age: string;
   sex: string;
-  nic_number: number;
+  nic_number: string;
   address: string;
   email: string;
-  contact_number: number;
-  whatsapp_number: number;
-  distance_to_school: number;
+  contact_number: string;
+  whatsapp_number: string;
+  distance_to_school: string;
   transport_method: string;
   scholarship: string;
 }

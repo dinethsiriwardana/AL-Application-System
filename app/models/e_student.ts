@@ -2,7 +2,7 @@ import mongoose, { Document, Schema } from "mongoose";
 
 export interface IEStudent extends Document {
   appid: String;
-  olindexno: Number;
+  olindexno: String;
   email: String;
   personalInfo: IPersonalInfo;
   olResults: IOLResults;
@@ -22,7 +22,7 @@ const BasketSchema = new Schema<IBasket>({
 const ParentInfoSchema = new Schema<IParentInfo>({
   name: { type: String, required: false },
   nic_number: { type: String, required: false },
-  contact_number: { type: Number, required: false },
+  contact_number: { type: String, required: false },
   address: { type: String, required: false },
   job: { type: String, required: false },
 });
@@ -31,20 +31,20 @@ const PersonalInfoSchema = new Schema<IPersonalInfo>({
   fullname: { type: String, required: false },
   name_with_initials: { type: String, required: false },
   birthday: { type: Date, required: false },
-  age: { type: Number, required: false },
+  age: { type: String, required: false },
   sex: { type: String, required: false },
-  nic_number: { type: Number, required: false },
+  nic_String: { type: String, required: false },
   address: { type: String, required: false },
   email: { type: String, required: false },
-  contact_number: { type: Number, required: false },
-  whatsapp_number: { type: Number, required: false },
-  distance_to_school: { type: Number, required: false },
+  contact_String: { type: String, required: false },
+  whatsapp_String: { type: String, required: false },
+  distance_to_school: { type: String, required: false },
   transport_method: { type: String, required: false },
   scholarship: { type: String, required: false },
 });
 
 const OLAttemptSchema = new Schema<IOLAttempt>({
-  index_no: { type: Number, required: false },
+  index_no: { type: String, required: false },
   mathematics: { type: String, required: false },
   science: { type: String, required: false },
   english: { type: String, required: false },
@@ -84,7 +84,7 @@ const OldSchoolSchema = new Schema<IOldSchool>({
 });
 
 const OldClassSchema = new Schema<IOldClass>({
-  indexno: { type: Number, default: 0 }, // Assuming 0 is an appropriate default value for a number
+  indexno: { type: String, default: 0 }, // Assuming 0 is an appropriate default value for a String
   olClass: { type: String, default: "" }, // Default empty string
   olClassTeacher: { type: String, default: "" }, // Default empty string
 });
