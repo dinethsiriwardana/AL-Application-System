@@ -24,17 +24,20 @@ export async function GET(req: NextRequest, { params }: { params: Params }) {
     }
 
     const studentList = cashe.getStudent();
+    const studentdetails = await ExistingStudent.find({
+      olindexno: parseInt(index),
+    });
     if (studentList.includes(parseInt(index))) {
-      const studentdetails = await ExistingStudent.find({
-        indexno: parseInt(index),
-      });
-
       return NextResponse.json({
-        studentType: "Existing Student",
+        studentType: "ExistingStudent",
+        studentdetails: studentdetails[0],
+      });
+    } else {
+      return NextResponse.json({
+        studentType: "NewStudent",
         studentdetails: studentdetails[0],
       });
     }
-    return NextResponse.json({ studentType: "New Student" });
   } catch (err: any) {
     return NextResponse.json({ error: err.message });
   }
@@ -45,24 +48,24 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
 
   try {
     await dbConnect();
-
     const studentData = await req.json();
-
     if (!studentData) {
       return NextResponse.json({ error: "No data found" });
     }
-
     const newStudent = new ExistingStudent();
     newStudent.olindexno = index;
-    if (await StudentType(index)) {
-      newStudent.oldclass = studentData;
-    } else {
-      newStudent.oldSchool = studentData;
-    }
-
-    const result = await newStudent.save(); // This assumes you're using Mongoose
+    newStudent.personalInfo = studentData.personalInfo;
+    newStudent.alSubjects = studentData.alSubjects;
+    newStudent.olResults = studentData.olResults;
+    newStudent.parentInfo = studentData.parentInfo;
+    newStudent.email = studentData.email;
+    newStudent.oldSchool = studentData.oldSchool;
+    newStudent.oldclass = studentData.oldclass;
+    newStudent.appid =
+      studentData.oldclass.indexno == 0 ? `N${index}` : `E${index}`;
+    const result = await newStudent.save();
     return NextResponse.json({ message: "Data added successfully", result });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message });
+    return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
