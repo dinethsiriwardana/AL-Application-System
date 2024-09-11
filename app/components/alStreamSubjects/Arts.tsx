@@ -1,8 +1,19 @@
 import React, { useState } from "react";
+import useExStudentStore from "@/app/global/ExistingStudentData";
 
 const Arts = () => {
   const [classType, setClassType] = useState("");
-  console.log(classType);
+  const { alSubjects, setALSubjects } = useExStudentStore((state) => ({
+    alSubjects: state.studentDetails.alSubjects,
+    setALSubjects: state.setALSubjects,
+  }));
+
+  const handleSubjectChange = (index: number, subject: string) => {
+    const newSubjects = [...alSubjects.subject];
+    newSubjects[index] = { ...newSubjects[index], subject };
+    setALSubjects("art", newSubjects);
+  };
+
   return (
     <fieldset className="fieldSet">
       <legend>A/L Subject selection</legend>
@@ -11,7 +22,7 @@ const Arts = () => {
         <label>Select Your Class</label>
         <select
           onChange={(event) => setClassType(event.target.value)}
-          defaultValue=""
+          value={classType}
         >
           <option value="" disabled>
             Category
@@ -24,32 +35,50 @@ const Arts = () => {
           <>
             <div className="inputGroup">
               <label>Select First Subject</label>
-              <select>
-                <option value="female">Communication and Media Studies</option>
-                <option value="female">Economics</option>
-                <option value="female">Geography</option>
+              <select
+                value={alSubjects.subject[0]?.subject || ""}
+                onChange={(e) => handleSubjectChange(0, e.target.value)}
+              >
+                <option value="">Select a subject</option>
+                <option value="Communication and Media Studies">
+                  Communication and Media Studies
+                </option>
+                <option value="Economics">Economics</option>
+                <option value="Geography">Geography</option>
               </select>
             </div>
             <div className="inputGroup">
               <label>Select Second Subject</label>
-              <select>
-                <option value="female">History</option>
-                <option value="female">Political Science</option>
-                <option value="female">Home Science</option>
-                <option value="female">Agricultural Science</option>
+              <select
+                value={alSubjects.subject[1]?.subject || ""}
+                onChange={(e) => handleSubjectChange(1, e.target.value)}
+              >
+                <option value="">Select a subject</option>
+                <option value="History">History</option>
+                <option value="Political Science">Political Science</option>
+                <option value="Home Science">Home Science</option>
+                <option value="Agricultural Science">
+                  Agricultural Science
+                </option>
               </select>
             </div>
             <div className="inputGroup">
               <label>Select Third Subject</label>
-              <select>
-                <option value="female">Sinhala Literature</option>
-                <option value="female">Logic</option>
-                <option value="female">Home Science</option>
-                <option value="female">Buddhist Civilization</option>
-                <option value="female">
+              <select
+                value={alSubjects.subject[2]?.subject || ""}
+                onChange={(e) => handleSubjectChange(2, e.target.value)}
+              >
+                <option value="">Select a subject</option>
+                <option value="Sinhala Literature">Sinhala Literature</option>
+                <option value="Logic">Logic</option>
+                <option value="Home Science">Home Science</option>
+                <option value="Buddhist Civilization">
+                  Buddhist Civilization
+                </option>
+                <option value="Information and Communication Technology">
                   Information and Communication Technology
                 </option>
-                <option value="female">Economics</option>
+                <option value="Economics">Economics</option>
               </select>
             </div>
           </>
@@ -58,34 +87,52 @@ const Arts = () => {
           <>
             <div className="inputGroup">
               <label>Select First Subject</label>
-              <select>
-                <option value="female">Chinese language</option>
-                <option value="female">Korean language</option>
-                <option value="female">French language</option>
-                <option value="female">Hindi language</option>
-                <option value="female">Japanese language</option>
+              <select
+                value={alSubjects.subject[0]?.subject || ""}
+                onChange={(e) => handleSubjectChange(0, e.target.value)}
+              >
+                <option value="">Select a subject</option>
+                <option value="Chinese language">Chinese language</option>
+                <option value="Korean language">Korean language</option>
+                <option value="French language">French language</option>
+                <option value="Hindi language">Hindi language</option>
+                <option value="Japanese language">Japanese language</option>
               </select>
             </div>
             <div className="inputGroup">
               <label>Select Second Subject</label>
-              <select>
-                <option value="female">Political Science</option>
-                <option value="female">Communication and Media Studies</option>
-                <option value="female">English Literature </option>
-                <option value="female">Buddhist Civilization</option>
-                <option value="female">Agricultural Science</option>
-                <option value="female">Geography</option>
+              <select
+                value={alSubjects.subject[1]?.subject || ""}
+                onChange={(e) => handleSubjectChange(1, e.target.value)}
+              >
+                <option value="">Select a subject</option>
+                <option value="Political Science">Political Science</option>
+                <option value="Communication and Media Studies">
+                  Communication and Media Studies
+                </option>
+                <option value="English Literature">English Literature</option>
+                <option value="Buddhist Civilization">
+                  Buddhist Civilization
+                </option>
+                <option value="Agricultural Science">
+                  Agricultural Science
+                </option>
+                <option value="Geography">Geography</option>
               </select>
             </div>
             <div className="inputGroup">
               <label>Select Third Subject</label>
-              <select>
-                <option value="female">Sinhala Literature</option>
-                <option value="female">
+              <select
+                value={alSubjects.subject[2]?.subject || ""}
+                onChange={(e) => handleSubjectChange(2, e.target.value)}
+              >
+                <option value="">Select a subject</option>
+                <option value="Sinhala Literature">Sinhala Literature</option>
+                <option value="Information and Communication Technology">
                   Information and Communication Technology
                 </option>
-                <option value="female">Logic</option>
-                <option value="female">Home Science</option>
+                <option value="Logic">Logic</option>
+                <option value="Home Science">Home Science</option>
               </select>
             </div>
           </>
@@ -94,30 +141,44 @@ const Arts = () => {
           <>
             <div className="inputGroup">
               <label>Select First Subject</label>
-              <select>
-                <option value="female">Communication and Media Studies</option>
-                <option value="female">Geography</option>
-                <option value="female">Political Science</option>
-                <option value="female">
+              <select
+                value={alSubjects.subject[0]?.subject || ""}
+                onChange={(e) => handleSubjectChange(0, e.target.value)}
+              >
+                <option value="">Select a subject</option>
+                <option value="Communication and Media Studies">
+                  Communication and Media Studies
+                </option>
+                <option value="Geography">Geography</option>
+                <option value="Political Science">Political Science</option>
+                <option value="Information and Communication Technology">
                   Information and Communication Technology
                 </option>
-                <option value="female">Drama & Theatre</option>
+                <option value="Drama & Theatre">Drama & Theatre</option>
               </select>
             </div>
             <div className="inputGroup">
               <label>Select Second Subject</label>
-              <select>
-                <option value="female">History</option>
-                <option value="female">Sinhala Literature</option>
-                <option value="female">Home Science</option>
+              <select
+                value={alSubjects.subject[1]?.subject || ""}
+                onChange={(e) => handleSubjectChange(1, e.target.value)}
+              >
+                <option value="">Select a subject</option>
+                <option value="History">History</option>
+                <option value="Sinhala Literature">Sinhala Literature</option>
+                <option value="Home Science">Home Science</option>
               </select>
             </div>
             <div className="inputGroup">
               <label>Select Third Subject</label>
-              <select>
-                <option value="female">Arts & Drawing</option>
-                <option value="female">Dancing</option>
-                <option value="female">Music</option>
+              <select
+                value={alSubjects.subject[2]?.subject || ""}
+                onChange={(e) => handleSubjectChange(2, e.target.value)}
+              >
+                <option value="">Select a subject</option>
+                <option value="Arts & Drawing">Arts & Drawing</option>
+                <option value="Dancing">Dancing</option>
+                <option value="Music">Music</option>
               </select>
             </div>
           </>

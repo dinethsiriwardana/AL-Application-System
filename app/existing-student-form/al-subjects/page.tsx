@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { FaChevronLeft } from "react-icons/fa";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Maths from "@/app/components/alStreamSubjects/Maths";
 import Science from "@/app/components/alStreamSubjects/Science";
@@ -12,15 +11,34 @@ import Stepper from "@/app/components/Stepper";
 import useExStudentStore from "@/app/global/ExistingStudentData";
 
 const ALStreamSelectionForm = () => {
-  const alSubjects = useExStudentStore(
-    (state) => state.studentDetails.alSubjects
-  );
-  const setALSubjects = useExStudentStore((state) => state.setALSubjects);
+  const studentDetails = useExStudentStore((state) => state.studentDetails);
+  const { alSubjects, setALSubjects } = useExStudentStore((state) => ({
+    alSubjects: state.studentDetails.alSubjects,
+    setALSubjects: state.setALSubjects,
+  }));
 
   const handleStreamChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const stream = event.target.value;
-    setALSubjects(stream, []); // Reset subjects when stream changes
+    // Initialize subjects array with three empty subjects when changing stream
+    const initialSubjects = [
+      { subject: "", medium: "" },
+      { subject: "", medium: "" },
+      { subject: "", medium: "" },
+    ];
+    setALSubjects(stream, initialSubjects);
   };
+
+  // Initialize subjects array if it's empty
+  useEffect(() => {
+    if (alSubjects.stream && alSubjects.subject.length === 0) {
+      const initialSubjects = [
+        { subject: "", medium: "" },
+        { subject: "", medium: "" },
+        { subject: "", medium: "" },
+      ];
+      setALSubjects(alSubjects.stream, initialSubjects);
+    }
+  }, [alSubjects.stream, alSubjects.subject.length, setALSubjects]);
 
   return (
     <>
@@ -50,9 +68,9 @@ const ALStreamSelectionForm = () => {
         <Link href="/existing-student-form/ol-results" className="backBtn">
           Back
         </Link>
-        <Link href="/existing-student-form/parent-info" className="nextBtn">
+        <button className="nextBtn" onClick={() => console.log(studentDetails)}>
           Submit
-        </Link>
+        </button>
       </div>
     </>
   );

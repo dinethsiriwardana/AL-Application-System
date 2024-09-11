@@ -11,7 +11,7 @@ interface Props {
 }
 
 const IndexNoForm = ({ callBack }: Props) => {
-  const setIndexNo = setExistingStudentData((state) => state.setIndexNo);
+  // const setIndexNo = setExistingStudentData((state) => state.setIndexNo);
   const { setStudentType } = useStudentType();
   const [newIndexNo, setNewIndexNo] = useState("");
   // const [studentType, setStudentType] = useState("");
@@ -21,15 +21,16 @@ const IndexNoForm = ({ callBack }: Props) => {
   };
 
   const updateIndexNo = async () => {
-    setIndexNo(newIndexNo); // Call Zustand's setIndexNo to update store state
+    // setIndexNo(newIndexNo); // Call Zustand's setIndexNo to update store state
     try {
-      const studentData = await axios.get(`/api/${newIndexNo}`);
-      setStudentType(studentData.data.studentType);
-      if (
-        studentData.data.studentType === "Existing Student" ||
-        studentData.data.studentType === "New Student"
-      ) {
-        callBack(studentData.data.studentType);
+      // const studentData = await axios.get(`/api/${newIndexNo}`);
+      // setStudentType(studentData.data.studentType);
+      setStudentType("Existing Student");
+      //       studentData.data.studentType === "Existing Student" ||
+      // studentData.data.studentType === "New Student"
+      if (true) {
+        // callBack(studentData.data.studentType);
+        callBack("Existing Student");
       } else {
         toast.error("Invalid Index No.!", {
           position: "bottom-right",
