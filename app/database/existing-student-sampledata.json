@@ -2,53 +2,40 @@
   "indexno": "123456",
   "ol-class": "B",
   "ol-class-teacher": "Mr. John Doe",
-  "personal_info": {
-    "fullname": "John",
-    "name-with-initials": "John Doe",
-    "birthday": "1990-01-01",
-    "age": 20,
-    "sex": "male",
-    "nic-number": 123456789,
-    "address": "123, Main Street, Colombo 05",
-    "email": "example@email.com",
-    "contact-number": 1234567890,
-    "whatsapp-number": 1234567890,
-    "distance-to-school": 5,
-    "transport-method": "bus",
-    "scholarship": "none"
-  },
-
-  "ol_results": {
-    "first_attempt": {
-      "index_no": "123456",
-      "maths": 80,
-      "science": 90,
-      "english": 70,
-      "history": 60,
-      "religion": 80,
-      "sinhala": 70,
-      "baskets": [
-        { "subject": "maths", "grade": "A" },
-        { "subject": "science", "grade": "A" },
-        { "subject": "english", "grade": "B" }
-      ]
+  "fullname": "John",
+  "name-with-initials": "John Doe",
+  "address": "123, Main Street, Colombo 05",
+  "birthday": "1990-01-01",
+  "age": 20,
+  "nic-number": 123456789,
+  "sex": "male",
+  "email": "example@email.com",
+  "sholership": "none",
+  "contact-number": 1234567890,
+  "whatsapp-number": 1234567890,
+  "distance-to-school": 5,
+  "transport-method": "bus",
+  "result": {
+    "maths": 80,
+    "science": 90,
+    "english": 70,
+    "history": 60,
+    "religion": 80,
+    "sinhala": 70,
+    "1st_busket": {
+      "subject": "maths",
+      "grade": "A"
     },
-    "second_attempt": {
-      "index_no": "123456",
-      "maths": 80,
-      "science": 90,
-      "english": 70,
-      "history": 60,
-      "religion": 80,
-      "sinhala": 70,
-      "baskets": [
-        { "subject": "maths", "grade": "A" },
-        { "subject": "science", "grade": "A" },
-        { "subject": "english", "grade": "B" }
-      ]
+    "2nd_busket": {
+      "subject": "science",
+      "grade": "A"
+    },
+    "3rd_busket": {
+      "subject": "english",
+      "grade": "B"
     }
   },
-  "parent_info": {
+  "parent": {
     "father": {
       "name": "John Doe",
       "nic-number": 123456789,
@@ -71,12 +58,19 @@
       "job": "doctor"
     }
   },
-  "al_subjects": {
+  "al-subjects": {
     "subject": "maths",
-    "grades": [
-      { "subject": "maths", "grade": "A" },
-      { "subject": "science", "grade": "A" },
-      { "subject": "english", "grade": "B" }
-    ]
+    "1st_subject": {
+      "subject": "maths",
+      "grade": "A"
+    },
+    "2nd_subject": {
+      "subject": "science",
+      "grade": "A"
+    },
+    "3rd_subject": {
+      "subject": "english",
+      "grade": "B"
+    }
   }
 }
