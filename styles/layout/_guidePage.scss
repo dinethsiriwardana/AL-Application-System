@@ -1,0 +1,83 @@
+.guidePage {
+  font-family: "Noto Sans Sinhala", Arial, sans-serif;
+  background-color: var(--background);
+  background-color: rgb(17, 17, 17);
+  color: var(--dark-white);
+  line-height: 1.6;
+  padding: 20px;
+  margin: 0;
+}
+
+.container {
+  width: clamp(15.625rem, 0.8643617021276597rem + 78.72340425531915vw, 85rem);
+  margin: 20px auto;
+  background-color: var(--dark-gray);
+  background-color: var(--background);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--light-blue);
+  margin-block: 15px;
+}
+
+ol,
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  overflow-x: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--blue);
+  color: var(--text);
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  table {
+    font-size: 0.9em;
+  }
+
+  th,
+  td {
+    padding: 8px;
+  }
+}
