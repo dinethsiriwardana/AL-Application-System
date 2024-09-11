@@ -11,6 +11,9 @@ COPY package*.json ./
 RUN npm install
 
 # Copy the rest of the application code to the working directory
+RUN addgroup -g 10014 choreo && \
+    adduser  --disabled-password  --no-create-home --uid 10014 --ingroup choreo choreouser
+    
 COPY . .
 
 # Build the Next.js application
