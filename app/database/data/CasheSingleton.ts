@@ -11,6 +11,7 @@ class CasheSingleton {
     if (!CasheSingleton.instance) {
       CasheSingleton.instance = new CasheSingleton();
     }
+
     return CasheSingleton.instance;
   }
 

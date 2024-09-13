@@ -1,5 +1,5 @@
 interface IOldClass {
-  indexno: number;
+  indexno: String;
   olClass: String;
   olClassTeacher: String;
 }

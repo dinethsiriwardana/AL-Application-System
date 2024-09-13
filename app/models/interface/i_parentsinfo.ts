@@ -1,7 +1,7 @@
 interface IParentInfo {
   name: string;
-  nicNumber: number;
-  contactNumber: number;
+  nic_number: string;
+  contact_number: string;
   address: string;
   job: string;
 }

@@ -9,22 +9,17 @@ interface Params {
 export async function POST(req: NextRequest, { params }: { params: Params }) {
   const { index } = params;
 
-  //   const student = await req.json();
-
   try {
     await dbConnect();
 
     const reqData = await req.json();
 
     const studentData = new ExistingStudent();
-    studentData.personalInfo = reqData;
-    studentData.personalInfo.age = calculateAge(
-      studentData.personalInfo.birthday
-    );
+    studentData.parentInfo = reqData;
 
     const result = await ExistingStudent.findOneAndUpdate(
       { olindexno: index },
-      { $set: { personalInfo: studentData.personalInfo } }
+      { $set: { parentInfo: studentData.parentInfo } }
     );
 
     return NextResponse.json({ message: "Data added successfully", result });
