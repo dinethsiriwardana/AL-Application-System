@@ -1,5 +1,10 @@
 FROM node:20
 
+RUN apt-get update && \
+    apt-get install -y git=1:2.39.5-0+deb12u1 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 COPY package.json package-lock.json* ./
