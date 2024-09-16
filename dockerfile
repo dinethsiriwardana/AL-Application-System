@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as the base image
-FROM node:18-alpine
+FROM node:20
 
 # Set the working directory in the container
 WORKDIR /app
@@ -10,10 +10,6 @@ COPY package*.json ./
 # Install the application dependencies
 RUN npm install
 
-# Copy the rest of the application code to the working directory
-RUN addgroup -g 10014 choreo && \
-    adduser  --disabled-password  --no-create-home --uid 10014 --ingroup choreo choreouser
-    
 COPY . .
 
 # Build the Next.js application
