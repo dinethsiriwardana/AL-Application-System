@@ -1,22 +1,26 @@
-# Use an official Node.js runtime as the base image
 FROM node:20
 
-# Set the working directory in the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
-
-# Install the application dependencies
-RUN npm install
+COPY package.json package-lock.json* ./
+RUN npm cache clean --force && \
+    npm install -g npm@latest && \
+    npm install
 
 COPY . .
 
-# Build the Next.js application
+ENV NEXT_TELEMETRY_DISABLED 1
+
 RUN npm run build
 
-# Expose the port that the application will run on
+ENV NODE_ENV production
+
+ENV NEXT_TELEMETRY_DISABLED 1
+
+USER 10014
 EXPOSE 3000
 
-# Start the application
-CMD ["npm", "start"]
+ENV HOSTNAME 0.0.0.0
+ENV PORT 3000
+
+CMD ["./node_modules/.bin/next", "start"]
