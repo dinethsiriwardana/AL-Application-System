@@ -2,7 +2,7 @@ import dbConnect from "@/app/database/database";
 import ExistingStudent from "@/app/models/e_student";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
     console.log("GET request - student list");
     await dbConnect();

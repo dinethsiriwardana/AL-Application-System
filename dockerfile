@@ -1,7 +1,11 @@
 FROM node:20
 
+# Update package lists and install the necessary packages, including the fixed version of libexpat1
 RUN apt-get update && \
-    apt-get install -y git=1:2.39.5-0+deb12u1 && \
+    apt-get install -y \
+    git=1:2.39.5-0+deb12u1 \
+    libexpat1=2.5.0-1+deb12u1 \
+    libexpat1-dev=2.5.0-1+deb12u1 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
