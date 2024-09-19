@@ -3,8 +3,8 @@ import axios from "axios";
 
 describe("Student API Endpoints", () => {
   const studentId = Math.floor(Math.random() * 1000000);
-  const baseUrl = "https://almayurapada.us-cdp2.choreoapps.dev/";
-  // process.env.TEST_BASE_URL || "https://almayurapada.us-cdp2.choreoapps.dev/";
+  const baseUrl = process.env.TEST_BASE_URL || "http://localhost:3000/api/";
+  //   process.env.TEST_BASE_URL || "https://almayurapada.us-cdp2.choreoapps.dev/";
 
   beforeEach(() => {
     // Any setup code can go here
