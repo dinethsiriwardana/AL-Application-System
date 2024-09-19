@@ -1,26 +1,35 @@
-# Use an official Node.js runtime as the base image
-FROM node:18-alpine
+FROM node:20
 
-# Set the working directory in the container
+# Update package lists and install the necessary packages, including the fixed version of libexpat1
+RUN apt-get update && \
+    apt-get install -y \
+    git=1:2.39.5-0+deb12u1 \
+    libexpat1=2.5.0-1+deb12u1 \
+    libexpat1-dev=2.5.0-1+deb12u1 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+COPY package.json package-lock.json* ./
+RUN npm cache clean --force && \
+    npm install -g npm@latest && \
+    npm install
 
-# Install the application dependencies
-RUN npm install
-
-# Copy the rest of the application code to the working directory
-RUN addgroup -g 10014 choreo && \
-    adduser  --disabled-password  --no-create-home --uid 10014 --ingroup choreo choreouser
-    
 COPY . .
 
-# Build the Next.js application
+ENV NEXT_TELEMETRY_DISABLED 1
+
 RUN npm run build
 
-# Expose the port that the application will run on
+ENV NODE_ENV production
+
+ENV NEXT_TELEMETRY_DISABLED 1
+
+USER 10014
 EXPOSE 3000
 
-# Start the application
-CMD ["npm", "start"]
+ENV HOSTNAME 0.0.0.0
+ENV PORT 3000
+
+CMD ["./node_modules/.bin/next", "start"]

@@ -12,7 +12,7 @@ interface Props {
 
 const DBLoading = ({ title, lotteFile }: Props) => {
   const animationContainer = useRef<HTMLDivElement>(null);
-  const animationInstance = useRef<lottie.AnimationItem | null>(null);
+  const animationInstance = useRef<any>(null);
 
   useEffect(() => {
     if (animationContainer.current) {
