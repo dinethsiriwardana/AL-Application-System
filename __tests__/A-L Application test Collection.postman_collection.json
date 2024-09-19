@@ -1,0 +1,59 @@
+{
+  "info": {
+    "_postman_id": "a38a42ea-0c35-4494-8370-51b02653ec6a",
+    "name": "A/L Application test Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26460626",
+    "_collection_link": "https://team-dineth-s.postman.co/workspace/4cacc883-d709-43cf-97f9-b3cb76d51b3b/collection/26460626-a38a42ea-0c35-4494-8370-51b02653ec6a?action=share&source=collection_link&creator=26460626"
+  },
+  "item": [
+    {
+      "name": "Get Students Details",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{host}}/api",
+          "host": ["{{host}}"],
+          "path": ["api"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "host",
+      "value": "https://almayurapada.us-cdp2.choreoapps.dev/",
+      "type": "string"
+    }
+  ]
+}
