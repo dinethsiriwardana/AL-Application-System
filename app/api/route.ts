@@ -4,12 +4,13 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
   try {
+    console.log("GET request - student list");
     await dbConnect();
     const studentList = await ExistingStudent.find({});
     return NextResponse.json({
       studentList: studentList,
     });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message });
+    return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
