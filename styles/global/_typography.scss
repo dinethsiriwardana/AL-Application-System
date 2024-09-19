@@ -1,0 +1,47 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+}
+
+// h1 {
+//   font-size: clamp(pixToRem(30), 8vw, pixToRem(80));
+// }
+
+// h2 {
+//   font-size: clamp(pixToRem(22.5), 6vw, pixToRem(60));
+// }
+
+// h3 {
+//   font-size: clamp(pixToRem(18.75), 5vw, pixToRem(50));
+// }
+
+// h4 {
+//   font-size: clamp(pixToRem(11.25), 3vw, pixToRem(30));
+// }
+// x h5 {
+//   font-size: clamp(pixToRem(9.375), 2vw, pixToRem(25));
+// }
+
+// h6 {
+//   font-size: clamp(pixToRem(10), 2vw, pixToRem(20));
+// }
+
+// p {
+//   font-size: clamp(pixToRem(10), 2vw, pixToRem(20));
+// }
+
+p {
+  margin: 0;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+}
