@@ -364,6 +364,26 @@ const AllData = () => {
           </table>
         </>
       )}
+
+      <h2>A/L Subject selection</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Subject Name</th>
+            <th>Medium</th>
+          </tr>
+        </thead>
+        <tbody>
+          {studentDetails.alSubjects.subject.map((subject, index) => {
+            return (
+              <tr key={index}>
+                <td>{subject.subject}</td>
+                <td>{subject.medium}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };
