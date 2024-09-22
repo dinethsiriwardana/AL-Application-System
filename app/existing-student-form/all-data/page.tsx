@@ -1,11 +1,12 @@
 "use client";
 
 import useExStudentStore from "@/app/global/ExistingStudentData";
+import useOLPageStore from "@/app/global/OLPageDataStore";
 import React from "react";
 
 const AllData = () => {
   const studentDetails = useExStudentStore((state) => state.studentDetails);
-  console.log(studentDetails);
+  const { olResultCorrect } = useOLPageStore();
   return (
     <div className="allDataTable">
       <h2>O/L Class Infomation</h2>
@@ -158,37 +159,41 @@ const AllData = () => {
           </tr>
         </tbody>
       </table>
-      <h2>Parents Information - (Guardian)</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Feild</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Guardian&apos;s Name</td>
-            <td>{studentDetails.parentInfo.guardian.name}</td>
-          </tr>
-          <tr>
-            <td>Guardian&apos;s NIC Number</td>
-            <td>{studentDetails.parentInfo.guardian.nic_number}</td>
-          </tr>
-          <tr>
-            <td>Guardian&apos;s Address</td>
-            <td>{studentDetails.parentInfo.guardian.address}</td>
-          </tr>
-          <tr>
-            <td>Guardian&apos;s Contact No.</td>
-            <td>{studentDetails.parentInfo.guardian.contact_number}</td>
-          </tr>
-          <tr>
-            <td>Guardian&apos;s job</td>
-            <td>{studentDetails.parentInfo.guardian.job}</td>
-          </tr>
-        </tbody>
-      </table>
+      {studentDetails.parentInfo.guardian.name != "" && (
+        <>
+          <h2>Parents Information - (Guardian)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Feild</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Guardian&apos;s Name</td>
+                <td>{studentDetails.parentInfo.guardian.name}</td>
+              </tr>
+              <tr>
+                <td>Guardian&apos;s NIC Number</td>
+                <td>{studentDetails.parentInfo.guardian.nic_number}</td>
+              </tr>
+              <tr>
+                <td>Guardian&apos;s Address</td>
+                <td>{studentDetails.parentInfo.guardian.address}</td>
+              </tr>
+              <tr>
+                <td>Guardian&apos;s Contact No.</td>
+                <td>{studentDetails.parentInfo.guardian.contact_number}</td>
+              </tr>
+              <tr>
+                <td>Guardian&apos;s job</td>
+                <td>{studentDetails.parentInfo.guardian.job}</td>
+              </tr>
+            </tbody>
+          </table>
+        </>
+      )}
 
       <h2>O/L Results - First Attempt</h2>
       <table>
@@ -241,112 +246,124 @@ const AllData = () => {
           </tr>
         </tbody>
       </table>
-      <h2>O/L Results - Second Attempt</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Feild</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Index Number</td>
-            <td>{studentDetails.olResults.second_attempt.indexNo}</td>
-          </tr>
-          <tr>
-            <td>Maths</td>
-            <td>{studentDetails.olResults.second_attempt.mathematics}</td>
-          </tr>
-          <tr>
-            <td>Science</td>
-            <td>{studentDetails.olResults.second_attempt.science}</td>
-          </tr>
-          <tr>
-            <td>English</td>
-            <td>{studentDetails.olResults.second_attempt.english}</td>
-          </tr>
-          <tr>
-            <td>History</td>
-            <td>{studentDetails.olResults.second_attempt.history}</td>
-          </tr>
-          <tr>
-            <td>Religion</td>
-            <td>{studentDetails.olResults.second_attempt.religion}</td>
-          </tr>
-          <tr>
-            <td>Sinhala</td>
-            <td>{studentDetails.olResults.second_attempt.language}</td>
-          </tr>
-          <tr>
-            <td>{studentDetails.olResults.second_attempt.firstsubname}</td>
-            <td>{studentDetails.olResults.second_attempt.firstsubgrade}</td>
-          </tr>
-          <tr>
-            <td>{studentDetails.olResults.second_attempt.secondsubname}</td>
-            <td>{studentDetails.olResults.second_attempt.secondsubgrade}</td>
-          </tr>
-          <tr>
-            <td>{studentDetails.olResults.second_attempt.thirdsubname}</td>
-            <td>{studentDetails.olResults.second_attempt.thirdsubgrade}</td>
-          </tr>
-        </tbody>
-      </table>
-      <h2>Changed O/L Results</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Feild</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Index Number</td>
-            <td>{studentDetails.olResults.correction.indexNo}</td>
-          </tr>
-          <tr>
-            <td>Last O/L Attempt</td>
-            <td>{studentDetails.olResults.correction.attempt}</td>
-          </tr>
-          <tr>
-            <td>Maths</td>
-            <td>{studentDetails.olResults.correction.mathematics}</td>
-          </tr>
-          <tr>
-            <td>Science</td>
-            <td>{studentDetails.olResults.correction.science}</td>
-          </tr>
-          <tr>
-            <td>English</td>
-            <td>{studentDetails.olResults.correction.english}</td>
-          </tr>
-          <tr>
-            <td>History</td>
-            <td>{studentDetails.olResults.correction.history}</td>
-          </tr>
-          <tr>
-            <td>Religion</td>
-            <td>{studentDetails.olResults.correction.religion}</td>
-          </tr>
-          <tr>
-            <td>Sinhala</td>
-            <td>{studentDetails.olResults.correction.language}</td>
-          </tr>
-          <tr>
-            <td>{studentDetails.olResults.correction.firstsubname}</td>
-            <td>{studentDetails.olResults.correction.firstsubgrade}</td>
-          </tr>
-          <tr>
-            <td>{studentDetails.olResults.correction.secondsubname}</td>
-            <td>{studentDetails.olResults.correction.secondsubgrade}</td>
-          </tr>
-          <tr>
-            <td>{studentDetails.olResults.correction.thirdsubname}</td>
-            <td>{studentDetails.olResults.correction.thirdsubgrade}</td>
-          </tr>
-        </tbody>
-      </table>
+
+      {studentDetails.olResults.second_attempt.indexNo != "" && (
+        <>
+          <h2>O/L Results - Second Attempt</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Feild</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Index Number</td>
+                <td>{studentDetails.olResults.second_attempt.indexNo}</td>
+              </tr>
+              <tr>
+                <td>Maths</td>
+                <td>{studentDetails.olResults.second_attempt.mathematics}</td>
+              </tr>
+              <tr>
+                <td>Science</td>
+                <td>{studentDetails.olResults.second_attempt.science}</td>
+              </tr>
+              <tr>
+                <td>English</td>
+                <td>{studentDetails.olResults.second_attempt.english}</td>
+              </tr>
+              <tr>
+                <td>History</td>
+                <td>{studentDetails.olResults.second_attempt.history}</td>
+              </tr>
+              <tr>
+                <td>Religion</td>
+                <td>{studentDetails.olResults.second_attempt.religion}</td>
+              </tr>
+              <tr>
+                <td>Sinhala</td>
+                <td>{studentDetails.olResults.second_attempt.language}</td>
+              </tr>
+              <tr>
+                <td>{studentDetails.olResults.second_attempt.firstsubname}</td>
+                <td>{studentDetails.olResults.second_attempt.firstsubgrade}</td>
+              </tr>
+              <tr>
+                <td>{studentDetails.olResults.second_attempt.secondsubname}</td>
+                <td>
+                  {studentDetails.olResults.second_attempt.secondsubgrade}
+                </td>
+              </tr>
+              <tr>
+                <td>{studentDetails.olResults.second_attempt.thirdsubname}</td>
+                <td>{studentDetails.olResults.second_attempt.thirdsubgrade}</td>
+              </tr>
+            </tbody>
+          </table>
+        </>
+      )}
+
+      {olResultCorrect === "false" && (
+        <>
+          <h2>Changed O/L Results</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Feild</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Index Number</td>
+                <td>{studentDetails.olResults.correction.indexNo}</td>
+              </tr>
+              <tr>
+                <td>Last O/L Attempt</td>
+                <td>{studentDetails.olResults.correction.attempt}</td>
+              </tr>
+              <tr>
+                <td>Maths</td>
+                <td>{studentDetails.olResults.correction.mathematics}</td>
+              </tr>
+              <tr>
+                <td>Science</td>
+                <td>{studentDetails.olResults.correction.science}</td>
+              </tr>
+              <tr>
+                <td>English</td>
+                <td>{studentDetails.olResults.correction.english}</td>
+              </tr>
+              <tr>
+                <td>History</td>
+                <td>{studentDetails.olResults.correction.history}</td>
+              </tr>
+              <tr>
+                <td>Religion</td>
+                <td>{studentDetails.olResults.correction.religion}</td>
+              </tr>
+              <tr>
+                <td>Sinhala</td>
+                <td>{studentDetails.olResults.correction.language}</td>
+              </tr>
+              <tr>
+                <td>{studentDetails.olResults.correction.firstsubname}</td>
+                <td>{studentDetails.olResults.correction.firstsubgrade}</td>
+              </tr>
+              <tr>
+                <td>{studentDetails.olResults.correction.secondsubname}</td>
+                <td>{studentDetails.olResults.correction.secondsubgrade}</td>
+              </tr>
+              <tr>
+                <td>{studentDetails.olResults.correction.thirdsubname}</td>
+                <td>{studentDetails.olResults.correction.thirdsubgrade}</td>
+              </tr>
+            </tbody>
+          </table>
+        </>
+      )}
     </div>
   );
 };
