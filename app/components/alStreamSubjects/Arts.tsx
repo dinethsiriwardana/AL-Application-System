@@ -19,7 +19,7 @@ const Arts = () => {
       <legend>A/L Subject selection</legend>
 
       <div className="inputGroup">
-        <label>Select Your Class</label>
+        <label>Select Your Subject Category</label>
         <select
           onChange={(event) => setClassType(event.target.value)}
           value={classType}
