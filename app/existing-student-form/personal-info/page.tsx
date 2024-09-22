@@ -176,15 +176,6 @@ const ExistingStudent = () => {
             <option value="not have">Not Have</option>
           </select>
         </div>
-        <div className="inputGroup">
-          <label>Additional Victories</label>
-          <textarea
-            placeholder="Scouting, Sports, ICT, etc."
-            rows={5}
-            value={studentDetails.personalInfo.victories}
-            onChange={(e) => setPersonalInfo("victories", e.target.value)}
-          />
-        </div>
       </fieldset>
       <div className="navigateBtns">
         <Link href="/guide" className="backBtn">

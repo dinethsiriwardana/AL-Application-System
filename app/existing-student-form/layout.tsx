@@ -4,7 +4,6 @@ import React from "react";
 import Stepper from "awesome-react-stepper";
 import Image from "next/image";
 import banner from "@images/bannerTwo.jpg";
-import PageLoading from "../components/PageLoading";
 
 const Layout = ({
   children,
