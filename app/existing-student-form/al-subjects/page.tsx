@@ -68,9 +68,12 @@ const ALStreamSelectionForm = () => {
         <Link href="/existing-student-form/ol-results" className="backBtn">
           Back
         </Link>
-        <button className="nextBtn" onClick={() => console.log(studentDetails)}>
+        <Link href="/existing-student-form/all-data" className="backBtn">
+          Check Your Information
+        </Link>
+        {/* <button className="nextBtn" onClick={() => console.log(studentDetails)}>
           Submit
-        </button>
+        </button> */}
       </div>
     </>
   );

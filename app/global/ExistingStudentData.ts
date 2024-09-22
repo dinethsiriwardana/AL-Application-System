@@ -87,7 +87,7 @@ type StudentState = {
       sex: string;
       nic_number: string;
       address: string;
-      email: string;
+      // email: string;
       contact_number: string;
       whatsapp_number: string;
       victories: string;
@@ -229,7 +229,7 @@ const useExStudentStore = create<StudentState & StudentActions>((set) => ({
       sex: "",
       nic_number: "",
       address: "",
-      email: "",
+      // email: "",
       contact_number: "",
       whatsapp_number: "",
       victories: "",

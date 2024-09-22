@@ -86,6 +86,9 @@ const ExistingStudent = () => {
             value={studentDetails.personalInfo.sex}
             onChange={(e) => setPersonalInfo("sex", e.target.value)}
           >
+            <option value="" disabled>
+              Select your gender
+            </option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
@@ -172,6 +175,9 @@ const ExistingStudent = () => {
             value={studentDetails.personalInfo.scholarship}
             onChange={(e) => setPersonalInfo("scholarship", e.target.value)}
           >
+            <option value="" disabled>
+              Select here
+            </option>
             <option value="have">Have</option>
             <option value="not have">Not Have</option>
           </select>
