@@ -62,6 +62,17 @@ const ParentInfoForm = () => {
           />
         </div>
         <div className="inputGroup">
+          <label>Father&apos;s Contact Number</label>
+          <input
+            type="text"
+            placeholder="012 345 6789"
+            value={parentInfo.father?.contact_number || ""}
+            onChange={(e) =>
+              handleParentInfoChange("father", "contact_number", e.target.value)
+            }
+          />
+        </div>
+        <div className="inputGroup">
           <label>Father&apos;s Job</label>
           <input
             type="text"
@@ -109,6 +120,17 @@ const ParentInfoForm = () => {
           />
         </div>
         <div className="inputGroup">
+          <label>Mother&apos;s Contact Number</label>
+          <input
+            type="text"
+            placeholder="012 345 6789"
+            value={parentInfo.mother?.contact_number || ""}
+            onChange={(e) =>
+              handleParentInfoChange("mother", "contact_number", e.target.value)
+            }
+          />
+        </div>
+        <div className="inputGroup">
           <label>Mother&apos;s job</label>
           <input
             type="text"
@@ -152,6 +174,21 @@ const ParentInfoForm = () => {
             value={parentInfo.guardian?.address || ""}
             onChange={(e) =>
               handleParentInfoChange("guardian", "address", e.target.value)
+            }
+          />
+        </div>
+        <div className="inputGroup">
+          <label>Guardian&apos;s Contact Number</label>
+          <input
+            type="text"
+            placeholder="012 345 6789"
+            value={parentInfo.guardian?.contact_number || ""}
+            onChange={(e) =>
+              handleParentInfoChange(
+                "guardian",
+                "contact_number",
+                e.target.value
+              )
             }
           />
         </div>

@@ -118,6 +118,10 @@ const AllData = () => {
             <td>{studentDetails.parentInfo.father.address}</td>
           </tr>
           <tr>
+            <td>Father&apos;s Contact No.</td>
+            <td>{studentDetails.parentInfo.father.contact_number}</td>
+          </tr>
+          <tr>
             <td>Father&apos;s Job</td>
             <td>{studentDetails.parentInfo.father.job}</td>
           </tr>
@@ -145,6 +149,10 @@ const AllData = () => {
             <td>{studentDetails.parentInfo.mother.address}</td>
           </tr>
           <tr>
+            <td>Mother&apos;s Contact No.</td>
+            <td>{studentDetails.parentInfo.mother.contact_number}</td>
+          </tr>
+          <tr>
             <td>Mother&apos;s job</td>
             <td>{studentDetails.parentInfo.mother.job}</td>
           </tr>
@@ -170,6 +178,10 @@ const AllData = () => {
           <tr>
             <td>Guardian&apos;s Address</td>
             <td>{studentDetails.parentInfo.guardian.address}</td>
+          </tr>
+          <tr>
+            <td>Guardian&apos;s Contact No.</td>
+            <td>{studentDetails.parentInfo.guardian.contact_number}</td>
           </tr>
           <tr>
             <td>Guardian&apos;s job</td>
