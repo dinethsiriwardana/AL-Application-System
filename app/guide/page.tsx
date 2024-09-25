@@ -249,7 +249,7 @@ const page = () => {
               Back To Home
             </Link>
             <Link
-              href="/existing-student-form/personal-info"
+              href="/existing-student-form/personal-info/"
               className="nextBtn"
             >
               Next
