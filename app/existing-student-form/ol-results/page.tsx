@@ -11,6 +11,8 @@ const Page = () => {
   const setOLResult = useExStudentStore((state) => state.setOLResult);
   const { olAttempt, olResultCorrect, setOlAttempt, setOlResultCorrect } =
     useOLPageStore();
+
+  console.log(studentDetails.olResults);
   return (
     <>
       <Stepper pageNo={3} />
@@ -37,130 +39,83 @@ const Page = () => {
           <div className="inputGroup">
             <label>Index Number</label>
             <input
+              disabled
               type="number"
               placeholder="12345"
               value={studentDetails.olResults.first_attempt.indexNo}
-              onChange={(event) =>
-                setOLResult("first_attempt", "indexNo", event.target.value)
-              }
+              // onChange={(event) =>
+              //   setOLResult("first_attempt", "indexNo", event.target.value)
+              // }
             />
           </div>
           <div className="twoCols">
             <div className="inputGroup">
               <label>Maths</label>
-              <select
-                onChange={(event) =>
-                  setOLResult(
-                    "first_attempt",
-                    "mathematics",
-                    event.target.value
-                  )
-                }
+              <input
+                disabled
+                // onChange={(event) =>
+                //   setOLResult(
+                //     "first_attempt",
+                //     "mathematics",
+                //     event.target.value
+                //   )
+                // }
                 value={studentDetails.olResults.first_attempt.mathematics}
-              >
-                <option value="" disabled>
-                  Select from your grade
-                </option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="S">S</option>
-                <option value="F">F</option>
-              </select>
+              ></input>
             </div>
             <div className="inputGroup">
               <label>Science</label>
-              <select
-                onChange={(event) =>
-                  setOLResult("first_attempt", "science", event.target.value)
-                }
+              <input
+                disabled
+                // onChange={(event) =>
+                //   setOLResult("first_attempt", "science", event.target.value)
+                // }
                 value={studentDetails.olResults.first_attempt.science}
-              >
-                <option value="" disabled>
-                  Select from your grade
-                </option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="S">S</option>
-                <option value="F">F</option>
-              </select>
+              ></input>
             </div>
           </div>
           <div className="twoCols">
             <div className="inputGroup">
               <label>English</label>
-              <select
-                onChange={(event) =>
-                  setOLResult("first_attempt", "english", event.target.value)
-                }
+              <input
+                disabled
+                // onChange={(event) =>
+                //   setOLResult("first_attempt", "english", event.target.value)
+                // }
                 value={studentDetails.olResults.first_attempt.english}
-              >
-                <option value="" disabled>
-                  Select from your grade
-                </option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="S">S</option>
-                <option value="F">F</option>
-              </select>
+              ></input>
             </div>
             <div className="inputGroup">
               <label>History</label>
-              <select
-                onChange={(event) =>
-                  setOLResult("first_attempt", "history", event.target.value)
-                }
+              <input
+                disabled
+                // onChange={(event) =>
+                //   setOLResult("first_attempt", "history", event.target.value)
+                // }
                 value={studentDetails.olResults.first_attempt.history}
-              >
-                <option value="" disabled>
-                  Select from your grade
-                </option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="S">S</option>
-                <option value="F">F</option>
-              </select>
+              ></input>
             </div>
           </div>
           <div className="twoCols">
             <div className="inputGroup">
               <label>Religion</label>
-              <select
-                onChange={(event) =>
-                  setOLResult("first_attempt", "religion", event.target.value)
-                }
+              <input
+                disabled
+                // onChange={(event) =>
+                //   setOLResult("first_attempt", "religion", event.target.value)
+                // }
                 value={studentDetails.olResults.first_attempt.religion}
-              >
-                <option value="" disabled>
-                  Select from your grade
-                </option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="S">S</option>
-                <option value="F">F</option>
-              </select>
+              ></input>
             </div>
             <div className="inputGroup">
               <label>Sinhala</label>
-              <select
-                onChange={(event) =>
-                  setOLResult("first_attempt", "language", event.target.value)
-                }
+              <input
+                disabled
+                // onChange={(event) =>
+                //   setOLResult("first_attempt", "language", event.target.value)
+                // }
                 value={studentDetails.olResults.first_attempt.language}
-              >
-                <option value="" disabled>
-                  Select from your grade
-                </option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="S">S</option>
-                <option value="F">F</option>
-              </select>
+              ></input>
             </div>
           </div>
 
@@ -169,117 +124,96 @@ const Page = () => {
             <div className="left">
               <label className="bucket-subject">Subject Name</label>
               <input
+                disabled
                 type="text"
                 placeholder="Add Subject Name Here"
-                onChange={(event) =>
-                  setOLResult(
-                    "first_attempt",
-                    "firstsubname",
-                    event.target.value
-                  )
-                }
+                // onChange={(event) =>
+                //   setOLResult(
+                //     "first_attempt",
+                //     "firstsubname",
+                //     event.target.value
+                //   )
+                // }
                 value={studentDetails.olResults.first_attempt.firstsubname}
               />
             </div>
             <div className="right">
               <label className="bucket-subject">Grade</label>
-              <select
-                onChange={(event) =>
-                  setOLResult(
-                    "first_attempt",
-                    "firstsubgrade",
-                    event.target.value
-                  )
-                }
+              <input
+                disabled
+                // onChange={(event) =>
+                //   setOLResult(
+                //     "first_attempt",
+                //     "firstsubgrade",
+                //     event.target.value
+                //   )
+                // }
                 value={studentDetails.olResults.first_attempt.firstsubgrade}
-              >
-                <option value="" disabled>
-                  Select from your grade
-                </option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="S">S</option>
-                <option value="F">F</option>
-              </select>
+              ></input>
             </div>
           </div>
           <div className="inputGroup-bucket">
             <div className="left">
               <label className="bucket-subject">Subject Name</label>
               <input
+                disabled
                 type="text"
                 placeholder="Add Subject Name Here"
-                onChange={(event) =>
-                  setOLResult(
-                    "first_attempt",
-                    "secondsubname",
-                    event.target.value
-                  )
-                }
+                // onChange={(event) =>
+                //   setOLResult(
+                //     "first_attempt",
+                //     "secondsubname",
+                //     event.target.value
+                //   )
+                // }
                 value={studentDetails.olResults.first_attempt.secondsubname}
               />
             </div>
             <div className="right">
               <label className="bucket-subject">Grade</label>
-              <select
-                onChange={(event) =>
-                  setOLResult(
-                    "first_attempt",
-                    "secondsubgrade",
-                    event.target.value
-                  )
-                }
+              <input
+                disabled
+                // onChange={(event) =>
+                //   setOLResult(
+                //     "first_attempt",
+                //     "secondsubgrade",
+                //     event.target.value
+                //   )
+                // }
                 value={studentDetails.olResults.first_attempt.secondsubgrade}
-              >
-                <option value="" disabled>
-                  Select from your grade
-                </option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="S">S</option>
-                <option value="F">F</option>
-              </select>
+              ></input>
             </div>
           </div>
           <div className="inputGroup-bucket">
             <div className="left">
               <label className="bucket-subject">Subject Name</label>
               <input
+                disabled
                 type="text"
                 placeholder="Add Subject Name Here"
-                onChange={(event) =>
-                  setOLResult(
-                    "first_attempt",
-                    "thirdsubname",
-                    event.target.value
-                  )
-                }
+                // onChange={(event) =>
+                //   setOLResult(
+                //     "first_attempt",
+                //     "thirdsubname",
+                //     event.target.value
+                //   )
+                // }
                 value={studentDetails.olResults.first_attempt.thirdsubname}
               />
             </div>
             <div className="right">
               <label className="bucket-subject">Grade</label>
-              <select
-                onChange={(event) =>
-                  setOLResult(
-                    "first_attempt",
-                    "thirdsubgrade",
-                    event.target.value
-                  )
-                }
+              <input
+                disabled
+                // onChange={(event) =>
+                //   setOLResult(
+                //     "first_attempt",
+                //     "thirdsubgrade",
+                //     event.target.value
+                //   )
+                // }
                 value={studentDetails.olResults.first_attempt.thirdsubgrade}
-              >
-                <option value="" disabled>
-                  Select from your grade
-                </option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="S">S</option>
-                <option value="F">F</option>
-              </select>
+              ></input>
             </div>
           </div>
         </fieldset>

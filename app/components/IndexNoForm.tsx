@@ -6,6 +6,7 @@ import axios from "axios";
 import setExistingStudentData from "../global/ExistingStudentData";
 import useStudentType from "../global/StudentType";
 import useExStudentStore from "../global/ExistingStudentData";
+import useOLPageStore from "../global/OLPageDataStore";
 
 interface Props {
   callBack: (type: string) => void;
@@ -16,6 +17,7 @@ const IndexNoForm = ({ callBack }: Props) => {
   const [newIndexNo, setNewIndexNo] = useState("");
   // const [studentType, setStudentType] = useState("");
   const { setOLResult, setPersonalInfo } = useExStudentStore();
+  const { setOlAttempt } = useOLPageStore();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewIndexNo(e.target.value); // Update local state with input value
@@ -38,8 +40,10 @@ const IndexNoForm = ({ callBack }: Props) => {
 
           const attmpt = "first_attempt";
 
+          setOlAttempt(1);
+
           setOLResult(attmpt, "indexNo", OlData.indexno);
-          setOLResult(attmpt, "mathematics", OlData);
+          setOLResult(attmpt, "mathematics", OlData.mathematics);
           setOLResult(attmpt, "science", OlData.science);
           setOLResult(attmpt, "english", OlData.english);
           setOLResult(attmpt, "history", OlData.history);
