@@ -16,7 +16,7 @@ const IndexNoForm = ({ callBack }: Props) => {
   // const { setStudentType } = useStudentType();
   const [newIndexNo, setNewIndexNo] = useState("");
   // const [studentType, setStudentType] = useState("");
-  const { setOLResult, setPersonalInfo } = useExStudentStore();
+  const { setOLResult, setPersonalInfo, setStudentType } = useExStudentStore();
   const { setOlAttempt } = useOLPageStore();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,6 +41,8 @@ const IndexNoForm = ({ callBack }: Props) => {
           const attmpt = "first_attempt";
 
           setOlAttempt(1);
+
+          setStudentType("Existing Student");
 
           setOLResult(attmpt, "indexNo", OlData.indexno);
           setOLResult(attmpt, "mathematics", OlData.mathematics);
@@ -72,18 +74,23 @@ const IndexNoForm = ({ callBack }: Props) => {
         // setOLResult("first_attempt", "indexNo", newIndexNo);
         callBack("Existing Student");
       }
-    } catch (error) {
-      console.log(error);
-      toast.error("Something went wrong!", {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+    } catch (error: any) {
+      console.log();
+      if (error.response.data.error === "No Data") {
+        setStudentType("New Student");
+        callBack("New Student");
+      } else {
+        toast.error("Something went wrong!", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      }
     }
   };
   return (
