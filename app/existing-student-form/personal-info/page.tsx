@@ -47,7 +47,8 @@ const ExistingStudent = () => {
             type="text"
             placeholder="Mahaulpathagamalage Priyantha Sampath Mahaulpathagama"
             value={studentDetails.personalInfo.fullname}
-            onChange={(e) => setPersonalInfo("fullname", e.target.value)}
+            disabled
+            // onChange={(e) => setPersonalInfo("fullname", e.target.value)}
           />
         </div>
         <div className="inputGroup">
