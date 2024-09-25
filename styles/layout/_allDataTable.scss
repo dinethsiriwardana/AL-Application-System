@@ -1,6 +1,20 @@
 .allDataTable {
+  h2 {
+    font-size: 0.875rem;
+    font-size: clamp(
+      0.875rem,
+      0.7169943820224719rem + 0.6741573033707865vw,
+      1.4375rem
+    );
+  }
   table {
     width: 100%;
+    font-size: 0.875rem;
+    font-size: clamp(
+      0.875rem,
+      0.8398876404494382rem + 0.149812734082397vw,
+      1rem
+    );
     th {
       width: 5000px;
     }
