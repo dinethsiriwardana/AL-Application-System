@@ -799,10 +799,10 @@ const Page = () => {
       )}
 
       <div className="navigateBtns">
-        <Link href="/existing-student-form/parent-info" className="backBtn">
+        <Link href="/new-student-form/parent-info" className="backBtn">
           Back
         </Link>
-        <Link href="/existing-student-form/al-subjects" className="nextBtn">
+        <Link href="/new-student-form/al-subjects" className="nextBtn">
           Next
         </Link>
       </div>

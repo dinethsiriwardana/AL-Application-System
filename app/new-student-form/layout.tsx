@@ -27,7 +27,7 @@ const Layout = ({
           </div>
         </div>
         <div className="exisitingStudents">
-          <h1 className="mainTitle">Apply as an Existing Student</h1>
+          <h1 className="mainTitle">Apply as an New Student</h1>
           {children}
           <div className="footerGap"></div>
         </div>
