@@ -9,7 +9,7 @@ const AllData = () => {
   const { olResultCorrect } = useOLPageStore();
   return (
     <div className="allDataTable">
-      <h2>O/L Class Infomation</h2>
+      <h2>Old School Infomation</h2>
       <table>
         <thead>
           <tr>
@@ -19,12 +19,24 @@ const AllData = () => {
         </thead>
         <tbody>
           <tr>
-            <td>O/L Class</td>
-            <td>{studentDetails.oldclass.olClass}</td>
+            <td>Old school name</td>
+            <td>{studentDetails.oldSchool.name}</td>
           </tr>
           <tr>
-            <td>O/L Class Teacher</td>
-            <td>{studentDetails.oldclass.olClassTeacher}</td>
+            <td>Old school address</td>
+            <td>{studentDetails.oldSchool.address}</td>
+          </tr>
+          <tr>
+            <td>Old school district</td>
+            <td>{studentDetails.oldSchool.district}</td>
+          </tr>
+          <tr>
+            <td>Old school Division</td>
+            <td>{studentDetails.oldSchool.divisional}</td>
+          </tr>
+          <tr>
+            <td>Old school zone</td>
+            <td>{studentDetails.oldSchool.zonal}</td>
           </tr>
         </tbody>
       </table>
