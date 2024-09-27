@@ -207,7 +207,7 @@ const AllData = () => {
         </>
       )}
 
-      <h2>O/L Results - First Attempt</h2>
+      <h2>O/L Results - Last Attempt</h2>
       <table>
         <thead>
           <tr>
