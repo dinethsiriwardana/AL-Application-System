@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Stepper from "@/app/components/Stepper";
 import useExStudentStore from "@/app/global/ExistingStudentData";
@@ -9,13 +9,20 @@ import useOLPageStore from "@/app/global/OLPageDataStore";
 const Page = () => {
   const studentDetails = useExStudentStore((state) => state.studentDetails);
   const setOLResult = useExStudentStore((state) => state.setOLResult);
-  const { olAttempt, olResultCorrect, setOlAttempt, setOlResultCorrect } =
-    useOLPageStore();
+  const {
+    olAttempt = 1,
+    olResultCorrect,
+    setOlAttempt,
+    setOlResultCorrect,
+  } = useOLPageStore();
+  useEffect(() => {
+    setOlAttempt(1);
+  }, []);
   return (
     <>
       <Stepper pageNo={3} />
 
-      <fieldset className="fieldSet">
+      {/* <fieldset className="fieldSet">
         <legend>Get O/L Results</legend>
         <div className="inputGroup">
           <label>Last O/L Attempt</label>
@@ -30,10 +37,10 @@ const Page = () => {
             <option value={2}>Second attempt</option>
           </select>
         </div>
-      </fieldset>
+      </fieldset> */}
       {olAttempt >= 1 && (
         <fieldset className="fieldSet">
-          <legend>O/L Results - First Attempt</legend>
+          <legend>O/L Results</legend>
           <div className="inputGroup">
             <label>Index Number</label>
             <input
