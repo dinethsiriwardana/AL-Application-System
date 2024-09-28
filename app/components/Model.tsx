@@ -15,10 +15,37 @@ const Model = ({ setVisible }: ModelProps) => {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [sentOTP, setSendOTP] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleEmailSubmit = () => {
+  const handleEmailSubmit = async () => {
     try {
       emailSchema.parse(email);
+
+      setLoading(true);
+      const response = await fetch("/api/email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        toast.warn("Something went wrong!", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      }
+
+      const data = await response.json();
+      console.log(data);
+
       setSendOTP(true);
       setOtp("");
       toast.success("OTP sent successfully!", {
@@ -31,6 +58,7 @@ const Model = ({ setVisible }: ModelProps) => {
         progress: undefined,
         theme: "dark",
       });
+      setLoading(false);
     } catch (error) {
       if (error instanceof z.ZodError) {
         toast.warn(error.errors[0].message, {
@@ -44,6 +72,9 @@ const Model = ({ setVisible }: ModelProps) => {
           theme: "dark",
         });
       }
+      setLoading(false);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -59,8 +90,12 @@ const Model = ({ setVisible }: ModelProps) => {
             onChange={(e) => setEmail(e.target.value)}
           />
           {!sentOTP && (
-            <button className="submit" onClick={handleEmailSubmit}>
-              Send OTP
+            <button
+              className="submit"
+              onClick={handleEmailSubmit}
+              disabled={loading}
+            >
+              {loading ? "Sending..." : "Send OTP"}
             </button>
           )}
 
