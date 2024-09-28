@@ -236,7 +236,7 @@ const AllData = () => {
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/${searchText}`);
+      const response = await fetch(`/api/${searchText.slice(1)}`);
       if (!response?.ok) {
         setStudentDetails({
           _id: "No Data Found",
@@ -545,8 +545,8 @@ const AllData = () => {
           <div className="searchInput">
             <label>Ref No.</label>
             <input
-              type="number"
-              placeholder="1234567"
+              type="text"
+              placeholder="N/E1234567"
               onChange={(e) => setSearchText(e?.target?.value)}
               value={searchText}
             />
