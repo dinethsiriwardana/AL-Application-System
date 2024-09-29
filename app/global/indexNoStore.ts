@@ -5,9 +5,9 @@ interface OLState {
   setIndexNo: (indexNo: string) => void;
 }
 
-const indexNoStore = create<OLState>((set) => ({
+const useIndexNoStore = create<OLState>((set) => ({
   indexNo: "",
   setIndexNo: (indexNo) => set({ indexNo }),
 }));
 
-export default indexNoStore;
+export default useIndexNoStore;
