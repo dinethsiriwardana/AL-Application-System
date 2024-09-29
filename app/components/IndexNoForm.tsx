@@ -29,6 +29,23 @@ const IndexNoForm = ({ callBack }: Props) => {
   const updateIndexNo = async () => {
     try {
       const studentData = await axios.get(`/api/${newIndexNo}`);
+      if (studentData.data.studentdetails.personalInfo.fullname != "") {
+        toast.error("You already applied!", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        return;
+      }
+    } catch (error) {}
+
+    try {
+      const studentData = await axios.get(`/api/${newIndexNo}`);
       // console.log(studentData.data.studentType);
       if (studentData.data.studentType == "ExistingStudent") {
         try {
