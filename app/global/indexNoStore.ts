@@ -1,11 +1,11 @@
-import create from "zustand";
+import { create } from "zustand";
 
-interface OLState {
+interface IndexState {
   indexNo: string;
   setIndexNo: (indexNo: string) => void;
 }
 
-const useIndexNoStore = create<OLState>((set) => ({
+const useIndexNoStore = create<IndexState>((set) => ({
   indexNo: "",
   setIndexNo: (indexNo) => set({ indexNo }),
 }));
