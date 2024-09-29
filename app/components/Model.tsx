@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { z } from "zod";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OtpInput from "react-otp-input";
 import OutsideClickHandler from "react-outside-click-handler";
@@ -128,7 +128,6 @@ const Model = ({ setVisible }: ModelProps) => {
           )}
         </div>
       </OutsideClickHandler>
-      <ToastContainer />
     </div>
   );
 };

@@ -41,19 +41,6 @@ export default function Home() {
         <DBLoading title={loadingText} lotteFile={animation} />
       )}
       {modelVisible && <Model setVisible={setModelVisible} />}
-
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
       <main className="main">
         <aside className="main__left-and-write">
           <Image

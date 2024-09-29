@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import axios from "axios";
 import setExistingStudentData from "../global/ExistingStudentData";
 import useStudentType from "../global/StudentType";
