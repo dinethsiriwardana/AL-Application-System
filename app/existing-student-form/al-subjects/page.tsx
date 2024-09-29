@@ -9,8 +9,18 @@ import Technology from "@/app/components/alStreamSubjects/Technology";
 import Arts from "@/app/components/alStreamSubjects/Arts";
 import Stepper from "@/app/components/Stepper";
 import useExStudentStore from "@/app/global/ExistingStudentData";
+import { useRouter } from "next/navigation";
+import useIndexNoStore from "@/app/global/indexNoStore";
 
 const ALStreamSelectionForm = () => {
+  const { indexNo } = useIndexNoStore();
+  const router = useRouter();
+  useEffect(() => {
+    if (!indexNo) {
+      router.push("/");
+    }
+  }, []);
+
   const studentDetails = useExStudentStore((state) => state.studentDetails);
   const { alSubjects, setALSubjects } = useExStudentStore((state) => ({
     alSubjects: state.studentDetails.alSubjects,

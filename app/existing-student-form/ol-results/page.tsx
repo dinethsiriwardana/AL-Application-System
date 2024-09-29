@@ -1,12 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Stepper from "@/app/components/Stepper";
 import useExStudentStore from "@/app/global/ExistingStudentData";
 import useOLPageStore from "@/app/global/OLPageDataStore";
+import useIndexNoStore from "@/app/global/indexNoStore";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
+  const { indexNo } = useIndexNoStore();
+  const router = useRouter();
+  useEffect(() => {
+    if (!indexNo) {
+      router.push("/");
+    }
+  }, []);
   const studentDetails = useExStudentStore((state) => state.studentDetails);
   const setOLResult = useExStudentStore((state) => state.setOLResult);
   const { olAttempt, olResultCorrect, setOlAttempt, setOlResultCorrect } =
