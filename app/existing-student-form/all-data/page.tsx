@@ -1,12 +1,59 @@
 "use client";
 
 import useExStudentStore from "@/app/global/ExistingStudentData";
+import useIndexNoStore from "@/app/global/indexNoStore";
 import useOLPageStore from "@/app/global/OLPageDataStore";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
+import { toast } from "react-toastify";
 
 const AllData = () => {
   const studentDetails = useExStudentStore((state) => state.studentDetails);
   const { olResultCorrect } = useOLPageStore();
+  const { indexNo } = useIndexNoStore();
+  const router = useRouter();
+
+  const handleAllSubmit = async () => {
+    try {
+      const response = await fetch(`/api/${indexNo}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(studentDetails),
+      });
+
+      if (!response.ok) {
+        toast.error("Something went wrong!", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      } else {
+        const data = await response.json();
+        console.log("Response:", data);
+        router.push("/submited");
+      }
+    } catch (error) {
+      // console.log("Error:", error.message);
+      toast.error("Something went wrong!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+  };
   return (
     <div className="allDataTable">
       <h2>O/L Class Infomation</h2>
@@ -384,6 +431,14 @@ const AllData = () => {
           })}
         </tbody>
       </table>
+      <div className="navigateBtns">
+        <Link href="/existing-student-form/al-subjects" className="backBtn">
+          Back
+        </Link>
+        <button onClick={handleAllSubmit} className="nextBtn">
+          Submit
+        </button>
+      </div>
     </div>
   );
 };
