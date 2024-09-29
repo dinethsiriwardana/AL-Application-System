@@ -21,10 +21,10 @@ const Page = () => {
     studentType === "Existing Student" ? `E${indexNo}` : `N${indexNo}`;
 
   useEffect(() => {
-    if (studentType && indexNo) {
+    if (!indexNo) {
       router.push("/");
     }
-  }, [studentType, indexNo, router]);
+  }, []);
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
