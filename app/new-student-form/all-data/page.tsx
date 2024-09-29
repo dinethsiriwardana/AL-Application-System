@@ -6,16 +6,18 @@ import useOLPageStore from "@/app/global/OLPageDataStore";
 import Link from "next/link";
 import React from "react";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import useIndexNoStore from "@/app/global/indexNoStore";
 
 const AllData = () => {
   const studentDetails = useExStudentStore((state) => state.studentDetails);
   const { olResultCorrect } = useOLPageStore();
-  const { indexNo } = indexNoStore();
+  const { indexNo } = useIndexNoStore();
+  const router = useRouter();
 
   const handleAllSubmit = async () => {
-    console.log(studentDetails);
     try {
-      const response = await fetch(`/api/${"1231234"}`, {
+      const response = await fetch(`/api/${indexNo}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,8 +40,19 @@ const AllData = () => {
 
       const data = await response.json();
       console.log("Response:", data);
+      router.push("/submited");
     } catch (error) {
       console.error("Error:", error);
+      toast.error("Something went wrong!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   };
 
