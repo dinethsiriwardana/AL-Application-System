@@ -11,7 +11,8 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# COPY package.json package-lock.json* ./
+COPY package.json package-lock.json* ./
+
 RUN npm cache clean --force && \
     npm install -g npm@latest && \
     npm install
