@@ -4,7 +4,7 @@ import useExStudentStore from "@/app/global/ExistingStudentData";
 import indexNoStore from "@/app/global/indexNoStore";
 import useOLPageStore from "@/app/global/OLPageDataStore";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import useIndexNoStore from "@/app/global/indexNoStore";
@@ -14,6 +14,11 @@ const AllData = () => {
   const { olResultCorrect } = useOLPageStore();
   const { indexNo } = useIndexNoStore();
   const router = useRouter();
+  useEffect(() => {
+    if (!indexNo) {
+      router.push("/");
+    }
+  }, []);
 
   const handleAllSubmit = async () => {
     try {

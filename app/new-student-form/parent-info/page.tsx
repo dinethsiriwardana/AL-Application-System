@@ -1,11 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Stepper from "@/app/components/Stepper";
 import useExStudentStore from "@/app/global/ExistingStudentData";
+import { useRouter } from "next/navigation";
+import useIndexNoStore from "@/app/global/indexNoStore";
 
 const ParentInfoForm = () => {
+  const { indexNo } = useIndexNoStore();
+  const router = useRouter();
+  useEffect(() => {
+    if (!indexNo) {
+      router.push("/");
+    }
+  }, []);
   const parentInfo = useExStudentStore(
     (state) => state.studentDetails.parentInfo
   );

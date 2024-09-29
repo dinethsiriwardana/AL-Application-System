@@ -1,9 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Stepper from "@/app/components/Stepper";
 import useExStudentStore from "@/app/global/ExistingStudentData";
+import { useRouter } from "next/navigation";
+import useIndexNoStore from "@/app/global/indexNoStore";
 
 const ExistingStudent = () => {
   const studentDetails = useExStudentStore((state) => state.studentDetails);
@@ -12,7 +14,13 @@ const ExistingStudent = () => {
   const setPersonalInfo = useExStudentStore((state) => state.setPersonalInfo);
   const setEmail = useExStudentStore((state) => state.setEmail);
 
-  console.log(studentDetails);
+  const { indexNo } = useIndexNoStore();
+  const router = useRouter();
+  useEffect(() => {
+    if (!indexNo) {
+      router.push("/");
+    }
+  }, []);
 
   return (
     <>
