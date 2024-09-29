@@ -36,13 +36,13 @@ const AllData = () => {
           progress: undefined,
           theme: "dark",
         });
+      } else {
+        const data = await response.json();
+        console.log("Response:", data);
+        router.push("/submited");
       }
-
-      const data = await response.json();
-      console.log("Response:", data);
-      router.push("/submited");
     } catch (error) {
-      console.error("Error:", error);
+      // console.log("Error:", error.message);
       toast.error("Something went wrong!", {
         position: "bottom-right",
         autoClose: 5000,
