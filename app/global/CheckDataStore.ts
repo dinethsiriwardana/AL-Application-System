@@ -129,7 +129,7 @@ type StudentActions = {
 };
 
 // Create the store
-const useExStudentStore = create<StudentState & StudentActions>((set) => ({
+const useWatchDataStore = create<StudentState & StudentActions>((set) => ({
   studentType: "Existing Student",
   studentDetails: {
     _id: "",
@@ -324,4 +324,4 @@ const useExStudentStore = create<StudentState & StudentActions>((set) => ({
     })),
 }));
 
-export default useExStudentStore;
+export default useWatchDataStore;

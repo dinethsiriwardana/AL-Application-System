@@ -1,9 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import banner from "@images/bannerTwo.jpg";
+import useExStudentStore from "../global/ExistingStudentData";
 
-const page = () => {
+const GuidePage = () => {
+  const { studentType } = useExStudentStore();
   return (
     <>
       <div className="banner">
@@ -249,7 +253,11 @@ const page = () => {
               Back To Home
             </Link>
             <Link
-              href="/existing-student-form/personal-info"
+              href={
+                studentType === "Existing Student"
+                  ? "/existing-student-form/personal-info/"
+                  : "/new-student-form/personal-info/"
+              }
               className="nextBtn"
             >
               Next
@@ -261,4 +269,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default GuidePage;

@@ -205,10 +205,10 @@ const ParentInfoForm = () => {
         </div>
       </fieldset>
       <div className="navigateBtns">
-        <Link href="/existing-student-form/personal-info" className="backBtn">
+        <Link href="/new-student-form/personal-info" className="backBtn">
           Back
         </Link>
-        <Link href="/existing-student-form/ol-results" className="nextBtn">
+        <Link href="/new-student-form/ol-results" className="nextBtn">
           Next
         </Link>
       </div>
