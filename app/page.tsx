@@ -11,7 +11,6 @@ import IndexNoForm from "./components/IndexNoForm";
 import { useState } from "react";
 import { LottieFile } from "./interfaces/lotteInterface";
 import useStudentType from "./global/StudentType";
-import { ToastContainer, toast } from "react-toastify";
 import Model from "./components/Model";
 
 export default function Home() {
@@ -41,19 +40,6 @@ export default function Home() {
         <DBLoading title={loadingText} lotteFile={animation} />
       )}
       {modelVisible && <Model setVisible={setModelVisible} />}
-
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
       <main className="main">
         <aside className="main__left-and-write">
           <Image
@@ -68,14 +54,14 @@ export default function Home() {
           <h4 className="sub-heading-bottom">For Advanced-Level Exam 2026</h4>
           <IndexNoForm callBack={goToNextPage} />
           <div className="already-applied">
-            Do you already appliy for this?{" "}
+            Have you already applied for this?{" "}
             <span
               onClick={() => setModelVisible(true)}
               className="check-data-btn"
             >
               CLICK HERE
             </span>{" "}
-            to check your submited details
+            to check your submitted details.
           </div>
         </aside>
         <aside className="main__left-and-write">
@@ -88,7 +74,7 @@ export default function Home() {
         </aside>
 
         <footer className="footer">
-          Copyright &copy; Mayurapada Central College: All rights resived.
+          Copyrigh &copy; Mayurapada Central College: All rights reserved.
         </footer>
       </main>
     </>

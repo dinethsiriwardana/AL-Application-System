@@ -65,10 +65,10 @@ const ALStreamSelectionForm = () => {
       {alSubjects.stream === "technology" && <Technology />}
       {alSubjects.stream === "art" && <Arts />}
       <div className="navigateBtns">
-        <Link href="/existing-student-form/ol-results" className="backBtn">
+        <Link href="/new-student-form/ol-results" className="backBtn">
           Back
         </Link>
-        <Link href="/existing-student-form/all-data" className="backBtn">
+        <Link href="/new-student-form/all-data" className="backBtn">
           Check Your Information
         </Link>
         {/* <button className="nextBtn" onClick={() => console.log(studentDetails)}>

@@ -8,6 +8,7 @@ import useExStudentStore from "@/app/global/ExistingStudentData";
 const ExistingStudent = () => {
   const studentDetails = useExStudentStore((state) => state.studentDetails);
   const setOldClass = useExStudentStore((state) => state.setOldClass);
+  const setOldSchool = useExStudentStore((state) => state.setOldSchool);
   const setPersonalInfo = useExStudentStore((state) => state.setPersonalInfo);
   const setEmail = useExStudentStore((state) => state.setEmail);
 
@@ -17,24 +18,53 @@ const ExistingStudent = () => {
     <>
       <Stepper pageNo={1} />
       <fieldset className="fieldSet">
-        <legend>OL Class Information</legend>
+        <legend>Old School Information</legend>
+        <div className="inputGroup">
+          <label>School Name</label>
+          <input
+            type="text"
+            placeholder="Mayurapada Central College, Narammala"
+            value={studentDetails.oldSchool.name}
+            onChange={(e) => setOldSchool("name", e.target.value)}
+          />
+        </div>
         <div className="twoCols">
           <div className="inputGroup">
-            <label>OL Class</label>
+            <label>School Address</label>
             <input
               type="text"
-              placeholder="B"
-              value={studentDetails.oldclass.olClass}
-              onChange={(e) => setOldClass("olClass", e.target.value)}
+              placeholder="Dalupothagama, Katupotha"
+              value={studentDetails.oldSchool.address}
+              onChange={(e) => setOldSchool("address", e.target.value)}
             />
           </div>
           <div className="inputGroup">
-            <label>OL Class Teacher</label>
+            <label>School Zone</label>
             <input
               type="text"
-              placeholder="Mr. Tiran Jayasooriya"
-              value={studentDetails.oldclass.olClassTeacher}
-              onChange={(e) => setOldClass("olClassTeacher", e.target.value)}
+              placeholder="Giriulla"
+              value={studentDetails.oldSchool.zonal}
+              onChange={(e) => setOldSchool("zonal", e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="twoCols">
+          <div className="inputGroup">
+            <label>School Division</label>
+            <input
+              type="text"
+              placeholder="Giriulla"
+              value={studentDetails.oldSchool.divisional}
+              onChange={(e) => setOldSchool("divisional", e.target.value)}
+            />
+          </div>
+          <div className="inputGroup">
+            <label>School District</label>
+            <input
+              type="text"
+              placeholder="Kurunegala"
+              value={studentDetails.oldSchool.district}
+              onChange={(e) => setOldSchool("district", e.target.value)}
             />
           </div>
         </div>
@@ -47,8 +77,7 @@ const ExistingStudent = () => {
             type="text"
             placeholder="Mahaulpathagamalage Priyantha Sampath Mahaulpathagama"
             value={studentDetails.personalInfo.fullname}
-            disabled
-            // onChange={(e) => setPersonalInfo("fullname", e.target.value)}
+            onChange={(e) => setPersonalInfo("fullname", e.target.value)}
           />
         </div>
         <div className="inputGroup">
@@ -197,7 +226,7 @@ const ExistingStudent = () => {
         <Link href="/guide" className="backBtn">
           Back
         </Link>
-        <Link href="/existing-student-form/parent-info" className="nextBtn">
+        <Link href="/new-student-form/parent-info" className="nextBtn">
           Next
         </Link>
       </div>
