@@ -92,7 +92,6 @@ const IndexNoForm = ({ callBack }: Props) => {
       setOldClass("olClass", "");
       setOldClass("olClassTeacher", "");
 
-      setPersonalInfo("fullname", "");
       setPersonalInfo("name_with_initials", "");
       setPersonalInfo("birthday", "");
       setPersonalInfo("age", "");
@@ -148,6 +147,7 @@ const IndexNoForm = ({ callBack }: Props) => {
         setOLResult("first_attempt", "secondsubgrade", "");
         setOLResult("first_attempt", "thirdsubname", "");
         setOLResult("first_attempt", "thirdsubgrade", "");
+        setPersonalInfo("fullname", "");
 
         setStudentType("New Student");
         callBack("New Student");
@@ -165,6 +165,8 @@ const IndexNoForm = ({ callBack }: Props) => {
         setStudentType("Existing Student");
 
         clearAllData();
+
+        setPersonalInfo("fullname", OlData.name);
 
         setOLResult(attmpt, "indexNo", OlData.indexno);
         setOLResult(attmpt, "mathematics", OlData.mathematics);
