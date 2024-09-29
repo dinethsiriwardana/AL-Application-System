@@ -72,6 +72,19 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
       return NextResponse.json({ error: "No data found" });
     }
 
+    // check the student email is already in the database
+    const student = await ExistingStudent.findOne({ email: studentData.email });
+
+    if (student) {
+      console.log("Student already exists for email: ", studentData.email);
+      return NextResponse.json(
+        {
+          error: "Student already exists for email: " + studentData.email,
+        },
+        { status: 500 }
+      );
+    }
+
     const newStudent = new ExistingStudent();
     newStudent.olindexno = index;
     newStudent.personalInfo = studentData.personalInfo;
