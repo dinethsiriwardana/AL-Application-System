@@ -68,14 +68,14 @@ export default function Home() {
           <h4 className="sub-heading-bottom">For Advanced-Level Exam 2026</h4>
           <IndexNoForm callBack={goToNextPage} />
           <div className="already-applied">
-            Do you already appliy for this?{" "}
+            Have you already applied for this?{" "}
             <span
               onClick={() => setModelVisible(true)}
               className="check-data-btn"
             >
               CLICK HERE
             </span>{" "}
-            to check your submited details
+            to check your submitted details.
           </div>
         </aside>
         <aside className="main__left-and-write">
@@ -88,7 +88,7 @@ export default function Home() {
         </aside>
 
         <footer className="footer">
-          Copyright &copy; Mayurapada Central College: All rights resived.
+          Copyrigh &copy; Mayurapada Central College: All rights reserved.
         </footer>
       </main>
     </>

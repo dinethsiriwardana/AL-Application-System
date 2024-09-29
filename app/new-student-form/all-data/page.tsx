@@ -1,12 +1,48 @@
 "use client";
 
 import useExStudentStore from "@/app/global/ExistingStudentData";
+import indexNoStore from "@/app/global/indexNoStore";
 import useOLPageStore from "@/app/global/OLPageDataStore";
+import Link from "next/link";
 import React from "react";
+import { toast } from "react-toastify";
 
 const AllData = () => {
   const studentDetails = useExStudentStore((state) => state.studentDetails);
   const { olResultCorrect } = useOLPageStore();
+  const { indexNo } = indexNoStore();
+
+  const handleAllSubmit = async () => {
+    console.log(studentDetails);
+    try {
+      const response = await fetch(`/api/${"1231234"}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(studentDetails),
+      });
+
+      if (!response.ok) {
+        toast.error("Something went wrong!", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      }
+
+      const data = await response.json();
+      console.log("Response:", data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <div className="allDataTable">
       <h2>Old School Infomation</h2>
@@ -396,6 +432,14 @@ const AllData = () => {
           })}
         </tbody>
       </table>
+      <div className="navigateBtns">
+        <Link href="/new-student-form/al-subjects" className="backBtn">
+          Back
+        </Link>
+        <button onClick={handleAllSubmit} className="nextBtn">
+          Submit
+        </button>
+      </div>
     </div>
   );
 };

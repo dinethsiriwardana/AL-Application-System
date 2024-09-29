@@ -7,6 +7,7 @@ import setExistingStudentData from "../global/ExistingStudentData";
 import useStudentType from "../global/StudentType";
 import useExStudentStore from "../global/ExistingStudentData";
 import useOLPageStore from "../global/OLPageDataStore";
+import indexNoStore from "../global/indexNoStore";
 
 interface Props {
   callBack: (type: string) => void;
@@ -14,6 +15,8 @@ interface Props {
 
 const IndexNoForm = ({ callBack }: Props) => {
   // const { setStudentType } = useStudentType();
+  const { setIndexNo } = indexNoStore();
+
   const [newIndexNo, setNewIndexNo] = useState("");
   // const [studentType, setStudentType] = useState("");
   const { setOLResult, setPersonalInfo, setStudentType } = useExStudentStore();
@@ -26,7 +29,6 @@ const IndexNoForm = ({ callBack }: Props) => {
   const updateIndexNo = async () => {
     try {
       const studentData = await axios.get(`/api/${newIndexNo}`);
-      console.log(newIndexNo);
       // console.log(studentData.data.studentType);
       if (studentData.data.studentType == "ExistingStudent") {
         try {
@@ -43,6 +45,7 @@ const IndexNoForm = ({ callBack }: Props) => {
           setOlAttempt(1);
 
           setStudentType("Existing Student");
+          setIndexNo(newIndexNo);
 
           setOLResult(attmpt, "indexNo", OlData.indexno);
           setOLResult(attmpt, "mathematics", OlData.mathematics);
