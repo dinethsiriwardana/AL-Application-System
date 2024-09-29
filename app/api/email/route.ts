@@ -3,6 +3,7 @@ import { NextResponse, NextRequest } from "next/server";
 import { OTPSingleton } from "@/app/database/data/OTPSingleton";
 import dbConnect from "@/app/database/database";
 import ExistingStudent from "@/app/models/e_student";
+import OtpModel from "@/app/models/otp";
 
 interface Params {
   otp: string;
@@ -24,13 +25,11 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
     const transporter = nodemailer.createTransport({
       host: "smtp.hostinger.com",
       port: 465,
-      secure: true, // Use SSL
-
+      secure: true,
       tls: {
         ciphers: "SSLv3",
         rejectUnauthorized: false,
       },
-
       auth: {
         user: username,
         pass: password,
@@ -39,24 +38,22 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
-    const otpSingleton = OTPSingleton.getInstance();
+    await dbConnect();
 
-    otpSingleton.addOTP(otp, email);
+    await OtpModel.create({ otp, email });
 
-    const mail = await transporter.sendMail({
-      from: username,
-      to: email,
-      replyTo: myEmail,
-      subject: `AL Application OTP for ${email}`,
-      html: `
-      <p>OTP: ${otp} </p>
-      `,
-    });
+    console.log("OTP saved in DB:", otp);
 
-    console.log(otpSingleton.getStudent());
-    console.log(otpSingleton.getEmail(otp));
+    // Uncomment to send email
+    // const mail = await transporter.sendMail({
+    //   from: username,
+    //   to: email,
+    //   replyTo: myEmail,
+    //   subject: `AL Application OTP for ${email}`,
+    //   html: `<p>OTP: ${otp} </p>`,
+    // });
 
-    return NextResponse.json({ message: "Success: email was sent", otp });
+    return NextResponse.json({ message: "Success: OTP was generated", otp });
   } catch (err: any) {
     return NextResponse.json({ error: err.message });
   }
