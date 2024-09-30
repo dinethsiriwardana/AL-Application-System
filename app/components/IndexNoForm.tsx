@@ -19,7 +19,17 @@ const IndexNoForm = ({ callBack }: Props) => {
 
   const [newIndexNo, setNewIndexNo] = useState("");
   // const [studentType, setStudentType] = useState("");
-  const { setOLResult, setPersonalInfo, setStudentType } = useExStudentStore();
+  const {
+    setOLResult,
+    setPersonalInfo,
+    setStudentType,
+    setParentInfo,
+    setALSubjects,
+    setOldSchool,
+    setOldClass,
+    setOLIndexNo,
+    setEmail,
+  } = useExStudentStore();
   const { setOlAttempt } = useOLPageStore();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,6 +37,77 @@ const IndexNoForm = ({ callBack }: Props) => {
   };
 
   const updateIndexNo = async () => {
+    setOLIndexNo(newIndexNo);
+
+    const clearAllData = () => {
+      setOLResult("second_attempt", "indexNo", "");
+      setOLResult("second_attempt", "mathematics", "");
+      setOLResult("second_attempt", "science", "");
+      setOLResult("second_attempt", "english", "");
+      setOLResult("second_attempt", "history", "");
+      setOLResult("second_attempt", "religion", "");
+      setOLResult("second_attempt", "language", "");
+      setOLResult("second_attempt", "firstsubname", "");
+      setOLResult("second_attempt", "firstsubgrade", "");
+      setOLResult("second_attempt", "secondsubname", "");
+      setOLResult("second_attempt", "secondsubgrade", "");
+      setOLResult("second_attempt", "thirdsubname", "");
+      setOLResult("second_attempt", "thirdsubgrade", "");
+      setOLResult("correction", "indexNo", "");
+      setOLResult("correction", "attempt", "");
+      setOLResult("correction", "mathematics", "");
+      setOLResult("correction", "science", "");
+      setOLResult("correction", "english", "");
+      setOLResult("correction", "history", "");
+      setOLResult("correction", "religion", "");
+      setOLResult("correction", "language", "");
+      setOLResult("correction", "firstsubname", "");
+      setOLResult("correction", "firstsubgrade", "");
+      setOLResult("correction", "secondsubname", "");
+      setOLResult("correction", "secondsubgrade", "");
+      setOLResult("correction", "thirdsubname", "");
+      setOLResult("correction", "thirdsubgrade", "");
+      setParentInfo("father", "name", "");
+      setParentInfo("father", "nic_number", "");
+      setParentInfo("father", "contact_number", "");
+      setParentInfo("father", "address", "");
+      setParentInfo("father", "job", "");
+      setParentInfo("mother", "name", "");
+      setParentInfo("mother", "nic_number", "");
+      setParentInfo("mother", "contact_number", "");
+      setParentInfo("mother", "address", "");
+      setParentInfo("mother", "job", "");
+      setParentInfo("guardian", "name", "");
+      setParentInfo("guardian", "nic_number", "");
+      setParentInfo("guardian", "contact_number", "");
+      setParentInfo("guardian", "address", "");
+      setParentInfo("guardian", "job", "");
+      setALSubjects("", []);
+      setOldSchool("name", "");
+      setOldSchool("address", "");
+      setOldSchool("zonal", "");
+      setOldSchool("divisional", "");
+      setOldSchool("district", "");
+      setOldClass("indexno", "");
+      setOldClass("olClass", "");
+      setOldClass("olClassTeacher", "");
+
+      setPersonalInfo("fullname", "");
+      setPersonalInfo("name_with_initials", "");
+      setPersonalInfo("birthday", "");
+      setPersonalInfo("age", "");
+      setPersonalInfo("sex", "");
+      setPersonalInfo("nic_number", "");
+      setPersonalInfo("address", "");
+      setPersonalInfo("contact_number", "");
+      setPersonalInfo("whatsapp_number", "");
+      setPersonalInfo("victories", "");
+      setPersonalInfo("distance_to_school", "");
+      setPersonalInfo("transport_method", "");
+      setPersonalInfo("scholarship", "");
+      setEmail("");
+    };
+
     try {
       const studentData = await axios.get(`/api/${newIndexNo}`);
       if (studentData.data.studentdetails.personalInfo.fullname != "") {
@@ -45,72 +126,75 @@ const IndexNoForm = ({ callBack }: Props) => {
     } catch (error) {}
 
     try {
-      const studentData = await axios.get(`/api/${newIndexNo}`);
-      // console.log(studentData.data.studentType);
-      if (studentData.data.studentType == "ExistingStudent") {
-        try {
-          const olResult = await axios.get(`/api/${newIndexNo}/result`);
-          // console.log(olResult.data.studentdetails[0]);
-          console.log(olResult.data.studentdetails[0].name);
+      const olResult = await axios.get(`/api/${newIndexNo}/result`);
 
-          const OlData = olResult.data.studentdetails[0];
+      setIndexNo(newIndexNo);
 
-          setPersonalInfo("fullname", OlData.name);
+      if (olResult.data.error === "No data found") {
+        console.log("New Student");
 
-          const attmpt = "first_attempt";
+        clearAllData();
 
-          setOlAttempt(1);
+        setOLResult("first_attempt", "indexNo", "");
+        setOLResult("first_attempt", "mathematics", "");
+        setOLResult("first_attempt", "science", "");
+        setOLResult("first_attempt", "english", "");
+        setOLResult("first_attempt", "history", "");
+        setOLResult("first_attempt", "religion", "");
+        setOLResult("first_attempt", "language", "");
+        setOLResult("first_attempt", "firstsubname", "");
+        setOLResult("first_attempt", "firstsubgrade", "");
+        setOLResult("first_attempt", "secondsubname", "");
+        setOLResult("first_attempt", "secondsubgrade", "");
+        setOLResult("first_attempt", "thirdsubname", "");
+        setOLResult("first_attempt", "thirdsubgrade", "");
 
-          setStudentType("Existing Student");
-          setIndexNo(newIndexNo);
-
-          setOLResult(attmpt, "indexNo", OlData.indexno);
-          setOLResult(attmpt, "mathematics", OlData.mathematics);
-          setOLResult(attmpt, "science", OlData.science);
-          setOLResult(attmpt, "english", OlData.english);
-          setOLResult(attmpt, "history", OlData.history);
-          setOLResult(attmpt, "religion", OlData.religion);
-          setOLResult(attmpt, "language", OlData.language);
-          setOLResult(attmpt, "firstsubname", OlData.firstsubname);
-          setOLResult(attmpt, "firstsubgrade", OlData.firstsubgrade);
-          setOLResult(attmpt, "secondsubname", OlData.secondsubname);
-          setOLResult(attmpt, "secondsubgrade", OlData.secondsubgrade);
-          setOLResult(attmpt, "thirdsubname", OlData.thirdsubname);
-          setOLResult(attmpt, "thirdsubgrade", OlData.thirdsubgrade);
-        } catch (error) {
-          console.log(error);
-          toast.error("Something went wrong!", {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-          });
-        }
-
-        // setOLResult("first_attempt", "indexNo", newIndexNo);
-        callBack("Existing Student");
-      }
-    } catch (error: any) {
-      console.log();
-      if (error.response.data.error === "No Data") {
         setStudentType("New Student");
         callBack("New Student");
       } else {
-        toast.error("Something went wrong!", {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
+        console.log("Ex Student");
+
+        const OlData = olResult.data.studentdetails[0];
+
+        setPersonalInfo("fullname", OlData.name);
+
+        const attmpt = "first_attempt";
+
+        setOlAttempt(1);
+
+        setStudentType("Existing Student");
+
+        clearAllData();
+
+        setOLResult(attmpt, "indexNo", OlData.indexno);
+        setOLResult(attmpt, "mathematics", OlData.mathematics);
+        setOLResult(attmpt, "science", OlData.science);
+        setOLResult(attmpt, "english", OlData.english);
+        setOLResult(attmpt, "history", OlData.history);
+        setOLResult(attmpt, "religion", OlData.religion);
+        setOLResult(attmpt, "language", OlData.language);
+        setOLResult(attmpt, "firstsubname", OlData.firstsubname);
+        setOLResult(attmpt, "firstsubgrade", OlData.firstsubgrade);
+        setOLResult(attmpt, "secondsubname", OlData.secondsubname);
+        setOLResult(attmpt, "secondsubgrade", OlData.secondsubgrade);
+        setOLResult(attmpt, "thirdsubname", OlData.thirdsubname);
+        setOLResult(attmpt, "thirdsubgrade", OlData.thirdsubgrade);
+
+        setStudentType("Existing Student");
+
+        callBack("Existing Student");
       }
+    } catch (error: any) {
+      toast.error("Something went wrong!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   };
   return (
