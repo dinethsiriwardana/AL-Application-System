@@ -4,6 +4,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OtpInput from "react-otp-input";
 import OutsideClickHandler from "react-outside-click-handler";
+import axios from "axios";
+import useWatchIndexNoStore from "../global/WatchIndexStore";
 
 const emailSchema = z.string().email("Invalid email address");
 
@@ -16,6 +18,10 @@ const Model = ({ setVisible }: ModelProps) => {
   const [otp, setOtp] = useState("");
   const [sentOTP, setSendOTP] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const { setWatchIndexNo } = useWatchIndexNoStore();
+
+  const [emailData, setEmailData] = useState();
 
   const handleEmailSubmit = async () => {
     try {
@@ -44,7 +50,7 @@ const Model = ({ setVisible }: ModelProps) => {
       }
 
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
 
       setSendOTP(true);
       setOtp("");
@@ -78,6 +84,25 @@ const Model = ({ setVisible }: ModelProps) => {
     }
   };
 
+  const handleOTPSubmit = async () => {
+    try {
+      const response = await axios.get(`/api/email/${otp}`);
+      setEmailData(response.data.studentdetails.olindexno);
+      setWatchIndexNo(response.data.studentdetails.olindexno);
+    } catch (error) {
+      toast.error("Something went wrong!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+  };
+
   return (
     <div className="model-container">
       <OutsideClickHandler onOutsideClick={() => setVisible(false)}>
@@ -88,6 +113,7 @@ const Model = ({ setVisible }: ModelProps) => {
             className="emailInput"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            disabled={sentOTP}
           />
           {!sentOTP && (
             <button
@@ -104,12 +130,12 @@ const Model = ({ setVisible }: ModelProps) => {
               <OtpInput
                 value={otp}
                 onChange={setOtp}
-                numInputs={5}
+                numInputs={6}
                 renderSeparator={<span>-</span>}
                 shouldAutoFocus
                 renderInput={(props) => <input {...props} />}
                 inputStyle={{
-                  width: "50px",
+                  width: "40px",
                   aspectRatio: "1 / 1",
                   margin: "auto",
                   background: "rgb(34, 34, 34)",
@@ -121,7 +147,7 @@ const Model = ({ setVisible }: ModelProps) => {
                   marginBottom: "15px",
                 }}
               />
-              <button className="submit" onClick={() => setVisible(false)}>
+              <button className="submit" onClick={handleOTPSubmit}>
                 Submit your OTP
               </button>
             </>
