@@ -852,7 +852,7 @@ const AllData = () => {
                 </tbody>
               </table>
 
-              {studentDetails?.olResults?.second_attempt?.indexNo != "" && (
+              {studentDetails?.olResults?.second_attempt?.indexNo && (
                 <>
                   <h2>O/L Results - Second Attempt</h2>
                   <table>

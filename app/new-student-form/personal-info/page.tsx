@@ -6,6 +6,7 @@ import Stepper from "@/app/components/Stepper";
 import useExStudentStore from "@/app/global/ExistingStudentData";
 import { useRouter } from "next/navigation";
 import useIndexNoStore from "@/app/global/indexNoStore";
+import { toast } from "react-toastify";
 
 const ExistingStudent = () => {
   const studentDetails = useExStudentStore((state) => state.studentDetails);
@@ -21,6 +22,53 @@ const ExistingStudent = () => {
       router.push("/");
     }
   }, []);
+
+  const showAlert = () => {
+    toast.error("Please fill all fields!", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
+
+  const goToNextPage = () => {
+    const fieldsToCheck = [
+      studentDetails.oldSchool.zonal,
+      studentDetails.oldSchool.address,
+      studentDetails.oldSchool.name,
+      studentDetails.oldSchool.divisional,
+      studentDetails.oldSchool.district,
+      studentDetails.personalInfo.fullname,
+      studentDetails.personalInfo.name_with_initials,
+      studentDetails.personalInfo.birthday,
+      studentDetails.personalInfo.age,
+      studentDetails.personalInfo.sex,
+      studentDetails.personalInfo.nic_number,
+      studentDetails.personalInfo.address,
+      studentDetails.personalInfo.contact_number,
+      studentDetails.personalInfo.whatsapp_number,
+      studentDetails.personalInfo.distance_to_school,
+      studentDetails.personalInfo.transport_method,
+      studentDetails.personalInfo.scholarship,
+      studentDetails.email,
+    ];
+
+    const allFieldsFilled = fieldsToCheck.every(
+      (field) => field !== undefined && field !== ""
+    );
+
+    if (!allFieldsFilled) {
+      showAlert();
+      return;
+    }
+
+    router.push("/new-student-form/parent-info");
+  };
 
   return (
     <>
@@ -101,7 +149,7 @@ const ExistingStudent = () => {
         </div>
         <div className="twoCols">
           <div className="inputGroup">
-            <label>Birth Day:</label>
+            <label>Birth Day</label>
             <input
               type="date"
               value={studentDetails.personalInfo.birthday}
@@ -109,7 +157,7 @@ const ExistingStudent = () => {
             />
           </div>
           <div className="inputGroup">
-            <label>Age as on (1-1-2024):</label>
+            <label>Age as on (1-1-2024)</label>
             <input
               type="number"
               placeholder="19"
@@ -234,9 +282,9 @@ const ExistingStudent = () => {
         <Link href="/guide" className="backBtn">
           Back
         </Link>
-        <Link href="/new-student-form/parent-info" className="nextBtn">
+        <button onClick={goToNextPage} className="nextBtn">
           Next
-        </Link>
+        </button>
       </div>
     </>
   );

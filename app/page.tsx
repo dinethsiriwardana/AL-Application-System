@@ -74,7 +74,7 @@ export default function Home() {
         </aside>
 
         <footer className="footer">
-          Copyrigh &copy; Mayurapada Central College: All rights reserved.
+          Copyright &copy; Mayurapada Central College: All rights reserved.
         </footer>
       </main>
     </>
