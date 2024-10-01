@@ -28,7 +28,7 @@ const Page = () => {
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
-      setAnimation(CheckingDoneAnimation);
+      // setAnimation(CheckingDoneAnimation);
       setTitle("Data added successfully!");
     }, 8000);
 
@@ -44,7 +44,7 @@ const Page = () => {
 
   return (
     <>
-      {animate && <DBLoading title={title} lotteFile={animation} />}
+      {/* {animate && <DBLoading title={title} lotteFile={animation} />} */}
       <div className="application-form-container">
         <h1 className="title">A/L Application Form</h1>
         <h2 className="subtitle">Mayurapada Central College Narammala</h2>
