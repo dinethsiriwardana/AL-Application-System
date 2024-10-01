@@ -5,7 +5,9 @@ import "react-toastify/dist/ReactToastify.css";
 import OtpInput from "react-otp-input";
 import OutsideClickHandler from "react-outside-click-handler";
 import axios from "axios";
-import useWatchIndexNoStore from "../global/WatchIndexStore";
+
+import { useRouter } from "next/navigation";
+import useStudentStore from "../global/submittedDataStore";
 
 const emailSchema = z.string().email("Invalid email address");
 
@@ -14,12 +16,11 @@ interface ModelProps {
 }
 
 const Model = ({ setVisible }: ModelProps) => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [sentOTP, setSendOTP] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const { setWatchIndexNo } = useWatchIndexNoStore();
 
   const [emailData, setEmailData] = useState();
 
@@ -84,11 +85,19 @@ const Model = ({ setVisible }: ModelProps) => {
     }
   };
 
+  const { updateStudentDetails } = useStudentStore();
+
   const handleOTPSubmit = async () => {
     try {
+      setLoading(true);
       const response = await axios.get(`/api/email/${otp}`);
       setEmailData(response.data.studentdetails.olindexno);
-      setWatchIndexNo(response.data.studentdetails.olindexno);
+      console.log(otp, response.data.studentdetails.olindexno);
+
+      updateStudentDetails(response.data.studentdetails);
+
+      router.push("/view-submitted");
+      setLoading(false);
     } catch (error) {
       toast.error("Something went wrong!", {
         position: "bottom-right",
@@ -100,6 +109,9 @@ const Model = ({ setVisible }: ModelProps) => {
         progress: undefined,
         theme: "dark",
       });
+      setLoading(false);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -147,8 +159,12 @@ const Model = ({ setVisible }: ModelProps) => {
                   marginBottom: "15px",
                 }}
               />
-              <button className="submit" onClick={handleOTPSubmit}>
-                Submit your OTP
+              <button
+                className="submit"
+                onClick={handleOTPSubmit}
+                disabled={loading}
+              >
+                {loading ? "Sending..." : "Submit your OTP"}
               </button>
             </>
           )}
