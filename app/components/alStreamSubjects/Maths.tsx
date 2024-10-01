@@ -65,7 +65,6 @@ const Maths: React.FC = () => {
         >
           <option value="English">English</option>
           <option value="Sinhala">Sinhala</option>
-          <option value="Tamil">Tamil</option>
         </select>
       </div>
     </fieldset>

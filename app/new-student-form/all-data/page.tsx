@@ -4,7 +4,7 @@ import useExStudentStore from "@/app/global/ExistingStudentData";
 import indexNoStore from "@/app/global/indexNoStore";
 import useOLPageStore from "@/app/global/OLPageDataStore";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import useIndexNoStore from "@/app/global/indexNoStore";
@@ -14,6 +14,11 @@ const AllData = () => {
   const { olResultCorrect } = useOLPageStore();
   const { indexNo } = useIndexNoStore();
   const router = useRouter();
+  useEffect(() => {
+    if (!indexNo) {
+      router.push("/");
+    }
+  }, []);
 
   const handleAllSubmit = async () => {
     try {
@@ -36,13 +41,13 @@ const AllData = () => {
           progress: undefined,
           theme: "dark",
         });
+      } else {
+        const data = await response.json();
+        console.log("Response:", data);
+        router.push("/submited");
       }
-
-      const data = await response.json();
-      console.log("Response:", data);
-      router.push("/submited");
     } catch (error) {
-      console.error("Error:", error);
+      // console.log("Error:", error.message);
       toast.error("Something went wrong!", {
         position: "bottom-right",
         autoClose: 5000,

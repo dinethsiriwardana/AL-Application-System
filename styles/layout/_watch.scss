@@ -40,6 +40,10 @@
     inline-size: 90%;
     margin-inline: auto;
     max-inline-size: 20rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   /* helpers/hidden.css */

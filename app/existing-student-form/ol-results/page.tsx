@@ -1,18 +1,69 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Stepper from "@/app/components/Stepper";
 import useExStudentStore from "@/app/global/ExistingStudentData";
 import useOLPageStore from "@/app/global/OLPageDataStore";
+import useIndexNoStore from "@/app/global/indexNoStore";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const Page = () => {
+  const { indexNo } = useIndexNoStore();
+  const router = useRouter();
+  useEffect(() => {
+    if (!indexNo) {
+      router.push("/");
+    }
+  }, []);
   const studentDetails = useExStudentStore((state) => state.studentDetails);
   const setOLResult = useExStudentStore((state) => state.setOLResult);
   const { olAttempt, olResultCorrect, setOlAttempt, setOlResultCorrect } =
     useOLPageStore();
 
-  console.log(studentDetails.olResults);
+  const showAlert = () => {
+    toast.error("Please fill all fields!", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
+
+  const goToNextPage = () => {
+    const fieldsToCheck = [
+      studentDetails.olResults.first_attempt.indexNo,
+      studentDetails.olResults.first_attempt.mathematics,
+      studentDetails.olResults.first_attempt.science,
+      studentDetails.olResults.first_attempt.english,
+      studentDetails.olResults.first_attempt.history,
+      studentDetails.olResults.first_attempt.religion,
+      studentDetails.olResults.first_attempt.language,
+      studentDetails.olResults.first_attempt.firstsubname,
+      studentDetails.olResults.first_attempt.firstsubgrade,
+      studentDetails.olResults.first_attempt.secondsubname,
+      studentDetails.olResults.first_attempt.secondsubgrade,
+      studentDetails.olResults.first_attempt.thirdsubname,
+      studentDetails.olResults.first_attempt.thirdsubgrade,
+    ];
+
+    const allFieldsFilled = fieldsToCheck.every(
+      (field) => field !== undefined && field !== ""
+    );
+
+    if (!allFieldsFilled) {
+      showAlert();
+      return;
+    }
+
+    router.push("/existing-student-form/al-subjects");
+  };
+
   return (
     <>
       <Stepper pageNo={3} />
@@ -467,9 +518,9 @@ const Page = () => {
         <Link href="/existing-student-form/parent-info" className="backBtn">
           Back
         </Link>
-        <Link href="/existing-student-form/al-subjects" className="nextBtn">
+        <button onClick={goToNextPage} className="nextBtn">
           Next
-        </Link>
+        </button>
       </div>
     </>
   );

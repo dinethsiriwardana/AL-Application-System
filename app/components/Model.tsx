@@ -4,6 +4,10 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OtpInput from "react-otp-input";
 import OutsideClickHandler from "react-outside-click-handler";
+import axios from "axios";
+
+import { useRouter } from "next/navigation";
+import useStudentStore from "../global/submittedDataStore";
 
 const emailSchema = z.string().email("Invalid email address");
 
@@ -12,10 +16,13 @@ interface ModelProps {
 }
 
 const Model = ({ setVisible }: ModelProps) => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [sentOTP, setSendOTP] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const [emailData, setEmailData] = useState();
 
   const handleEmailSubmit = async () => {
     try {
@@ -44,7 +51,7 @@ const Model = ({ setVisible }: ModelProps) => {
       }
 
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
 
       setSendOTP(true);
       setOtp("");
@@ -78,6 +85,36 @@ const Model = ({ setVisible }: ModelProps) => {
     }
   };
 
+  const { updateStudentDetails } = useStudentStore();
+
+  const handleOTPSubmit = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(`/api/email/${otp}`);
+      setEmailData(response.data.studentdetails.olindexno);
+      console.log(otp, response.data.studentdetails.olindexno);
+
+      updateStudentDetails(response.data.studentdetails);
+
+      router.push("/view-submitted");
+      setLoading(false);
+    } catch (error) {
+      toast.error("Something went wrong!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="model-container">
       <OutsideClickHandler onOutsideClick={() => setVisible(false)}>
@@ -88,6 +125,7 @@ const Model = ({ setVisible }: ModelProps) => {
             className="emailInput"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            disabled={sentOTP}
           />
           {!sentOTP && (
             <button
@@ -104,12 +142,12 @@ const Model = ({ setVisible }: ModelProps) => {
               <OtpInput
                 value={otp}
                 onChange={setOtp}
-                numInputs={5}
+                numInputs={6}
                 renderSeparator={<span>-</span>}
                 shouldAutoFocus
                 renderInput={(props) => <input {...props} />}
                 inputStyle={{
-                  width: "50px",
+                  width: "40px",
                   aspectRatio: "1 / 1",
                   margin: "auto",
                   background: "rgb(34, 34, 34)",
@@ -121,8 +159,12 @@ const Model = ({ setVisible }: ModelProps) => {
                   marginBottom: "15px",
                 }}
               />
-              <button className="submit" onClick={() => setVisible(false)}>
-                Submit your OTP
+              <button
+                className="submit"
+                onClick={handleOTPSubmit}
+                disabled={loading}
+              >
+                {loading ? "Sending..." : "Submit your OTP"}
               </button>
             </>
           )}

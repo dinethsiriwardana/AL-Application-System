@@ -8,6 +8,7 @@ import useStudentType from "../global/StudentType";
 import useExStudentStore from "../global/ExistingStudentData";
 import useOLPageStore from "../global/OLPageDataStore";
 import indexNoStore from "../global/indexNoStore";
+import { set } from "mongoose";
 
 interface Props {
   callBack: (type: string) => void;
@@ -16,6 +17,8 @@ interface Props {
 const IndexNoForm = ({ callBack }: Props) => {
   // const { setStudentType } = useStudentType();
   const { setIndexNo } = indexNoStore();
+
+  const [loading, setLoading] = useState(false);
 
   const [newIndexNo, setNewIndexNo] = useState("");
   // const [studentType, setStudentType] = useState("");
@@ -37,6 +40,7 @@ const IndexNoForm = ({ callBack }: Props) => {
   };
 
   const updateIndexNo = async () => {
+    setLoading(true);
     setOLIndexNo(newIndexNo);
 
     const clearAllData = () => {
@@ -92,7 +96,6 @@ const IndexNoForm = ({ callBack }: Props) => {
       setOldClass("olClass", "");
       setOldClass("olClassTeacher", "");
 
-      setPersonalInfo("fullname", "");
       setPersonalInfo("name_with_initials", "");
       setPersonalInfo("birthday", "");
       setPersonalInfo("age", "");
@@ -148,6 +151,7 @@ const IndexNoForm = ({ callBack }: Props) => {
         setOLResult("first_attempt", "secondsubgrade", "");
         setOLResult("first_attempt", "thirdsubname", "");
         setOLResult("first_attempt", "thirdsubgrade", "");
+        setPersonalInfo("fullname", "");
 
         setStudentType("New Student");
         callBack("New Student");
@@ -165,6 +169,8 @@ const IndexNoForm = ({ callBack }: Props) => {
         setStudentType("Existing Student");
 
         clearAllData();
+
+        setPersonalInfo("fullname", OlData.name);
 
         setOLResult(attmpt, "indexNo", OlData.indexno);
         setOLResult(attmpt, "mathematics", OlData.mathematics);
@@ -196,6 +202,7 @@ const IndexNoForm = ({ callBack }: Props) => {
         theme: "dark",
       });
     }
+    setLoading(false);
   };
   return (
     <>
@@ -212,8 +219,12 @@ const IndexNoForm = ({ callBack }: Props) => {
           <span className="content-name">Enter Index No.</span>
         </label>
       </div>
-      <button className="submit-button" onClick={updateIndexNo}>
-        <span>Apply Now</span>
+      <button
+        className="submit-button"
+        onClick={updateIndexNo}
+        disabled={loading}
+      >
+        {loading ? <span>Loading</span> : <span>Apply Now</span>}
       </button>
     </>
   );
