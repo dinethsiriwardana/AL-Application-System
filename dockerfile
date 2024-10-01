@@ -14,6 +14,7 @@ FROM node:18-alpine AS production
 
 WORKDIR /app
 
+ENV NODE_ENV=development
 ENV NODE_ENV=production
 
 COPY --from=builder /app/.next ./.next
