@@ -63,6 +63,16 @@ export default function Home() {
             </span>{" "}
             to check your submitted details.
           </div>
+          <div className="already-applied">
+            Any Trouble ?{" "}
+            <a
+              href="https://tawk.to/chat/66fd5da84cbc4814f7e203ca/1i96rbnn4"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Chat With Us
+            </a>
+          </div>
         </aside>
         <aside className="main__left-and-write">
           <Image

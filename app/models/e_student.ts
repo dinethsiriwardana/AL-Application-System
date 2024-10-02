@@ -94,7 +94,7 @@ const OldClassSchema = new Schema<IOldClass>({
 const ExistingStudentSchema = new Schema<IEStudent>({
   appid: { type: String, required: false },
   olindexno: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
+  email: { type: String, required: true },
   personalInfo: { type: PersonalInfoSchema, default: {} },
   olResults: { type: OLResultsSchema, default: {} },
   parentInfo: { type: ParentSchema, default: {} },

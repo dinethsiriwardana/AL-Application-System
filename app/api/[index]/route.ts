@@ -7,6 +7,8 @@ import { CasheSingleton } from "@/app/database/data/CasheSingleton";
 import ExistingStudent from "@/app/models/e_student";
 import { StudentType } from "@/app/utl/studenttype";
 import { Console } from "console";
+import { create } from "domain";
+import { createPDF } from "./pdf/route";
 
 interface Params {
   index: string;
@@ -71,19 +73,17 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
       console.log("No data found for index: ", index);
       return NextResponse.json({ error: "No data found" });
     }
+    // const student = await ExistingStudent.findOne({ email: studentData.email });
 
-    // check the student email is already in the database
-    const student = await ExistingStudent.findOne({ email: studentData.email });
-
-    if (student) {
-      console.log("Student already exists for email: ", studentData.email);
-      return NextResponse.json(
-        {
-          error: "Student already exists for email: " + studentData.email,
-        },
-        { status: 500 }
-      );
-    }
+    // if (student) {
+    //   console.log("Student already exists for email: ", studentData.email);
+    //   return NextResponse.json(
+    //     {
+    //       error: "Student already exists for email: " + studentData.email,
+    //     },
+    //     { status: 500 }
+    //   );
+    // }
 
     const newStudent = new ExistingStudent();
     newStudent.olindexno = index;
@@ -100,6 +100,9 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
     const result = await newStudent.save();
 
     console.log("Data added successfully for index: ", index);
+
+    await createPDF(index);
+
     return NextResponse.json({ message: "Data added successfully", result });
   } catch (err: any) {
     console.log("Error adding data for index: ", index, " ", err.message);
