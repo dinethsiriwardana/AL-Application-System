@@ -40,7 +40,12 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
 
     await dbConnect();
 
-    await OtpModel.create({ otp, email });
+    // await OtpModel.create({ otp, email });
+    const result = await OtpModel.findOneAndUpdate(
+      { email }, // Find by email
+      { otp: otp, createdAt: Date.now() }, // Update OTP and reset createdAt
+      { new: true, upsert: true } // Return the updated document; create if not found
+    );
 
     console.log("OTP saved in DB:", otp);
 
