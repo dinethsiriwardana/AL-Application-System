@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import PassAuth from "./PassAuth";
 import WatchPage from "./WatchPage";
 import Cookies from "js-cookie";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Page = () => {
   const [username, setUsername] = useState("");
@@ -17,6 +19,16 @@ const Page = () => {
     if (storedUsername && storedPassword) {
       if (storedUsername === "admin" && storedPassword === "wod#Nm^qzBg41Oy2") {
         setLoggedIn(true);
+        toast.success("Successfully logged in!", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       }
     }
   }, []);
@@ -31,11 +43,33 @@ const Page = () => {
       setLoggedIn(true);
       Cookies.set("username", username, { expires: 7 });
       Cookies.set("password", password, { expires: 7 });
+      toast.success("Login successful!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    } else {
+      toast.error("Invalid username or password", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   };
 
   return (
     <div className="watchPage">
+      <ToastContainer />
       {!loggedIn ? (
         <PassAuth
           username={username}
