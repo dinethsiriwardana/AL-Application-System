@@ -240,7 +240,7 @@
         0.875rem
       );
       margin-top: 20px;
-      margin-bottom: 100px;
+      margin-bottom: 1px;
 
       .check-data-btn {
         color: var(--light-blue);
@@ -250,6 +250,10 @@
       .check-data-btn:hover {
         text-decoration: underline;
       }
+    }
+
+    .bottom {
+      margin-bottom: 50px;
     }
   }
   &__left-and-write:nth-child(2) {

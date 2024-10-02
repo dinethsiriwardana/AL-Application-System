@@ -63,12 +63,13 @@ export default function Home() {
             </span>{" "}
             to check your submitted details.
           </div>
-          <div className="already-applied">
+          <div className="already-applied bottom">
             Any Trouble ?{" "}
             <a
               href="https://tawk.to/chat/66fd5da84cbc4814f7e203ca/1i96rbnn4"
               target="_blank"
               rel="noreferrer"
+              className="check-data-btn"
             >
               Chat With Us
             </a>

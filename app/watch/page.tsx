@@ -15,10 +15,7 @@ const Page = () => {
     const storedPassword = Cookies.get("password");
 
     if (storedUsername && storedPassword) {
-      if (
-        storedUsername === process.env.NEXT_PUBLIC_ADMIN_USERNAME &&
-        storedPassword === process.env.NEXT_PUBLIC_ADMIN_PASSWORD
-      ) {
+      if (storedUsername === "admin" && storedPassword === "wod#Nm^qzBg41Oy2") {
         setLoggedIn(true);
       }
     }
@@ -30,10 +27,7 @@ const Page = () => {
       | React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    if (
-      username === process.env.NEXT_PUBLIC_ADMIN_USERNAME &&
-      password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD
-    ) {
+    if (username === "admin" && password === "wod#Nm^qzBg41Oy2") {
       setLoggedIn(true);
       Cookies.set("username", username, { expires: 7 });
       Cookies.set("password", password, { expires: 7 });
