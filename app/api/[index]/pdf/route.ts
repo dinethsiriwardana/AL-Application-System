@@ -57,6 +57,34 @@ export async function GET(
 
     await dbConnect(); // Assuming this connects to your MongoDB database
 
+    const studentdetails = await ExistingStudent.find({ olindexno: index });
+
+    if (!studentdetails) {
+      return NextResponse.json({ error: "Student not found" }, { status: 404 });
+    }
+
+    for (const student of studentdetails) {
+      const pdfBuffer = generatePdf(student);
+      console.log("PDF generated");
+      await sendEmailWithAttachment(student.email, Buffer.from(pdfBuffer));
+    }
+
+    // // TODO: Uncomment this line to send the email
+
+    return NextResponse.json({ "Send Emails": "Done" }, { status: 200 });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function createPDF(index: string): Promise<NextResponse> {
+  try {
+    await dbConnect(); // Assuming this connects to your MongoDB database
+
     const studentdetails = await ExistingStudent.findOne({ olindexno: index });
 
     if (!studentdetails) {
@@ -118,7 +146,7 @@ async function sendEmailWithAttachment(
       html: `
         <div style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
           <h2>Your AL Application Details</h2>
-          <p>Please find attached a PDF containing your application details.</p>
+          <p>Please find attached a PDF containing your application details. Kindly ensure to post it to the "Principal, Mayurapada Central College, Narammala." </p>       
         </div>
       `,
       attachments: [
