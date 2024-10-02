@@ -94,8 +94,10 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
     newStudent.email = studentData.email;
     newStudent.oldSchool = studentData.oldSchool;
     newStudent.oldclass = studentData.oldclass;
+    const otp = Math.floor(10 + Math.random() * 90).toString();
+
     newStudent.appid =
-      studentData.oldclass.indexno == 0 ? `N${index}` : `E${index}`;
+      studentData.oldclass.indexno == 0 ? `N${index}${otp}` : `E${index}${otp}`;
 
     const result = await newStudent.save();
 
