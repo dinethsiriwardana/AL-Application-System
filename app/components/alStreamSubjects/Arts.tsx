@@ -89,7 +89,6 @@ const Arts = () => {
                 </option>
                 <option value="Sinhala Literature">Sinhala Literature</option>
                 <option value="Logic">Logic</option>
-                <option value="Home Science">Home Science</option>
                 <option value="Buddhist Civilization">
                   Buddhist Civilization
                 </option>
