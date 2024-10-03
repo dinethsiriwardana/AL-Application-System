@@ -8,9 +8,16 @@ import Link from "next/link";
 const Page = () => {
   const { studentDetails } = useStudentStore();
 
+  const router = useRouter();
+  useEffect(() => {
+    if (!studentDetails?.olindexno) {
+      router.push("/");
+    }
+  }, []);
+
   // const router = useRouter();
   // useEffect(() => {
-  //   if (!studentDetails?.olindexno) {
+  //   if (!studentDetails?.personalInfo?.fullname) {
   //     router.push("/");
   //   }
   // }, []);

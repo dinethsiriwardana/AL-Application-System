@@ -88,6 +88,20 @@ const Model = ({ setVisible }: ModelProps) => {
   const { updateStudentDetails } = useStudentStore();
 
   const handleOTPSubmit = async () => {
+    if (otp.length !== 6) {
+      toast.warn("Invalid OTP!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+
     try {
       setLoading(true);
       const response = await axios.get(`/api/email/${otp}`);
