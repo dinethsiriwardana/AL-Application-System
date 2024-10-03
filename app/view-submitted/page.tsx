@@ -250,57 +250,73 @@ const Page = () => {
         </>
       )}
 
-      <h2>O/L Results - Last Attempt</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Feild</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Index Number</td>
-            <td>{studentDetails?.olResults?.first_attempt?.indexNo}</td>
-          </tr>
-          <tr>
-            <td>Maths</td>
-            <td>{studentDetails?.olResults?.first_attempt?.mathematics}</td>
-          </tr>
-          <tr>
-            <td>Science</td>
-            <td>{studentDetails?.olResults?.first_attempt?.science}</td>
-          </tr>
-          <tr>
-            <td>English</td>
-            <td>{studentDetails?.olResults?.first_attempt?.english}</td>
-          </tr>
-          <tr>
-            <td>History</td>
-            <td>{studentDetails?.olResults?.first_attempt?.history}</td>
-          </tr>
-          <tr>
-            <td>Religion</td>
-            <td>{studentDetails?.olResults?.first_attempt?.religion}</td>
-          </tr>
-          <tr>
-            <td>Sinhala</td>
-            <td>{studentDetails?.olResults?.first_attempt?.language}</td>
-          </tr>
-          <tr>
-            <td>{studentDetails?.olResults?.first_attempt?.firstsubname}</td>
-            <td>{studentDetails?.olResults?.first_attempt?.firstsubgrade}</td>
-          </tr>
-          <tr>
-            <td>{studentDetails?.olResults?.first_attempt?.secondsubname}</td>
-            <td>{studentDetails?.olResults?.first_attempt?.secondsubgrade}</td>
-          </tr>
-          <tr>
-            <td>{studentDetails?.olResults?.first_attempt?.thirdsubname}</td>
-            <td>{studentDetails?.olResults?.first_attempt?.thirdsubgrade}</td>
-          </tr>
-        </tbody>
-      </table>
+      {studentDetails?.olResults?.first_attempt?.indexNo && (
+        <>
+          <h2>O/L Results - Last Attempt</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Feild</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Index Number</td>
+                <td>{studentDetails?.olResults?.first_attempt?.indexNo}</td>
+              </tr>
+              <tr>
+                <td>Maths</td>
+                <td>{studentDetails?.olResults?.first_attempt?.mathematics}</td>
+              </tr>
+              <tr>
+                <td>Science</td>
+                <td>{studentDetails?.olResults?.first_attempt?.science}</td>
+              </tr>
+              <tr>
+                <td>English</td>
+                <td>{studentDetails?.olResults?.first_attempt?.english}</td>
+              </tr>
+              <tr>
+                <td>History</td>
+                <td>{studentDetails?.olResults?.first_attempt?.history}</td>
+              </tr>
+              <tr>
+                <td>Religion</td>
+                <td>{studentDetails?.olResults?.first_attempt?.religion}</td>
+              </tr>
+              <tr>
+                <td>Sinhala</td>
+                <td>{studentDetails?.olResults?.first_attempt?.language}</td>
+              </tr>
+              <tr>
+                <td>
+                  {studentDetails?.olResults?.first_attempt?.firstsubname}
+                </td>
+                <td>
+                  {studentDetails?.olResults?.first_attempt?.firstsubgrade}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  {studentDetails?.olResults?.first_attempt?.secondsubname}
+                </td>
+                <td>
+                  {studentDetails?.olResults?.first_attempt?.secondsubgrade}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  {studentDetails?.olResults?.first_attempt?.thirdsubname}
+                </td>
+                <td>
+                  {studentDetails?.olResults?.first_attempt?.thirdsubgrade}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </>
+      )}
 
       {studentDetails?.olResults?.correction?.indexNo && (
         <>

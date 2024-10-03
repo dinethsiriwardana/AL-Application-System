@@ -88,7 +88,7 @@ const Model = ({ setVisible }: ModelProps) => {
   const { updateStudentDetails } = useStudentStore();
 
   const handleOTPSubmit = async () => {
-    if (otp.length !== 6) {
+    if (!otp) {
       toast.warn("Invalid OTP!", {
         position: "bottom-right",
         autoClose: 5000,
