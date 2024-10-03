@@ -12,6 +12,7 @@ import { useState } from "react";
 import { LottieFile } from "./interfaces/lotteInterface";
 import useStudentType from "./global/StudentType";
 import Model from "./components/Model";
+import TawkTo from "./components/Tawk";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -36,6 +37,7 @@ export default function Home() {
   };
   return (
     <>
+      <TawkTo />
       {loading && animation && (
         <DBLoading title={loadingText} lotteFile={animation} />
       )}
@@ -53,7 +55,7 @@ export default function Home() {
           </h3>
           <h4 className="sub-heading-bottom">For Advanced-Level Exam 2026</h4>
           <IndexNoForm callBack={goToNextPage} />
-          <div className="already-applied">
+          <div className="already-applied bottom">
             Have you already applied for this?{" "}
             <span
               onClick={() => setModelVisible(true)}
@@ -62,17 +64,6 @@ export default function Home() {
               CLICK HERE
             </span>{" "}
             to check your submitted details.
-          </div>
-          <div className="already-applied bottom">
-            Any Trouble ?{" "}
-            <a
-              href="https://tawk.to/chat/66fd5da84cbc4814f7e203ca/1i96rbnn4"
-              target="_blank"
-              rel="noreferrer"
-              className="check-data-btn"
-            >
-              Chat With Us
-            </a>
           </div>
         </aside>
         <aside className="main__left-and-write">
