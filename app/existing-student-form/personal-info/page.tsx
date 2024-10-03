@@ -70,6 +70,15 @@ const ExistingStudent = () => {
       <Stepper pageNo={1} />
       <fieldset className="fieldSet">
         <legend>OL Class Information</legend>
+        <div className="inputGroup">
+          <label>OL Class Indxe No.</label>
+          <input
+            type="number"
+            placeholder="12345"
+            value={studentDetails.oldclass.indexno}
+            onChange={(e) => setOldClass("indexno", e.target.value)}
+          />
+        </div>
         <div className="twoCols">
           <div className="inputGroup">
             <label>OL Class</label>
