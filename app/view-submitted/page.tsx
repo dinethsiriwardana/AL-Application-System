@@ -17,11 +17,11 @@ const Page = () => {
   }, []);
 
   // const router = useRouter();
-  // useEffect(() => {
-  //   if (!studentDetails?.personalInfo?.fullname) {
-  //     router.push("/");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!studentDetails?.personalInfo?.fullname) {
+      router.push("/");
+    }
+  }, []);
 
   const [showDeleteModel, setShowDeleteModel] = React.useState(false);
   const [loadingEmail, setLoadingEmail] = React.useState(false);
@@ -144,7 +144,7 @@ const Page = () => {
           onClick={() => setShowDeleteModel(true)}
           disabled={loadingDelete}
         >
-          {loadingDelete ? "Deleting..." : "Delete Application"}
+          Delete Application
         </button>
         <button className="download" onClick={fetchPdf} disabled={loadingEmail}>
           {loadingEmail ? "Loading..." : "Re-send Email"}
@@ -153,8 +153,10 @@ const Page = () => {
       {showDeleteModel && (
         <div className="deleteModel">
           Are you sure you want to delete this application? This action is
-          irreversible and cannot be undone. If it's yes,{" "}
-          <span onClick={handleDelete}>CLICK HERE</span>
+          irreversible and cannot be undone. If it&apos;s yes,{" "}
+          <span onClick={handleDelete}>
+            {loadingDelete ? "Deleting..." : "CLICK HERE"}
+          </span>
         </div>
       )}
       <div className="allDataTable">
