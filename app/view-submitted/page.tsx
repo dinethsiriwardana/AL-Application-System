@@ -153,7 +153,7 @@ const Page = () => {
       {showDeleteModel && (
         <div className="deleteModel">
           Are you sure you want to delete this application? This action is
-          irreversible and cannot be undone. If it's yes,{" "}
+          irreversible and cannot be undone. If it&apos;s yes,{" "}
           <span onClick={handleDelete}>CLICK HERE</span>
         </div>
       )}
