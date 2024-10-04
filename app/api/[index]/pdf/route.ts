@@ -55,6 +55,8 @@ export async function GET(
   try {
     const { index } = params;
 
+    console.log("GET request - student details for index: ", index);
+
     await dbConnect(); // Assuming this connects to your MongoDB database
 
     const studentdetails = await ExistingStudent.find({ olindexno: index });
@@ -62,16 +64,14 @@ export async function GET(
     if (!studentdetails) {
       return NextResponse.json({ error: "Student not found" }, { status: 404 });
     }
-
     for (const student of studentdetails) {
       const pdfBuffer = generatePdf(student);
-      console.log("PDF generated");
+      console.log("PDF generated" + student.email);
       await sendEmailWithAttachment(student.email, Buffer.from(pdfBuffer));
     }
+    return NextResponse.json({ "Send Emails": "Done" }, { status: 200 });
 
     // // TODO: Uncomment this line to send the email
-
-    return NextResponse.json({ "Send Emails": "Done" }, { status: 200 });
   } catch (error) {
     console.error(error);
     return NextResponse.json(

@@ -100,7 +100,7 @@ export const generatePdf = (student: IEStudent): ArrayBuffer => {
   const oldSchool = student.oldSchool;
   const oldclass = student.oldclass;
 
-  if (oldclass.indexno == "0") {
+  if (oldclass.indexno == "0" || oldclass.indexno == "") {
     const oldSchoolData = [
       ["Name", oldSchool.name],
       ["Address", oldSchool.address],
@@ -189,7 +189,7 @@ export const generatePdf = (student: IEStudent): ArrayBuffer => {
   const alSubjects = student.alSubjects.subject || [];
   const alTableData = [["Subject", "Medium"]].concat(
     alSubjects.map((sub: any) => [
-      sub.subject1 || sub.subject2 || sub.subject3 || "", // Choose whichever subject is available
+      sub.subject, // Choose whichever subject is available
       sub.medium || "",
     ])
   );
