@@ -232,7 +232,7 @@ const ExistingStudent = () => {
           </div>
         </div>
         <div className="inputGroup">
-          <label>Scholarship</label>
+          <label>Scholarship (Exam)</label>
           <select
             value={studentDetails.personalInfo.scholarship}
             onChange={(e) => setPersonalInfo("scholarship", e.target.value)}
