@@ -74,6 +74,7 @@ export const generatePdf = (student: IEStudent): ArrayBuffer => {
   } = student.personalInfo;
 
   const personalInfoData = [
+    ["Index No", student.olindexno],
     ["Name", fullname],
     ["Date of Birth", new Date(birthday).toLocaleDateString()],
     ["NIC Number", nic_number],
