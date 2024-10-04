@@ -17,11 +17,11 @@ const Page = () => {
   }, []);
 
   // const router = useRouter();
-  // useEffect(() => {
-  //   if (!studentDetails?.personalInfo?.fullname) {
-  //     router.push("/");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!studentDetails?.personalInfo?.fullname) {
+      router.push("/");
+    }
+  }, []);
 
   const [showDeleteModel, setShowDeleteModel] = React.useState(false);
   const [loadingEmail, setLoadingEmail] = React.useState(false);
