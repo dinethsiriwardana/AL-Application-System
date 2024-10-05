@@ -216,7 +216,7 @@ const IndexNoForm = ({ callBack }: Props) => {
           onChange={handleInputChange}
         />
         <label htmlFor="text" className="label-name">
-          <span className="content-name">Enter Index No.</span>
+          <span className="content-name">Enter O/L Index No.</span>
         </label>
       </div>
       <button
