@@ -10,6 +10,7 @@ const poppins = Poppins({
 });
 import "@styles/style.scss";
 import { ToastContainer } from "react-toastify";
+import Closed from "./components/Closed";
 
 export const metadata: Metadata = {
   title: "Al Application form - Mayurapada Central College",
@@ -37,7 +38,7 @@ export default function RootLayout({
           pauseOnHover
           theme="dark"
         />
-        {children}
+        <Closed />
       </body>
     </html>
   );
