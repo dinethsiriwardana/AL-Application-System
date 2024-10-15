@@ -124,10 +124,6 @@ The API for the Mayurapada Central College A/L Admission Portal is documented us
 This collection includes all the endpoints used in the application, along with detailed descriptions, request parameters, and example responses. It serves as a useful resource for developers who want to interact with the API or integrate it into other applications.
 
 
-## Acknowledgments
-
-Special thanks to **Dinujaya** for support and collaboration throughout this project.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
