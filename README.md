@@ -1,4 +1,3 @@
-
 # Mayurapada Central College A/L Admission Portal
 
 ## Overview
@@ -7,10 +6,11 @@ The **Mayurapada Central College A/L Admission Portal** is an online application
 
 ## Tech Stack
 
-- **Frontend:** Next.js
-- **Backend:** MongoDB
-- **Containerization:** Docker
-- **Deployment:** Choreo (WSO2)
+- **Frontend:** Next.js <img src="https://github.com/user-attachments/assets/c5d02f69-f158-4e1d-8c91-eb35442919d6" width="20" height="20">   
+- **Backend:** MongoDB <img src="https://github.com/user-attachments/assets/a36d8022-be4e-467c-a95d-4222e3ffd218" width="20" height="20">
+- **Containerization:** Docker <img src="https://github.com/user-attachments/assets/e238bb6c-a790-45d8-a015-1a3001c665d4" width="35" height="25">
+- **Deployment:** Choreo (WSO2) <img src="https://github.com/user-attachments/assets/dc73d96e-f0bb-4909-91e8-d9ff08c23e1b" width="33" height="25">
+
 
 ## Features
 
